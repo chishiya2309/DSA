@@ -1,0 +1,1 @@
+Cho 2 so nguyen a va b, chuong trinh yeu cau nhap vao 2 so a va b, ket qua tra ve la tong cua 2 so.
