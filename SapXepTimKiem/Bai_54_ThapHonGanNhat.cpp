@@ -12,32 +12,33 @@ int main() {
     cin.tie(NULL);
     int n;
     cin >> n;
-    vector<int> a(n);
+    vector<int> heights(n);
     for(int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        cin >> heights[i];
     }
-
-    vector<int> res(n, 0);
+    vector<int> result(n, 0);
     stack<int> s;
     for(int i = 0; i < n; i++)
     {
-        while(!s.empty() && a[s.top()] >= a[i])
+        while(!s.empty() && heights[s.top()] >= heights[i])
         {
             s.pop();
         }
+
         if(!s.empty())
         {
-            res[i] = s.top() + 1;
+            result[i] = s.top() + 1;
         }else {
-            res[i] = 0;
+            result[i] = 0;
         }
+
         s.push(i);
     }
 
     for(int i = 0; i < n; i++)
     {
-        cout << res[i] << " ";
+        cout << result[i] << " ";
     }
     return 0;
 }

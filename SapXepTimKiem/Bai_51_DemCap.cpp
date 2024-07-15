@@ -8,18 +8,18 @@ Gợi ý : a^b > b^a nếu a < b, ví dụ a = 2, và b = 5 thì 2^5 = 32 > 5^2 
 Vậy đối với mỗi phần tử trong mảng A[] bạn cần đếm xem trong mảng B[] có bao nhiêu phần tử lớn hơn nó.
 */
 #include <bits/stdc++.h>
-
+#define ll long long
 using namespace std;
-long long demLonHon(vector<int>& b, int x)
+
+ll demLonHon(vector<int>& b, int x)
 {
     return b.end() - upper_bound(b.begin(), b.end(), x);
 }
 
-long long demSoCap(vector<int>& a, vector<int>& b)
+ll demSoCap(vector<int>& a, vector<int>& b)
 {
-    long long totalPair = 0;
-    long long countB[5] = {0};
-
+    ll cnt = 0;
+    ll countB[5] = {0};
     for(int num : b)
     {
         if(num < 5)
@@ -36,22 +36,23 @@ long long demSoCap(vector<int>& a, vector<int>& b)
         }
         if(num == 1)
         {
-            totalPair += countB[0];
+            cnt += countB[0];
             continue;
         }
 
-        totalPair += demLonHon(b, num);
-        totalPair += countB[0] + countB[1];
+        cnt += demLonHon(b, num);
+        cnt += countB[0] + countB[1];
         if(num == 2)
         {
-            totalPair -= (countB[3] + countB[4]);
+            cnt -= (countB[3] + countB[4]);
         }
+
         if(num == 3)
         {
-            totalPair += countB[2];
+            cnt += countB[2];
         }
     }
-    return totalPair;
+    return cnt;
 }
 int main() {
     ios_base::sync_with_stdio(false);
@@ -63,9 +64,9 @@ int main() {
     {
         cin >> a[i];
     }
-    for(int j = 0; j < m; j++)
+    for(int i = 0; i < m; i++)
     {
-        cin >> b[j];
+        cin >> b[i];
     }
     sort(b.begin(), b.end());
     cout << demSoCap(a, b);
