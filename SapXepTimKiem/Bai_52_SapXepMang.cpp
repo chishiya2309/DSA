@@ -10,22 +10,25 @@ using namespace std;
 bool check(vector<int>& a, int n)
 {
     int left = 0;
-    while(left < n - 1 && a[left] <= a[left + 1]) left++;
+    while(left < n - 1 && a[left] <= a[left + 1])
+    {
+        left++;
+    }
 
     if(left == n - 1)
     {
         return true;
     }
+
     int right = n - 1;
     while(right > 0 && a[right] >= a[right - 1])
     {
         right--;
     }
     reverse(a.begin() + left, a.begin() + right + 1);
-
-    for(int i = 0; i < n - 1; ++i)
+    for(int i = 1; i < n; i++)
     {
-        if(a[i] > a[i + 1])
+        if(a[i] <= a[i - 1])
         {
             return false;
         }
@@ -38,8 +41,7 @@ int main() {
     int n;
     cin >> n;
     vector<int> a(n);
-    for(int i = 0; i < n; i++)
-    {
+    for(int i=0; i < n; i++) {
         cin >> a[i];
     }
     if(check(a, n))

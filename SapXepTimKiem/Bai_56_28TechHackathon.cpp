@@ -8,19 +8,18 @@ Nhiệm vụ của bạn là xác định giá trị nhỏ nhất của K để 
 #include <bits/stdc++.h>
 #define ll long long
 using namespace std;
-bool check(int problem[], int n, int h, ll k)
+
+bool check(vector<int>& problems, int n, int h, ll k)
 {
     ll res = 0;
     for(int i = 0; i < n; i++)
     {
-        if(problem[i] % k == 0)
+        if(problems[i] % k == 0)
         {
-            res += problem[i] / k;
-        }else
-        {
-            res += problem[i] / k + 1;
+            res += problems[i] / k;
+        }else {
+            res += problems[i] / k + 1;
         }
-
         if(res > h)
         {
             return false;
@@ -33,17 +32,17 @@ int main() {
     cin.tie(NULL);
     int n, h;
     cin >> n >> h;
-    int problem[n];
+    vector<int> problems(n);
     for(int i = 0; i < n; i++)
     {
-        cin >> problem[i];
+        cin >> problems[i];
     }
     ll left = 0, right = 1e18;
     ll res = -1;
     while(left <= right)
     {
         ll mid = (left + right) / 2;
-        if(check(problem, n, h, mid))
+        if(check(problems, n, h, mid))
         {
             res = mid;
             right = mid - 1;
