@@ -12,18 +12,16 @@ Bạn hãy xác định xem với hạt giống tối ưu thì tổng sự đau 
 using namespace std;
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
     int n;
     cin >> n;
-    int a[n];
-    for(int i = 0; i < n; i++)
+    vector<int> a(n);
+    for(int i=0; i < n; i++)
     {
         cin >> a[i];
     }
-    sort(a, a + n);
+    sort(a.begin(), a.end());
     int medium = a[n/2];
-    ll res = 0;
+    long long res = 0;
     for(int i = 0; i < n; i++)
     {
         res += abs(medium - a[i]);
