@@ -39,7 +39,8 @@ void sinh()
     if(i == -1)
     {
         final = true;
-    }else {
+    }else 
+    {
         s[i] = '1';
     }
 }
