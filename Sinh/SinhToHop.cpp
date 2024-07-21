@@ -1,45 +1,45 @@
 #include<bits/stdc++.h>
-
 using namespace std;
-int n, X[100], k;
+int n, k, x[20];
 bool final = false;
-void init()
+void khoitao()
 {
     for(int i = 1; i <= k; i++)
     {
-        X[i] = i;
+        x[i] = i;
     }
 }
 
 void sinh()
 {
     int i = k;
-    while(i >= 1 && X[i] == n - k + i)
+    while(i >= 1 && x[i] == n - k + i)
     {
-        --i;
+        i--;
     }
     if(i == 0)
     {
         final = true;
     }else {
-        X[i]++;
+        x[i]++;
         for(int j = i + 1; j <= k; j++)
         {
-            X[j] = X[j - 1] + 1;
+            x[j] = x[j - 1] + 1;
         }
     }
 }
 signed main()
 {
     cin >> n >> k;
-    init();
+    khoitao();
     while(!final)
     {
         for(int i = 1; i <= k; i++)
         {
-            cout << X[i];
+            cout << x[i];
         }
         cout << endl;
         sinh();
     }
+    return 0;
 }

@@ -1,42 +1,38 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n, a[100];
+int n, x[20];
 bool final = false;
-void init()
+void ktao()
 {
     for(int i = 1; i <= n; i++)
     {
-        a[i] = 0;
+        x[i] = 0;
     }
 }
-
 void sinh()
 {
-    int i = n; 
-    while(i >= 1 && a[i] == 1)
+    int i = n;
+    while(i >= 1 && x[i] == 1)
     {
-        a[i] = 0;
-        --i;
+        x[i] = 0;
+        i--;
     }
-
     if(i == 0)
     {
         final = true;
-    }else {
-        a[i] = 1;
+    }else{
+        x[i] = 1;
     }
 }
 signed main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
     cin >> n;
-    init();
+    ktao();
     while(!final)
     {
         for(int i = 1; i <= n; i++)
         {
-            cout << a[i];
+            cout << x[i];
         }
         cout << endl;
         sinh();
