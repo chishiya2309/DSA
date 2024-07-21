@@ -4,6 +4,7 @@ Lớp cấu trúc dữ liệu và giải thuật của 28Tech có N bạn tham g
 Tuy nhiên thì 28Tech muốn rằng các bạn này cần phải xếp thành 1 hàng theo chiều cao tăng dần, để đạt được điều này thì cần phải hoán đổi vị trí 1 số bạn trong hàng.
 
 Nhiệm vụ của bạn là hãy giúp 28Tech đếm xem cần tối thiểu bao nhiêu hoán đổi vị trí các bạn học viên để hàng người tăng dần về chiều cao.
+
 Đầu vào
 Dòng 1 là N : số lượng học viên lớp CTDL & GT
 
@@ -19,9 +20,11 @@ In ra số hoán đổi tối thiểu để sắp tăng dần chiều cao của 
 
 Ví dụ :
 Input 01
+Copy
 5
 1 5 4 3 2
 Output 01
+Copy
 2
 */
 
@@ -34,10 +37,9 @@ int main() {
     cin.tie(NULL);
     int n;
     cin >> n;
-    vector<int> a(n);
-    vector<int> b(n);
+    vector<int> a(n), b(n);
     map<int, int> pos;
-    for(int i=0; i<n; i++)
+    for(int i = 0; i < n; i++)
     {
         cin >> a[i];
         b[i] = a[i];
@@ -45,7 +47,7 @@ int main() {
     }
     sort(b.begin(), b.end());
     int cnt = 0;
-    for(int i=0; i<n; i++)
+    for(int i = 0; i < n; i++)
     {
         if(a[i] != b[i])
         {
