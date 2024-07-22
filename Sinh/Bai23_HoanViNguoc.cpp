@@ -26,29 +26,28 @@ Copy
 #include <bits/stdc++.h>
 
 using namespace std;
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int n;
     cin >> n;
-
-    set<int> unique_elements;
-
-    for(int i = 0; i < n; i++) {
-        int x;
-        cin >> x;
-        unique_elements.insert(x);
+    vector<int> a(n);
+    for(int i=0; i<n; i++)
+    {
+        cin >> a[i];
     }
-    
-    vector<int> x(unique_elements.begin(), unique_elements.end());
-    sort(x.begin(), x.end(), greater<int>());
+    set<int> se(a.begin(), a.end());
+    vector<int> v(se.begin(), se.end());
+    sort(v.begin(), v.end(), greater<int>());
     do
     {
-        for(int i = 0; i < x.size(); i++)
+        for(int i = 0; i < v.size(); i++)
         {
-            cout << x[i] << " ";
+            cout << v[i] << " ";
         }
         cout << endl;
-    }while(prev_permutation(x.begin(), x.end()));
+    } while (prev_permutation(v.begin(), v.end()));
+    
     return 0;
 }
