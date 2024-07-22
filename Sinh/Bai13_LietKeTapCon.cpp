@@ -1,13 +1,44 @@
 /*
 Cho một tập gồm N phần tử được đánh số từ 1 đến N. Nhiệm vụ của bạn là liệt kê tất cả các tập con khác rỗng của N theo thứ tự từ điển tăng dần.
+
+Đầu vào
+Dòng duy nhất chứa số nguyên dương N.
+
+Giới hạn
+1<=N<=9
+
+Đầu ra
+In ra các tập con của N theo thứ tự từ điển tăng dần.
+
+Ví dụ :
+Input 01
+Copy
+4
+Output 01
+Copy
+1 
+1 2 
+1 2 3 
+1 2 3 4 
+1 2 4 
+1 3 
+1 3 4 
+1 4 
+2 
+2 3 
+2 3 4 
+2 4 
+3 
+3 4 
+4
 */
 
 #include <bits/stdc++.h>
 
 using namespace std;
-int n, a[20];
+int n, a[10];
 bool final = false;
-void ktao()
+void khoitao()
 {
     for(int i = 1; i <= n; i++)
     {
@@ -25,7 +56,7 @@ void sinh()
     }
     if(i == 0)
     {
-        final = 1;
+        final = true;
     }else {
         a[i] = 1;
     }
@@ -34,7 +65,7 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cin >> n;
-    ktao();
+    khoitao();
     vector<vector<int>> v;
     while(!final)
     {
@@ -52,10 +83,11 @@ int main() {
     sort(v.begin(), v.end());
     for(int i = 0; i < v.size(); i++)
     {
-        for(int x : v[i])
+        for(int j = 0; j < v[i].size(); j++)
         {
-            cout << x << " ";
+            cout << v[i][j] << " ";
         }
         cout << endl;
     }
+    return 0;
 }

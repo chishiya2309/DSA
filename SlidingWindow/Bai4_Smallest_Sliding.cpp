@@ -14,13 +14,10 @@ In ra độ dài xâu con nhỏ nhất tìm được
 
 Ví dụ :
 Input 01
-Copy
 28teeeeeechhhh
 Output 01
-Copy
 11
 */
-
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -30,24 +27,25 @@ int main() {
     cin.tie(NULL);
     string s;
     cin >> s;
-    map<char, int> char_count;
+
+    unordered_map<char, int> char_count;
     for(char c : s)
     {
         char_count[c] = 0;
     }
-    int distinct_chars = char_count.size();
 
-    int start = 0, min_length = s.length();
+    int distinct_char = char_count.size();
+    int start = 0, min_length = s.size();
     int cnt = 0;
-    for(int end = 0; end < s.size(); end++)
+    for(int i = 0; i < s.size(); i++)
     {
-        if(++char_count[s[end]] == 1)
+        if(++char_count[s[i]] == 1)
         {
             cnt++;
         }
-        while(cnt == distinct_chars)
+        while(cnt == distinct_char)
         {
-            min_length = min(min_length, end - start + 1);
+            min_length = min(min_length, i - start + 1);
             if(--char_count[s[start]] == 0)
             {
                 cnt--;
