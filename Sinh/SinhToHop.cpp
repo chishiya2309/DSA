@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 int n, k, x[20];
 bool final = false;
 void khoitao()
@@ -9,7 +10,6 @@ void khoitao()
         x[i] = i;
     }
 }
-
 void sinh()
 {
     int i = k;
@@ -41,5 +41,4 @@ signed main()
         cout << endl;
         sinh();
     }
-    return 0;
 }
