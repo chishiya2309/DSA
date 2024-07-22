@@ -32,13 +32,14 @@ int main() {
     int n, x;
     cin >> n >> x;
     vector<int> a(n);
-    for(int i = 0; i < n; i++)
+    for(int &x : a)
     {
-        cin >> a[i];
+        cin >> x;
     }
-    ll cnt = 0, sum = 0;
     map<ll, int> sum_count;
     sum_count[0] = 1;
+    ll sum = 0;
+    ll cnt = 0;
     for(int i = 0; i < n; i++)
     {
         sum += a[i];
