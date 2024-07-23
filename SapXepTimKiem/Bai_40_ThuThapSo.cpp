@@ -33,11 +33,12 @@ int main() {
     cin.tie(NULL);
     int n;
     cin >> n;
-    int a[n], pos[n + 1];
+
+    int x[n], pos[n + 1];
     for(int i = 0; i < n; i++)
     {
-        cin >> a[i];
-        pos[a[i]] = i;
+        cin >> x[i];
+        pos[x[i]] = i;
     }
     int cnt = 1, last = 0;
     for(int i = 1; i <= n; i++)
