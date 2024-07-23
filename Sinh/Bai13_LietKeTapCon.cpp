@@ -36,34 +36,34 @@ Copy
 #include <bits/stdc++.h>
 
 using namespace std;
-int n, a[10];
+int n, x[10];
 bool final = false;
 void khoitao()
 {
     for(int i = 1; i <= n; i++)
     {
-        a[i] = 0;
+        x[i] = 0;
     }
 }
-
 void sinh()
 {
     int i = n;
-    while(i >= 1 && a[i] == 1)
+    while(i >= 1 && x[i] == 1)
     {
-        a[i] = 0;
+        x[i] = 0;
         i--;
     }
     if(i == 0)
     {
         final = true;
     }else {
-        a[i] = 1;
+        x[i] = 1;
     }
 }
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     cin >> n;
     khoitao();
     vector<vector<int>> v;
@@ -72,7 +72,7 @@ int main() {
         vector<int> tmp;
         for(int i = 1; i <= n; i++)
         {
-            if(a[i] == 1)
+            if(x[i] == 1)
             {
                 tmp.push_back(i);
             }

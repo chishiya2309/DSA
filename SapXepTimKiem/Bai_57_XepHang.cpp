@@ -37,16 +37,20 @@ int main() {
     cin.tie(NULL);
     int n;
     cin >> n;
+
     vector<int> a(n), b(n);
-    map<int, int> pos;
+    unordered_map<int, int> pos;
+
     for(int i = 0; i < n; i++)
     {
         cin >> a[i];
         b[i] = a[i];
         pos[a[i]] = i;
     }
+
     sort(b.begin(), b.end());
     int cnt = 0;
+
     for(int i = 0; i < n; i++)
     {
         if(a[i] != b[i])

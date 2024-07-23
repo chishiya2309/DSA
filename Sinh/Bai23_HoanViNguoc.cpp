@@ -32,12 +32,13 @@ int main() {
     cin.tie(NULL);
     int n;
     cin >> n;
-    vector<int> a(n);
-    for(int i=0; i<n; i++)
+    set<int> se;
+    for(int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        int x;
+        cin >> x;
+        se.insert(x);
     }
-    set<int> se(a.begin(), a.end());
     vector<int> v(se.begin(), se.end());
     sort(v.begin(), v.end(), greater<int>());
     do
