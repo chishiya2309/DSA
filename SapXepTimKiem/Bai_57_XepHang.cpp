@@ -20,11 +20,9 @@ In ra số hoán đổi tối thiểu để sắp tăng dần chiều cao của 
 
 Ví dụ :
 Input 01
-Copy
 5
 1 5 4 3 2
 Output 01
-Copy
 2
 */
 
@@ -37,12 +35,9 @@ int main() {
     cin.tie(NULL);
     int n;
     cin >> n;
-
     vector<int> a(n), b(n);
-    unordered_map<int, int> pos;
-
-    for(int i = 0; i < n; i++)
-    {
+    vector<int> pos(n);
+    for(int i = 0; i < n; i++) {
         cin >> a[i];
         b[i] = a[i];
         pos[a[i]] = i;
@@ -50,7 +45,6 @@ int main() {
 
     sort(b.begin(), b.end());
     int cnt = 0;
-
     for(int i = 0; i < n; i++)
     {
         if(a[i] != b[i])
