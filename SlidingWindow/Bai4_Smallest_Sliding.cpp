@@ -18,6 +18,7 @@ Input 01
 Output 01
 11
 */
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -28,29 +29,29 @@ int main() {
     string s;
     cin >> s;
 
-    unordered_map<char, int> char_count;
+    unordered_map<int, int> char_count;
     for(char c : s)
     {
         char_count[c] = 0;
     }
 
     int distinct_char = char_count.size();
-    int start = 0, min_length = s.size();
-    int cnt = 0;
+    int dem = 0, start = 0;
+    int min_length = s.size();
     for(int i = 0; i < s.size(); i++)
     {
         if(++char_count[s[i]] == 1)
         {
-            cnt++;
-        }
-        while(cnt == distinct_char)
-        {
-            min_length = min(min_length, i - start + 1);
-            if(--char_count[s[start]] == 0)
+            dem++;
+            while(dem == distinct_char)
             {
-                cnt--;
+                min_length = min(min_length, i - start + 1);
+                if(--char_count[s[start]] == 0)
+                {
+                    dem--;
+                }
+                start++;
             }
-            start++;
         }
     }
     cout << min_length;
