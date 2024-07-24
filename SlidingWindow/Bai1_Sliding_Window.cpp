@@ -1,3 +1,32 @@
+/*
+Cho dãy số A[] gồm có N phần tử và số nguyên dương k. Hãy tìm dãy con liên tiếp có k phần tử sao cho dãy con đó có tổng các phần tử lớn nhất.
+
+Đầu vào
+Dòng đầu tiên là số nguyên N và K.
+
+Dòng tiếp theo gồm N số nguyên A[i]
+
+Giới hạn
+1≤ K ≤ N ≤ 10^7
+
+1 ≤ A[i] ≤ 10^9
+
+Đầu ra
+Dòng 1 in ra tổng lớn nhất của dãy con K phần tử liền kề.
+
+Dòng 2 in ra dãy con đó, nếu có nhiều dãy con có cùng tổng lớn nhất thì in ra dãy con xuất hiện đầu tiên.
+
+Ví dụ :
+Input 01
+Copy
+59 4
+72 39 5 74 29 83 63 67 69 10 50 86 32 66 96 100 47 32 41 96 9 7 58 97 87 26 21 23 100 52 31 76 43 74 17 72 104 40 99 8 16 27 38 78 69 46 16 58 73 52 49 67 62 42 64 28 46 34 83
+Output 01
+Copy
+315
+72 104 40 99
+*/
+
 #include <bits/stdc++.h>
 #define ll long long
 #define endl '\n'
@@ -6,41 +35,33 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
     int n, k;
     cin >> n >> k;
-
-    vector<int> arr(n);
-    for(int &x : arr)
+    long long sum = 0;
+    vector<int> a(n);
+    for(int i = 0; i < n; i++)
     {
-        cin >> x;
+        cin >> a[i];
     }
-
-    //Bước 1: Tính tổng của k phần tử đầu tiên trong mảng
-    ll window_sum = 0;
     for(int i = 0; i < k; i++)
     {
-        window_sum += arr[i];
+        sum += a[i];
     }
-
-    ll max_sum = window_sum;
-    int start_index = 0;
-
-    //Trượt cửa sổ qua mảng, mỗi lần trừ đi phần tử đầu của cửa sổ cũ và cộng thêm phần tử mới
-    //Cập nhật tổng lớn nhất và vị trí bắt đầu của dãy con có tổng lớn nhất khi tìm thấy 1 tổng lớn hơn
+    ll sum_max = sum;
+    int start = 0;
     for(int i = k; i < n; i++)
     {
-        window_sum = window_sum - arr[i - k] + arr[i];
-        if(window_sum > max_sum)
+        sum = sum - a[i - k] + a[i];
+        if(sum > sum_max)
         {
-            max_sum = window_sum;
-            start_index = i - k + 1;
+            sum_max = sum;
+            start = i - k + 1;
         }
     }
-    cout << max_sum << endl;
-    for(int i = start_index; i < start_index + k; i++)
+    cout << sum_max << endl;
+    for(int i = start; i < k + start; i++)
     {
-        cout << arr[i] << " ";
+        cout << a[i] << " ";
     }
     return 0;
 }
