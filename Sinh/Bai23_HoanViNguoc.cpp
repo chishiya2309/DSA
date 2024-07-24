@@ -50,5 +50,6 @@ int main() {
         cout << endl;
     } while (prev_permutation(v.begin(), v.end()));
     
+
     return 0;
 }
