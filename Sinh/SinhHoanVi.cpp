@@ -1,47 +1,42 @@
 #include<bits/stdc++.h>
+#define endl '\n'
 using namespace std;
-
-int n, X[100];
+int n, x[100];
 bool final = false;
-void init()
+void khoitao()
 {
-    for(int i= 1; i <= n; i++)
+    for(int i = 1; i <= n; i++)
     {
-        X[i] = i;
+        x[i] = 0;
     }
 }
 void sinh()
 {
-    int i = n; 
-    while(i >= 1 && X[i] > X[i + 1])
+    int i = n;
+    while(i >= 1 && x[i] == 1)
     {
+        x[i] = 0;
         i--;
     }
     if(i == 0)
     {
         final = true;
-    }
-    else {
-        int j = n;
-        while(X[i] > X[j])
-        {
-            --j;
-        }
-        swap(X[i], X[j]);
-        reverse(X + i + 1, X + n + 1);
+    }else {
+        x[i] = 1;
     }
 }
 signed main()
 {
     cin >> n;
-    init();
+    khoitao();
     while(!final)
     {
-        for(int i = 1; i <= n; ++i)
+        for(int i = 1; i <= n; i++)
         {
-            cout << X[i];
+            cout << x[i];
         }
         cout << endl;
         sinh();
-    } 
+    }
+    return 0;
 }
