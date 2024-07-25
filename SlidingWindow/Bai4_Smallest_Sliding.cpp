@@ -28,30 +28,28 @@ int main() {
     cin.tie(NULL);
     string s;
     cin >> s;
-
-    unordered_map<int, int> char_count;
+    map<int, int> char_count;
     for(char c : s)
     {
         char_count[c] = 0;
     }
-
     int distinct_char = char_count.size();
-    int dem = 0, start = 0;
-    int min_length = s.size();
+    int start = 0, min_length = s.size();
+    int cnt = 0;
     for(int i = 0; i < s.size(); i++)
     {
         if(++char_count[s[i]] == 1)
         {
-            dem++;
-            while(dem == distinct_char)
+            cnt++;
+        }
+        while(cnt == distinct_char)
+        {
+            min_length = min(min_length, i - start + 1);
+            if(--char_count[s[start]] == 0)
             {
-                min_length = min(min_length, i - start + 1);
-                if(--char_count[s[start]] == 0)
-                {
-                    dem--;
-                }
-                start++;
+                cnt--;
             }
+            start++;
         }
     }
     cout << min_length;
