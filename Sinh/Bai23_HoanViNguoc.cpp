@@ -14,17 +14,15 @@ In ra các hoán vị ngược của các phần tử khác nhau trong mảng.
 
 Ví dụ :
 Input 01
-Copy
 2
 1 2
 Output 01
-Copy
 2 1
 1 2
 */
 
 #include <bits/stdc++.h>
-
+#define endl '\n'
 using namespace std;
 
 int main() {
@@ -33,8 +31,7 @@ int main() {
     int n;
     cin >> n;
     set<int> se;
-    for(int i = 0; i < n; i++)
-    {
+    for(int i = 0; i < n; i++) {
         int x;
         cin >> x;
         se.insert(x);
@@ -49,7 +46,5 @@ int main() {
         }
         cout << endl;
     } while (prev_permutation(v.begin(), v.end()));
-    
-
     return 0;
 }

@@ -12,10 +12,8 @@ In ra các tập con của N theo thứ tự từ điển tăng dần.
 
 Ví dụ :
 Input 01
-Copy
 4
 Output 01
-Copy
 1 
 1 2 
 1 2 3 
@@ -34,7 +32,7 @@ Copy
 */
 
 #include <bits/stdc++.h>
-
+#define endl '\n'
 using namespace std;
 int n, x[10];
 bool final = false;
@@ -42,7 +40,7 @@ void khoitao()
 {
     for(int i = 1; i <= n; i++)
     {
-        x[i] = 0;
+        x[i] = 0; 
     }
 }
 void sinh()
@@ -63,7 +61,6 @@ void sinh()
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
     cin >> n;
     khoitao();
     vector<vector<int>> v;
