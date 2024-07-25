@@ -18,11 +18,9 @@ Dòng 2 in ra dãy con đó, nếu có nhiều dãy con có cùng tổng lớn n
 
 Ví dụ :
 Input 01
-Copy
 59 4
 72 39 5 74 29 83 63 67 69 10 50 86 32 66 96 100 47 32 41 96 9 7 58 97 87 26 21 23 100 52 31 76 43 74 17 72 104 40 99 8 16 27 38 78 69 46 16 58 73 52 49 67 62 42 64 28 46 34 83
 Output 01
-Copy
 315
 72 104 40 99
 */
@@ -37,29 +35,29 @@ int main() {
     cin.tie(NULL);
     int n, k;
     cin >> n >> k;
-    long long sum = 0;
     vector<int> a(n);
-    for(int i = 0; i < n; i++)
+    for(int &x : a)
     {
-        cin >> a[i];
+        cin >> x;
     }
+    ll sum = 0;
     for(int i = 0; i < k; i++)
     {
         sum += a[i];
     }
-    ll sum_max = sum;
+    ll max_sum = sum;
     int start = 0;
     for(int i = k; i < n; i++)
     {
         sum = sum - a[i - k] + a[i];
-        if(sum > sum_max)
+        if(sum > max_sum)
         {
-            sum_max = sum;
+            max_sum = sum;
             start = i - k + 1;
         }
     }
-    cout << sum_max << endl;
-    for(int i = start; i < k + start; i++)
+    cout << max_sum << endl;
+    for(int i = start; i < start + k; i++)
     {
         cout << a[i] << " ";
     }
