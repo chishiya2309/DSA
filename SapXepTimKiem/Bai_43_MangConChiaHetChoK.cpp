@@ -30,23 +30,22 @@ int main() {
     int n;
     cin >> n;
     vector<int> a(n);
-    for(int i = 0; i < n; i++)
-    {
+    for(int i = 0; i < n; i++) {
         cin >> a[i];
     }
     vector<int> cnt(n, 0);
     vector<int> prefix(n + 1, 0);
-    for(int i = 0; i < n; i++)
-    {
+    for(int i = 0; i < n; i++) {
         prefix[i + 1] = (prefix[i] + a[i] % n + n) % n;
     }
     cnt[0] = 1;
-    ll result = 0;
+    ll res = 0;
     for(int i = 1; i <= n; i++)
     {
-        result += cnt[prefix[i]];
+        res += cnt[prefix[i]];
         cnt[prefix[i]]++;
     }
-    cout << result;
+    cout << res;
     return 0;
 }
+
