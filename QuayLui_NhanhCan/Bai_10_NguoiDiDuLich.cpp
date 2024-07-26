@@ -1,8 +1,6 @@
 /*
 Cho n thành phố đánh số từ 1 đến n và các tuyến đường giao thông hai chiều giữa chúng, mạng lưới giao thông này được cho bởi mảng C[1…n, 1…n] ở đây C[i][j] = C[j][i] là chi phí đi đoạn đường trực tiếp từ thành phố i đến thành phố j. Một người du lịch xuất phát từ thành phố 1, muốn đi thăm tất cả các thành phố còn lại mỗi thành phố đúng 1 lần và cuối cùng quay lại thành phố 1. Hãy chỉ ra chi phí ít nhất mà người đó phải bỏ ra.
 
-
-
 Đầu vào
 Dòng đầu tiên là số nguyên n – số thành phố
 
@@ -30,16 +28,15 @@ Output 01
 #include <bits/stdc++.h>
 
 using namespace std;
-int n, c[16][16];
-int x[16];
-int mark[16];
-int sum = 0, chiPhi = INT_MAX, cmin = INT_MAX;
+int n, c[16][16], x[16], mark[16];
+int sum = 0, minChiPhi = INT_MAX;
+int cmin = INT_MAX;
 void nhap()
 {
     cin >> n;
-    for(int i = 1; i <= n; ++i)
+    for(int i = 1; i <= n; i++)
     {
-        for(int j = 1; j <= n; ++j)
+        for(int j = 1; j <= n; j++)
         {
             cin >> c[i][j];
             if(c[i][j])
@@ -51,7 +48,7 @@ void nhap()
 }
 void Try(int i)
 {
-    for(int j = 1; j <= n; j++)
+    for(int j = 2; j <= n; j++)
     {
         if(mark[j] == 0)
         {
@@ -60,8 +57,8 @@ void Try(int i)
             sum += c[x[i - 1]][x[i]];
             if(i == n)
             {
-                chiPhi = min(chiPhi, sum + c[x[i]][x[1]]);
-            }else if(sum + (n - i + 1) * cmin < chiPhi)
+                minChiPhi = min(minChiPhi, sum + c[x[i]][x[1]]);
+            }else if(sum + (n - i + 1) * cmin < minChiPhi)
             {
                 Try(i + 1);
             }
@@ -78,6 +75,6 @@ int main() {
     x[1] = 1;
     mark[1] = 1;
     Try(2);
-    cout << chiPhi;
+    cout << minChiPhi;
     return 0;
 }

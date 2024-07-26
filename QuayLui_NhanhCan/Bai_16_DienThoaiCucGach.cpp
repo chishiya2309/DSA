@@ -1,5 +1,6 @@
 /*
 Cho xâu kí tự S chỉ bao gồm các số từ 2 tới 9, mỗi chữ số này trên bàn phím của điện thoại cục gạch tương ứng với 3 chữ cái như trong hình bên dưới. Bạn hãy in ra các xâu kí tự có thể tạo thành bằng cách ấn mỗi chữ số trong xâu S đúng 1 lần. Bạn hãy in ra các xâu kết quả theo thứ tự từ điển tăng dần.
+
 Đầu vào
 • Dòng duy nhất chứa xâu S
 
@@ -59,8 +60,8 @@ int main() {
     cin.tie(NULL);
     xuly();
     cin >> s;
-    sort(s.begin(), s.end());
     n = s.size();
+    sort(s.begin(), s.end());
     s = "0" + s;
     Try(1);
     return 0;
