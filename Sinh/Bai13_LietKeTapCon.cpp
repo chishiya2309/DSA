@@ -40,7 +40,7 @@ void khoitao()
 {
     for(int i = 1; i <= n; i++)
     {
-        x[i] = 0; 
+        x[i] = 0;
     }
 }
 void sinh()
@@ -62,8 +62,8 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cin >> n;
-    khoitao();
     vector<vector<int>> v;
+    khoitao();
     while(!final)
     {
         vector<int> tmp;
@@ -78,11 +78,11 @@ int main() {
         sinh();
     }
     sort(v.begin(), v.end());
-    for(int i = 0; i < v.size(); i++)
+    for(auto x : v)
     {
-        for(int j = 0; j < v[i].size(); j++)
+        for(int num : x)
         {
-            cout << v[i][j] << " ";
+            cout << num << " ";
         }
         cout << endl;
     }
