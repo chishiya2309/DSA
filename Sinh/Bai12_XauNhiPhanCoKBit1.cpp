@@ -18,10 +18,8 @@ Dòng thứ 2 in ra các xâu nhị phân có duy nhất K bit 1 liên tiếp.
 
 Ví dụ :
 Input 01
-Copy
 3 2
 Output 01
-Copy
 011 101 110 
 011 110
 */
@@ -29,8 +27,7 @@ Copy
 #include <bits/stdc++.h>
 
 using namespace std;
-int n, k;
-int x[16];
+int n, k, x[16];
 bool final = false;
 void khoitao()
 {
@@ -54,16 +51,12 @@ void sinh()
         x[i] = 1;
     }
 }
-
 bool check1()
 {
     int cnt = 0;
     for(int i = 1; i <= n; i++)
     {
-        if(x[i] == 1)
-        {
-            cnt++;
-        }
+        cnt += x[i];
         if(cnt > k)
         {
             return false;
@@ -71,37 +64,35 @@ bool check1()
     }
     return cnt == k;
 }
-
 bool check2()
 {
-    int dem = 0;
-    int cnt = 0;
+    int cnt = 0, dem = 0;
     for(int i = 1; i <= n; i++)
     {
         if(x[i] == 1)
         {
-            dem++;
+            cnt++;
         }else {
-            if(dem > k)
+            if(cnt > k)
             {
                 return false;
             }
-            if(dem == k)
+            if(cnt == k)
             {
-                cnt++;
+                dem++;
             }
-            dem = 0;
+            cnt = 0;
         }
     }
-    if(dem > k)
+    if(cnt == k)
+    {
+        dem++;
+    }
+    if(cnt > k)
     {
         return false;
     }
-    if(dem == k)
-    {
-        cnt++;
-    }
-    return cnt == 1;
+    return dem == 1;
 }
 int main() {
     ios_base::sync_with_stdio(false);
@@ -121,9 +112,9 @@ int main() {
         sinh();
     }
     cout << endl;
-    vector<vector<int>> v;
     khoitao();
     final = false;
+    vector<vector<int>> v;
     while(!final)
     {
         if(check2())
@@ -134,11 +125,11 @@ int main() {
         sinh();
     }
     sort(v.begin(), v.end());
-    for(int i = 0; i < v.size(); i++)
+    for(auto x : v)
     {
-        for(int j = 0; j < v[i].size(); j++)
+        for(int num : x)
         {
-            cout << v[i][j];
+            cout << num;
         }
         cout << " ";
     }

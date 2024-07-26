@@ -16,11 +16,9 @@ In một số nguyên: số lượng mảng con cần thiết.
 
 Ví dụ :
 Input 01
-Copy
 5 7
 2 4 1 2 7
 Output 01
-Copy
 3
 */
 
@@ -33,25 +31,20 @@ int main() {
     cin.tie(NULL);
     int n, x;
     cin >> n >> x;
-
     vector<int> a(n);
-    for(int &y : a)
+    for(int i = 0; i < n; i++)
     {
-        cin >> y;
+        cin >> a[i];
     }
-
     map<ll, int> sum_count;
-    ll sum = 0;
     sum_count[0] = 1;
-    ll cnt = 0;
-
+    ll sum = 0, cnt = 0;
     for(int i = 0; i < n; i++)
     {
         sum += a[i];
         cnt += sum_count[sum - x];
         sum_count[sum]++;
     }
-
     cout << cnt;
     return 0;
 }
