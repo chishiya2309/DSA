@@ -16,11 +16,9 @@ Giới hạn
 
 Ví dụ :
 Input 01
-Copy
 7
 4 8 6 7 3 5 2
 Output 01
-Copy
 3 5 
 4 5 
 4 6 
@@ -33,61 +31,55 @@ Copy
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
-vector<string> result;
-
-void Try(vector<int>& a, int start, vector<int>& current)
+int n;
+vector<string> v;
+void Try(vector<int> &a, int start, vector<int> ans)
 {
-    if(current.size() >= 2)
+    if(ans.size() >= 2)
     {
         bool increasing = true;
-        for(int i = 1; i < current.size(); i++)
+        for(int i = 1; i < ans.size(); i++)
         {
-            if(current[i] <= current[i - 1])
+            if(ans[i] <= ans[i - 1])
             {
                 increasing = false;
-                break;
+                return;
             }
         }
 
         if(increasing)
         {
-            string sub;
-            for(int num : current)
+            string res = "";
+            for(int num : ans)
             {
-                sub += to_string(num) + " ";
+                res += to_string(num) + " ";
             }
-            sub.pop_back();
-            result.push_back(sub);
+            res.pop_back();
+            v.push_back(res);
         }
     }
 
     for(int i = start; i < a.size(); i++)
     {
-        current.push_back(a[i]);
-        Try(a, i + 1, current);
-        current.pop_back();
+        ans.push_back(a[i]);
+        Try(a, i + 1, ans);
+        ans.pop_back();
     }
 }
-
-signed main()
-{
+int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int n;
     cin >> n;
-    
     vector<int> a(n);
-    for(int &x : a)
-    {
-        cin >> x;
+    for(int i = 0; i < n; ++i) {
+        cin >> a[i];
     }
-
-    vector<int> current;
-    Try(a, 0, current);
-    sort(result.begin(), result.end());
-    for(int i = 0; i < result.size(); i++)
+    vector<int> ans;
+    Try(a, 0, ans);
+    sort(v.begin(), v.end());
+    for(string x : v)
     {
-        cout << result[i] << endl;
+        cout << x << endl;
     }
     return 0;
 }
