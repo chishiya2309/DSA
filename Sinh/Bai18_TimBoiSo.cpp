@@ -18,7 +18,6 @@ Mỗi test in kết quả trên 1 dòng
 
 Ví dụ :
 Input 01
-Copy
 6
 240
 19
@@ -27,7 +26,6 @@ Copy
 287
 247
 Output 01
-Copy
 8880
 88008
 880
@@ -45,7 +43,7 @@ bool final = false;
 void sinh()
 {
     int i = s.size() - 1;
-    while (i >= 0 && s[i] == '8')
+    while(i >= 0 && s[i] == '8')
     {
         s[i] = '0';
         i--;
@@ -53,31 +51,30 @@ void sinh()
     if(i == -1)
     {
         final = true;
-    }else 
-    {
+    }else {
         s[i] = '8';
     }
 }
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    vector<ll> v;
     s = string(19, '0');
     s[s.size() - 1] = '8';
-    vector<ll> v;
     while(!final)
     {
         v.push_back(stoll(s));
         sinh();
     }
     sort(v.begin(), v.end());
-    ll res[303];
+    ll ans[303];
     for(int i = 1; i <= 300; i++)
     {
-        for(ll x : v)
+        for(ll num : v)
         {
-            if(x % i == 0)
+            if(num % i == 0)
             {
-                res[i] = x;
+                ans[i] = num;
                 break;
             }
         }
@@ -88,7 +85,7 @@ int main() {
     {
         int n;
         cin >> n;
-        cout << res[n] << endl;
+        cout << ans[n] << endl;
     }
     return 0;
 }
