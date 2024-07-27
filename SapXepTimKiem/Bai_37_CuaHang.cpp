@@ -16,13 +16,11 @@ In một số nguyên: số lượng khách hàng tối đa.
 
 Ví dụ :
 Input 01
-Copy
 3
 5 8
 2 4
 3 9
 Output 01
-Copy
 2
 */
 
@@ -35,7 +33,6 @@ int main() {
     cin.tie(NULL);
     int n;
     cin >> n;
-
     vector<pair<int, int>> Time;
     for(int i = 0; i < n; i++)
     {
@@ -44,13 +41,13 @@ int main() {
         Time.push_back({start, 1});
         Time.push_back({end, -1});
     }
+    int cnt = 0, maxCus = INT_MIN;
     sort(Time.begin(), Time.end());
-    int cnt = 0, max_cus = INT_MIN;
-    for(int i = 0; i < Time.size(); i++)
+    for(auto x : Time)
     {
-        cnt += Time[i].second;
-        max_cus = max(max_cus, cnt);
+        cnt += x.second;
+        maxCus = max(maxCus, cnt);
     }
-    cout << max_cus;
+    cout << maxCus;
     return 0;
 }

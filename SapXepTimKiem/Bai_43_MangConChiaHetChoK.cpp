@@ -21,7 +21,7 @@ Output 01
 */
 
 #include <bits/stdc++.h>
-#define ll long long
+
 using namespace std;
 
 int main() {
@@ -30,22 +30,21 @@ int main() {
     int n;
     cin >> n;
     vector<int> a(n);
-    for(int i = 0; i < n; i++) {
-        cin >> a[i];
+    for(int &x : a)
+    {
+        cin >> x;
     }
     vector<int> cnt(n, 0);
-    vector<int> prefix(n + 1, 0);
+    vector<int> pre_fix(n + 1, 0);
     for(int i = 0; i < n; i++) {
-        prefix[i + 1] = (prefix[i] + a[i] % n + n) % n;
+        pre_fix[i + 1] = (pre_fix[i] + a[i] % n + n) % n;
     }
     cnt[0] = 1;
-    ll res = 0;
-    for(int i = 1; i <= n; i++)
-    {
-        res += cnt[prefix[i]];
-        cnt[prefix[i]]++;
+    long long dem = 0;
+    for(int i = 1; i <= n; i++) {
+        dem += cnt[pre_fix[i]];
+        cnt[pre_fix[i]]++;
     }
-    cout << res;
+    cout << dem;
     return 0;
 }
-

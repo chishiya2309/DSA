@@ -38,7 +38,7 @@ using namespace std;
 string s;
 void Try(string x, int pos)
 {
-    if(x.size() == s.size())
+    if(pos == s.size())
     {
         cout << x << endl;
         return;
@@ -58,3 +58,4 @@ int main() {
     Try("", 0);
     return 0;
 }
+

@@ -14,10 +14,8 @@ In ra các cấu hình thỏa mãn trên từng dòng
 
 Ví dụ :
 Input 01
-Copy
 91 3
 Output 01
-Copy
 3 + 5 + 83
 3 + 17 + 71
 3 + 29 + 59
@@ -46,63 +44,59 @@ Copy
 */
 
 #include <bits/stdc++.h>
-
+#define endl '\n'
 using namespace std;
+int n, k;
+bool final = false;
 vector<int> prime;
-bool check(int n)
+bool checkPrime(int n)
 {
     for(int i = 2; i <= sqrt(n); i++)
     {
-        if(n % i == 0) return false;
+        if(n % i == 0)
+        {
+            return false;
+        }
     }
     return n > 1;
 }
-void init()
+void xuly()
 {
-    for(int i = 2; i <= 500; i++)
+    for(int i = 1; i <= 500; i++)
     {
-        if(check(i))
+        if(checkPrime(i))
         {
             prime.push_back(i);
         }
     }
 }
-
-int n, k;
-bool final = false;
-void Try(vector<int> v, int res)
-{
-    
-    if(v.size() == k)
+void Try(vector<int> v, int sum) {
+    if(v.size() == k && sum == n)
     {
-        int sum = 0;
-        for(int num : v)
+        final = true;
+        for(int i = 0; i < k; i++)
         {
-            sum += num;
-        }
-        if(sum == n)
-        {
-            final = true;
-            for(int i = 0; i < k; i++)
+            cout << v[i];
+            if(i == k - 1)
             {
-                cout << v[i];
-                if(i == k - 1)
-                {
-                    cout << endl;
-                }else {
-                    cout << " + ";
-                }
+                cout << endl;
+            }else {
+                cout << " + ";
             }
         }
         return;
     }
-    if(res >= n) return;
+    if(sum >= n)
+    {
+        return;
+    }
+
     for(int num : prime)
     {
         if(v.empty() || num > v.back())
         {
             v.push_back(num);
-            Try(v, res + num);
+            Try(v, sum + num);
             v.pop_back();
         }
     }
@@ -110,11 +104,10 @@ void Try(vector<int> v, int res)
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
+    xuly();
     cin >> n >> k;
     vector<int> v;
-    init();
-    Try(v);
+    Try(v, 0);
     if(!final)
     {
         cout << "NOT FOUND";

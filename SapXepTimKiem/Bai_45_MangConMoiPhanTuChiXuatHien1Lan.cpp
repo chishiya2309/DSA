@@ -37,17 +37,17 @@ int main() {
         cin >> x;
     }
     map<int, int> mp;
-    int left = 0, max_length = INT_MIN;
-    for(int right = 0; right < n; right++)
+    int start = 0, maxLength = INT_MIN;
+    for(int i = 0; i < n; i++)
     {
-        mp[k[right]]++;
-        while(mp[k[right]] == 2)
+        mp[k[i]]++;
+        while(mp[k[i]] == 2)
         {
-            mp[k[left]]--;
-            left++;
+            mp[k[start]]--;
+            start++;
         }
-        max_length = max(max_length, right - left + 1);
+        maxLength = max(maxLength, i - start + 1);
     }
-    cout << max_length;
+    cout << maxLength;
     return 0;
 }
