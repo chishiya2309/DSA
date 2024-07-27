@@ -12,8 +12,10 @@ In ra các cách tách N thành các số nhỏ thuận nghịch nhỏ hơn
 
 Ví dụ :
 Input 01
+Copy
 282882
 Output 01
+Copy
 2 8 2 8 8 2 
 2 8 2 88 2 
 2 8 2882 
@@ -26,14 +28,13 @@ Output 01
 
 using namespace std;
 string s;
-bool isPalindrome(string t)
+bool isPalindrome(string s)
 {
-    string tmp = t;
+    string tmp = s;
     reverse(tmp.begin(), tmp.end());
-    return tmp == t;
+    return tmp == s;
 }
-void Try(vector<string>v, int pos)
-{
+void Try(vector<string> v, int pos) {
     if(pos == s.size())
     {
         for(string x : v)
