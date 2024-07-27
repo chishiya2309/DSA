@@ -20,12 +20,10 @@ In, cho mỗi khách hàng, giá mà họ sẽ trả cho vé của họ. Sau đ�
 
 Ví dụ :
 Input 01
-Copy
 5 3
 5 3 7 8 5
 4 8 3
 Output 01
-Copy
 3
 8
 -1
@@ -40,28 +38,30 @@ int main() {
     cin.tie(NULL);
     int n, m;
     cin >> n >> m;
-    multiset<int> h;
+    multiset<int> se;
     for(int i = 0; i < n; i++)
     {
         int x;
         cin >> x;
-        h.insert(x);
+        se.insert(x);
     }
+
     vector<int> t(m);
     for(int i = 0; i < m; i++)
     {
         cin >> t[i];
     }
+
     for(int i = 0; i < m; i++)
     {
-        auto it = h.upper_bound(t[i]);
-        if(it == h.begin())
+        auto it = se.upper_bound(t[i]);
+        if(it == se.begin())
         {
             cout << -1 << endl;
         }else {
             it--;
             cout << *it << endl;
-            h.erase(it);
+            se.erase(it);
         }
     }
     return 0;
