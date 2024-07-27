@@ -14,14 +14,10 @@ In một số nguyên: số vòng.
 
 Ví dụ :
 Input 01
-Copy
 5
 4 2 1 5 3
 Output 01
-Copy
 3
-Giải thích :
-Vòng 1 chọn số 1, vòng 2 chọn số 2 và 3, vòng 3 chọn số 4 và 5 Ở mỗi vòng bạn được chọn số x nếu như tất cả các số từ 1 tới x-1 đã được chọn trước đó rồi, mỗi vòng bạn có thể chọn nhiều số cùng 1 lúc.
 */
 
 #include <bits/stdc++.h>
@@ -33,14 +29,13 @@ int main() {
     cin.tie(NULL);
     int n;
     cin >> n;
-
-    int x[n], pos[n + 1];
+    int a[n], pos[n + 1];
     for(int i = 0; i < n; i++)
     {
-        cin >> x[i];
-        pos[x[i]] = i;
+        cin >> a[i];
+        pos[a[i]] = i;
     }
-    int cnt = 1, last = 0;
+    int last = 0, cnt = 1;
     for(int i = 1; i <= n; i++)
     {
         if(pos[i] < last)
@@ -49,6 +44,6 @@ int main() {
         }
         last = pos[i];
     }
-    cout << cnt;
+    cout << last;
     return 0;
 }
