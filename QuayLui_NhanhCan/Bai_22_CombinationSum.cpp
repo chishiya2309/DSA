@@ -26,37 +26,31 @@ Output 01
 using namespace std;
 int n, k;
 bool final = false;
-void Try(vector<int> v)
-{
-    if(v.size() == k)
+void Try(vector<int> v, int sum) {
+    if(v.size() == k && sum == n)
     {
-        int sum = 0;
-        for(int num : v)
+        final = true;
+        for(int i = 0; i < k; i++)
         {
-            sum += num;
-        }
-        if(sum == n)
-        {
-            final = true;
-            for(int i = 0; i < v.size(); i++)
+            cout << v[i];
+            if(i == k - 1)
             {
-                cout << v[i];
-                if(i == v.size() - 1)
-                {
-                    cout << endl;
-                }else {
-                    cout << " + ";
-                }
+                cout << endl;
+            }else {
+                cout << " + ";
             }
-        }
+        } 
+    }
+
+    if(sum >= n)
+    {
         return;
     }
-    for(int i = 1; i < 10; i++)
-    {
+    for(int i = 1; i < 10; i++) {
         if(v.empty() || i > v.back())
         {
             v.push_back(i);
-            Try(v);
+            Try(v, sum + i);
             v.pop_back();
         }
     }
@@ -66,7 +60,7 @@ int main() {
     cin.tie(NULL);
     cin >> n >> k;
     vector<int> v;
-    Try(v);
+    Try(v, 0);
     if(!final)
     {
         cout << "NOT FOUND";
