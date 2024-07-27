@@ -35,20 +35,19 @@ int n, m;
 string s;
 char a[10][10];
 int mark[10][10];
+bool found = false;
 int dx[] = {-1, 0, 1, 0};
 int dy[] = {0, 1, 0, -1};
-bool found = 0;
 void Try(int x, int y, int pos)
 {
     mark[x][y] = 1;
     if(found || pos == s.size())
     {
-        found = 1;
+        found = true;
         return;
     }
 
-    for(int k = 0; k < 4; k++)
-    {
+    for(int k = 0; k < 4; k++) {
         int i = x + dx[k], j = y + dy[k];
         if(i >= 0 && i < n && j >= 0 && j < m && a[i][j] == s[pos] && mark[i][j] == 0)
         {
@@ -56,23 +55,21 @@ void Try(int x, int y, int pos)
         }
     }
     mark[x][y] = 0;
+
 }
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cin >> n >> m;
-    for(int i = 0; i < n; i++)
-    {
-        for(int j = 0; j < m; j++)
-        {
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
             cin >> a[i][j];
         }
     }
+
     cin >> s;
-    for(int i = 0; i  < n; i++)
-    {
-        for(int j = 0; j < m; j++)
-        {
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
             if(a[i][j] == s[0])
             {
                 Try(i, j, 1);
