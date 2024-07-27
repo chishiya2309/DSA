@@ -31,39 +31,40 @@ Output 01
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
+vector<string> ans;
 int n;
-vector<string> v;
-void Try(vector<int> &a, int start, vector<int> ans)
+void Try(vector<int> &a, int start, vector<int> &res)
 {
-    if(ans.size() >= 2)
+    if(res.size() >= 2)
     {
-        bool increasing = true;
-        for(int i = 1; i < ans.size(); i++)
+        bool isIncreasing = true;
+        for(int i = 1; i < res.size(); i++)
         {
-            if(ans[i] <= ans[i - 1])
+            if(res[i] <= res[i - 1])
             {
-                increasing = false;
+                isIncreasing = false;
                 return;
             }
         }
 
-        if(increasing)
+        if(isIncreasing)
         {
-            string res = "";
-            for(int num : ans)
+            string tmp = "";
+            for(int num : res)
             {
-                res += to_string(num) + " ";
+                tmp += to_string(num) + " ";
             }
-            res.pop_back();
-            v.push_back(res);
+            tmp.pop_back();
+            ans.push_back(tmp);
         }
-    }
 
-    for(int i = start; i < a.size(); i++)
+    }
+    
+    for(int i = start; i < n; i++)
     {
-        ans.push_back(a[i]);
-        Try(a, i + 1, ans);
-        ans.pop_back();
+        res.push_back(a[i]);
+        Try(a, i + 1, res);
+        res.pop_back();
     }
 }
 int main() {
@@ -71,15 +72,16 @@ int main() {
     cin.tie(NULL);
     cin >> n;
     vector<int> a(n);
-    for(int i = 0; i < n; ++i) {
-        cin >> a[i];
-    }
-    vector<int> ans;
-    Try(a, 0, ans);
-    sort(v.begin(), v.end());
-    for(string x : v)
+    for(int &x : a)
     {
-        cout << x << endl;
+        cin >> x;
+    }
+    vector<int> res;
+    Try(a, 0, res);
+    sort(ans.begin(), ans.end());
+    for(auto b : ans)
+    {
+        cout << b << endl;
     }
     return 0;
 }

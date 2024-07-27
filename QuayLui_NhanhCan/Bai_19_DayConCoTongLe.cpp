@@ -33,25 +33,26 @@ Output 01
 #define endl '\n'
 using namespace std;
 int n, a[20];
+vector<vector<int>> res;
+int used[20];
 bool check(vector<int> v)
 {
-    int res = 0;
+    int sum = 0;
     for(int x : v)
     {
-        res += x;
+        sum += x;
     }
-    return res % 2;
+    return sum % 2;
 }
-vector<vector<int>> ans;
-bool used[16];
-void Try(vector<int> v, int last)
+
+void Try(vector<int> v, int pos)
 {
     if(v.size() && check(v))
     {
-        ans.push_back(v);
+        res.push_back(v);
     }
 
-    for(int i = last + 1; i < n; i++)
+    for(int i = pos + 1; i < n; i++)
     {
         if(!used[i])
         {
@@ -60,7 +61,6 @@ void Try(vector<int> v, int last)
             Try(v, i);
             v.pop_back();
             used[i] = 0;
-
         }
     }
 }
@@ -68,24 +68,26 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cin >> n;
-    for(int i = 0; i < n; i++) {
+    for(int i = 0; i < n; i++)
+    {
         cin >> a[i];
     }
     vector<int> v;
     Try(v, -1);
-    if(ans.empty())
+    if(res.empty())
     {
         cout << "NOT FOUND";
         return 0;
-    }
-    sort(ans.begin(), ans.end());
-    for(auto x : ans)
-    {
-        for(int i : x)
+    }else {
+        sort(res.begin(), res.end());
+        for(auto x : res)
         {
-            cout << i << " ";
+            for(int num : x)
+            {
+                cout << num << " ";
+            }
+            cout << endl;
         }
-        cout << endl;
     }
     return 0;
 }
