@@ -28,23 +28,23 @@ int main() {
     cin.tie(NULL);
     string s;
     cin >> s;
-    map<int, int> char_count;
+    int min_Length = s.size();
+    map<char, int> char_count;
     for(char c : s)
     {
         char_count[c] = 0;
     }
     int distinct_char = char_count.size();
-    int start = 0, min_length = s.size();
-    int cnt = 0;
-    for(int i = 0; i < s.size(); i++)
+    int cnt = 0, start = 0;
+    for(int right = 0; right < s.size(); right++)
     {
-        if(++char_count[s[i]] == 1)
+        if(++char_count[s[right]] == 1)
         {
             cnt++;
         }
         while(cnt == distinct_char)
         {
-            min_length = min(min_length, i - start + 1);
+            min_Length = min(min_Length, right - start + 1);
             if(--char_count[s[start]] == 0)
             {
                 cnt--;
@@ -52,6 +52,6 @@ int main() {
             start++;
         }
     }
-    cout << min_length;
+    cout << min_Length;
     return 0;
 }
