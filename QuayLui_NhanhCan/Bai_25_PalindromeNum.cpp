@@ -25,27 +25,28 @@ Copy
 */
 
 #include <bits/stdc++.h>
-
+#define endl '\n'
 using namespace std;
 string s;
-bool isPalindrome(string s)
+bool isPalindrome(string t)
 {
-    string tmp = s;
+    string tmp = t;
     reverse(tmp.begin(), tmp.end());
-    return tmp == s;
+    return tmp == t;
 }
-void Try(vector<string> v, int pos) {
+void Try(vector<string> v, int pos)
+{
     if(pos == s.size())
     {
-        for(string x : v)
+        for(int i = 0; i < v.size(); i++)
         {
-            cout << x << " ";
+            cout << v[i] << " ";
         }
         cout << endl;
         return;
     }
 
-    for(int length = 1; length + pos - 1 < s.size(); length++)
+    for(int length = 1; pos + length - 1 < s.size(); length++)
     {
         string tmp = s.substr(pos, length);
         if(isPalindrome(tmp))
