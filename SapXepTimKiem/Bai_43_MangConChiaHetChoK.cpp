@@ -35,15 +35,17 @@ int main() {
         cin >> x;
     }
     vector<int> cnt(n, 0);
-    vector<int> pre_fix(n + 1, 0);
-    for(int i = 0; i < n; i++) {
-        pre_fix[i + 1] = (pre_fix[i] + a[i] % n + n) % n;
-    }
+    vector<int> pre(n + 1, 0);
     cnt[0] = 1;
+    for(int i = 0; i < n; i++)
+    {
+        pre[i + 1] = (pre[i] + a[i] % n + n) % n;
+    }
     long long dem = 0;
-    for(int i = 1; i <= n; i++) {
-        dem += cnt[pre_fix[i]];
-        cnt[pre_fix[i]]++;
+    for(int i = 1; i < n; i++)
+    {
+        dem += cnt[pre[i]];
+        cnt[pre[i]]++;
     }
     cout << dem;
     return 0;

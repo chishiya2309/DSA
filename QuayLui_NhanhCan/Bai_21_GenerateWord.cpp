@@ -32,30 +32,30 @@ YES
 
 using namespace std;
 int n, m;
-string s;
-char a[10][10];
+char c[10][10];
 int mark[10][10];
+string s;
 bool found = false;
 int dx[] = {-1, 0, 1, 0};
 int dy[] = {0, 1, 0, -1};
-void Try(int x, int y, int pos)
+void Try(int i, int j, int pos)
 {
-    mark[x][y] = 1;
+    mark[i][j] = 1;
     if(found || pos == s.size())
     {
         found = true;
         return;
     }
-
-    for(int k = 0; k < 4; k++) {
-        int i = x + dx[k], j = y + dy[k];
-        if(i >= 0 && i < n && j >= 0 && j < m && a[i][j] == s[pos] && mark[i][j] == 0)
+    
+    for(int k = 0; k < 4; k++)
+    {
+        int inext = i + dx[k], jnext = j + dy[k];
+        if(inext >= 0 && inext < n && jnext >= 0 && jnext < m && c[inext][jnext] == s[pos] && mark[inext][jnext] == 0)
         {
-            Try(i, j, pos + 1);
+            Try(inext, jnext, pos + 1);
         }
     }
-    mark[x][y] = 0;
-
+    mark[i][j] = 0;
 }
 int main() {
     ios_base::sync_with_stdio(false);
@@ -63,18 +63,17 @@ int main() {
     cin >> n >> m;
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < m; j++) {
-            cin >> a[i][j];
+            cin >> c[i][j];
         }
     }
-
     cin >> s;
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < m; j++) {
-            if(a[i][j] == s[0])
+            if(c[i][j] == s[0])
             {
                 Try(i, j, 1);
             }
-        }
+        }   
     }
     if(found)
     {
