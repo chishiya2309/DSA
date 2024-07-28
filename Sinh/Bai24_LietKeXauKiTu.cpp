@@ -18,10 +18,8 @@ Ghi ra lần lượt các xâu ký tự kết quả theo thứ tự từ điển
 
 Ví dụ :
 Input 01
-Copy
 C 2
 Output 01
-Copy
 AA
 AB
 AC
@@ -42,7 +40,7 @@ string s;
 bool final = false;
 void sinh()
 {
-    int i = k - 1;
+    int i = s.size() - 1;
     while(i >= 0 && s[i] == c)
     {
         i--;
