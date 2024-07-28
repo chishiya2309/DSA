@@ -20,12 +20,12 @@ ad ae af bd be bf cd ce cf
 */
 
 #include <bits/stdc++.h>
-#define endl '\n'
+
 using namespace std;
 string s;
 int n;
-string d[10];
 char x[10];
+string d[10];
 void xuly()
 {
     d[2] = "abc";
@@ -35,15 +35,15 @@ void xuly()
     d[6] = "mno";
     d[7] = "pqrs";
     d[8] = "tuv";
-    d[9] = "wxyz"; 
+    d[9] = "wxyz";
 }
-void Try(int pos)
+void Try(int i)
 {
-    int num = s[pos] - '0';
+    int num = s[i] - '0';
     for(char c : d[num])
     {
-        x[pos] = c;
-        if(pos == n)
+        x[i] = c;
+        if(i == n)
         {
             for(int i = 1; i <= n; i++)
             {
@@ -51,7 +51,7 @@ void Try(int pos)
             }
             cout << " ";
         }else {
-            Try(pos + 1);
+            Try(i + 1);
         }
     }
 }
@@ -64,6 +64,5 @@ int main() {
     sort(s.begin(), s.end());
     s = "0" + s;
     Try(1);
-
     return 0;
 }
