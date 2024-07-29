@@ -22,7 +22,7 @@ Output 01
 */
 
 #include <bits/stdc++.h>
-#define endl '\n'
+
 using namespace std;
 int n, k;
 bool final = false;
@@ -30,23 +30,24 @@ void Try(vector<int> v, int sum) {
     if(v.size() == k && sum == n)
     {
         final = true;
-        for(int i = 0; i < k; i++)
+        for(int i = 0; i < v.size(); i++)
         {
             cout << v[i];
-            if(i == k - 1)
+            if(i == v.size() - 1)
             {
                 cout << endl;
             }else {
                 cout << " + ";
             }
-        } 
+        }
+        return;
     }
-
     if(sum >= n)
     {
         return;
     }
-    for(int i = 1; i < 10; i++) {
+    for(int i = 1; i < 10; i++)
+    {
         if(v.empty() || i > v.back())
         {
             v.push_back(i);
