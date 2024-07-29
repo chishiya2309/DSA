@@ -30,10 +30,8 @@ int main() {
     cin.tie(NULL);
     int n;
     cin >> n;
-    vector<int> a(n);
     set<int> se;
-    for(int i=0; i<n; i++)
-    {
+    for(int i=0; i<n; i++) {
         int x;
         cin >> x;
         se.insert(x);
@@ -44,7 +42,7 @@ int main() {
     {
         for(int num : v)
         {
-            cout << num << " ";
+            cout << num << " "; 
         }
         cout << endl;
     } while (prev_permutation(v.begin(), v.end()));

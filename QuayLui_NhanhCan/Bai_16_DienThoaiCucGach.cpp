@@ -26,7 +26,7 @@ string s;
 int n;
 char x[10];
 string d[10];
-void xuly()
+void solve()
 {
     d[2] = "abc";
     d[3] = "def";
@@ -35,7 +35,7 @@ void xuly()
     d[6] = "mno";
     d[7] = "pqrs";
     d[8] = "tuv";
-    d[9] = "wxyz";
+    d[9] = "wxyz"; 
 }
 void Try(int i)
 {
@@ -45,9 +45,9 @@ void Try(int i)
         x[i] = c;
         if(i == n)
         {
-            for(int i = 1; i <= n; i++)
+            for(int j = 1; j <= n; j++)
             {
-                cout << x[i];
+                cout << x[j];
             }
             cout << " ";
         }else {
@@ -58,7 +58,7 @@ void Try(int i)
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    xuly();
+    solve();
     cin >> s;
     n = s.size();
     sort(s.begin(), s.end());
