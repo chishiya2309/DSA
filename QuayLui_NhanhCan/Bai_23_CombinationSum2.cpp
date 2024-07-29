@@ -44,13 +44,17 @@ Output 01
 */
 
 #include <bits/stdc++.h>
-#define endl '\n'
+
 using namespace std;
 int n, k;
 bool final = false;
 vector<int> prime;
-bool checkPrime(int n)
+bool isPrime(int n)
 {
+    if(n < 2)
+    {
+        return false;
+    }
     for(int i = 2; i <= sqrt(n); i++)
     {
         if(n % i == 0)
@@ -64,19 +68,19 @@ void xuly()
 {
     for(int i = 1; i <= 500; i++)
     {
-        if(checkPrime(i))
+        if(isPrime(i))
         {
             prime.push_back(i);
         }
     }
 }
-void Try(vector<int> v, int sum) {
-    if(v.size() == k && sum == n)
+void Try(vector<int> num, int sum) {
+    if(num.size() == k && sum == n)
     {
         final = true;
         for(int i = 0; i < k; i++)
         {
-            cout << v[i];
+            cout << num[i];
             if(i == k - 1)
             {
                 cout << endl;
@@ -84,20 +88,18 @@ void Try(vector<int> v, int sum) {
                 cout << " + ";
             }
         }
-        return;
     }
     if(sum >= n)
     {
         return;
     }
-
-    for(int num : prime)
+    for(int x : prime)
     {
-        if(v.empty() || num > v.back())
+        if(num.empty() || x > num.back())
         {
-            v.push_back(num);
-            Try(v, sum + num);
-            v.pop_back();
+            num.push_back(x);
+            Try(num, sum + x);
+            num.pop_back();
         }
     }
 }
@@ -106,8 +108,8 @@ int main() {
     cin.tie(NULL);
     xuly();
     cin >> n >> k;
-    vector<int> v;
-    Try(v, 0);
+    vector<int> num;
+    Try(num, 0);
     if(!final)
     {
         cout << "NOT FOUND";

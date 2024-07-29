@@ -36,13 +36,13 @@ Output 01
 #define endl '\n'
 using namespace std;
 string s;
-void Try(string x, int pos)
-{
-    if(pos == s.size())
+void Try(string x, int pos) {
+    if(x.size() == s.size())
     {
         cout << x << endl;
         return;
     }
+
     if(isalpha(s[pos]))
     {
         Try(x + (char)toupper(s[pos]), pos + 1);
@@ -58,4 +58,3 @@ int main() {
     Try("", 0);
     return 0;
 }
-

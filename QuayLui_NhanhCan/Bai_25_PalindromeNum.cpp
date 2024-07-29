@@ -25,18 +25,17 @@ Copy
 */
 
 #include <bits/stdc++.h>
-#define endl '\n'
+
 using namespace std;
-string s;
-bool isPalindrome(string t)
+string N;
+bool check(string t)
 {
     string tmp = t;
     reverse(tmp.begin(), tmp.end());
     return tmp == t;
 }
-void Try(vector<string> v, int pos)
-{
-    if(pos == s.size())
+void Try(vector<string> v, int pos) {
+    if(pos == N.size() && v.size())
     {
         for(int i = 0; i < v.size(); i++)
         {
@@ -46,10 +45,10 @@ void Try(vector<string> v, int pos)
         return;
     }
 
-    for(int length = 1; pos + length - 1 < s.size(); length++)
+    for(int length = 1; pos + length - 1 < N.size(); length++)
     {
-        string tmp = s.substr(pos, length);
-        if(isPalindrome(tmp))
+        string tmp = N.substr(pos, length);
+        if(check(tmp))
         {
             v.push_back(tmp);
             Try(v, pos + length);
@@ -60,7 +59,7 @@ void Try(vector<string> v, int pos)
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    cin >> s;
+    cin >> N;
     vector<string> v;
     Try(v, 0);
     return 0;
