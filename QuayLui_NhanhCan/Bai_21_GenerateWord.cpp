@@ -32,12 +32,12 @@ YES
 
 using namespace std;
 int n, m;
-char c[10][10];
-int mark[10][10];
+char a[10][10];
 string s;
 bool found = false;
 int dx[] = {-1, 0, 1, 0};
 int dy[] = {0, 1, 0, -1};
+int mark[10][10];
 void Try(int i, int j, int pos)
 {
     mark[i][j] = 1;
@@ -46,11 +46,11 @@ void Try(int i, int j, int pos)
         found = true;
         return;
     }
-    
+
     for(int k = 0; k < 4; k++)
-    {
+    {   
         int inext = i + dx[k], jnext = j + dy[k];
-        if(inext >= 0 && inext < n && jnext >= 0 && jnext < m && c[inext][jnext] == s[pos] && mark[inext][jnext] == 0)
+        if(inext >= 0 && inext < n && jnext >= 0 && jnext < m && a[inext][jnext] == s[pos] && mark[inext][jnext] == 0)
         {
             Try(inext, jnext, pos + 1);
         }
@@ -63,23 +63,24 @@ int main() {
     cin >> n >> m;
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < m; j++) {
-            cin >> c[i][j];
+            cin >> a[i][j];
         }
     }
     cin >> s;
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < m; j++) {
-            if(c[i][j] == s[0])
+            if(a[i][j] == s[0])
             {
                 Try(i, j, 1);
             }
-        }   
+        }
     }
-    if(found)
-    {
+
+    if(found) {
         cout << "YES";
     }else {
         cout << "NO";
     }
     return 0;
 }
+
