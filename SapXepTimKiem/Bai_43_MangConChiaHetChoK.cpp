@@ -18,10 +18,12 @@ Input 01
 2 1 7 5 6
 Output 01
 3
+Giải thích :
+Dãy con thỏa mãn là (2, 1, 7), (5) và (2, 1, 7, 5)
 */
 
 #include <bits/stdc++.h>
-
+#define ll long long
 using namespace std;
 
 int main() {
@@ -36,13 +38,13 @@ int main() {
     }
     vector<int> cnt(n, 0);
     vector<int> pre(n + 1, 0);
-    cnt[0] = 1;
     for(int i = 0; i < n; i++)
     {
         pre[i + 1] = (pre[i] + a[i] % n + n) % n;
     }
-    long long dem = 0;
-    for(int i = 1; i < n; i++)
+    cnt[0] = 1;
+    ll dem = 0;
+    for(int i = 1; i <= n; i++)
     {
         dem += cnt[pre[i]];
         cnt[pre[i]]++;
