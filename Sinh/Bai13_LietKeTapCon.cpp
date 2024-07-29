@@ -36,7 +36,8 @@ Output 01
 using namespace std;
 int n, x[10];
 bool final = false;
-void khoitao()
+vector<vector<int>> ans;
+void init()
 {
     for(int i = 1; i <= n; i++)
     {
@@ -62,8 +63,7 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cin >> n;
-    vector<vector<int>> v;
-    khoitao();
+    init();
     while(!final)
     {
         vector<int> tmp;
@@ -74,13 +74,13 @@ int main() {
                 tmp.push_back(i);
             }
         }
-        v.push_back(tmp);
+        ans.push_back(tmp);
         sinh();
     }
-    sort(v.begin(), v.end());
-    for(auto x : v)
+    sort(ans.begin(), ans.end());
+    for(auto v : ans)
     {
-        for(int num : x)
+        for(int num : v)
         {
             cout << num << " ";
         }
