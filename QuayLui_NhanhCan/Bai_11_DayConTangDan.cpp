@@ -31,9 +31,10 @@ Output 01
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
-vector<string> ans;
 int n;
-void Try(vector<int> &a, int start, vector<int> &res)
+vector<int> a;
+vector<string> ans;
+void Try(int start, vector<int> res)
 {
     if(res.size() >= 2)
     {
@@ -57,13 +58,12 @@ void Try(vector<int> &a, int start, vector<int> &res)
             tmp.pop_back();
             ans.push_back(tmp);
         }
-
     }
-    
+
     for(int i = start; i < n; i++)
     {
         res.push_back(a[i]);
-        Try(a, i + 1, res);
+        Try(i + 1, res);
         res.pop_back();
     }
 }
@@ -71,17 +71,17 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cin >> n;
-    vector<int> a(n);
+    a.resize(n);
     for(int &x : a)
     {
         cin >> x;
     }
     vector<int> res;
-    Try(a, 0, res);
+    Try(0, res);
     sort(ans.begin(), ans.end());
-    for(auto b : ans)
+    for(string v : ans)
     {
-        cout << b << endl;
+        cout << v << endl;
     }
     return 0;
 }
