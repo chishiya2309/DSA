@@ -28,9 +28,8 @@ Output 01
 #include <bits/stdc++.h>
 
 using namespace std;
-int n, c[16][16], x[16], mark[16];
-int sum = 0, minChiPhi = INT_MAX;
-int cmin = INT_MAX;
+int n, c[20][20], x[20], cmin = INT_MAX, minChiPhi = INT_MAX, sum = 0;
+int mark[20];
 void nhap()
 {
     cin >> n;
@@ -67,7 +66,6 @@ void Try(int i)
         }
     }
 }
-
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);

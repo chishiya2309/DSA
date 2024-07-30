@@ -24,8 +24,8 @@ ad ae af bd be bf cd ce cf
 using namespace std;
 string s;
 int n;
-char x[10];
 string d[10];
+char x[10];
 void solve()
 {
     d[2] = "abc";
@@ -35,15 +35,15 @@ void solve()
     d[6] = "mno";
     d[7] = "pqrs";
     d[8] = "tuv";
-    d[9] = "wxyz"; 
+    d[9] = "wxyz";
 }
-void Try(int i)
+void Try(int pos)
 {
-    int num = s[i] - '0';
+    int num = s[pos] - '0';
     for(char c : d[num])
     {
-        x[i] = c;
-        if(i == n)
+        x[pos] = c;
+        if(pos == n)
         {
             for(int j = 1; j <= n; j++)
             {
@@ -51,7 +51,7 @@ void Try(int i)
             }
             cout << " ";
         }else {
-            Try(i + 1);
+            Try(pos + 1);
         }
     }
 }

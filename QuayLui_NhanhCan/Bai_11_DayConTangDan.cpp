@@ -34,7 +34,7 @@ using namespace std;
 int n;
 vector<int> a;
 vector<string> ans;
-void Try(int start, vector<int> res)
+void Try(int index, vector<int> res)
 {
     if(res.size() >= 2)
     {
@@ -44,7 +44,7 @@ void Try(int start, vector<int> res)
             if(res[i] <= res[i - 1])
             {
                 isIncreasing = false;
-                return;
+                break;
             }
         }
 
@@ -60,7 +60,7 @@ void Try(int start, vector<int> res)
         }
     }
 
-    for(int i = start; i < n; i++)
+    for(int i = index; i < n; i++)
     {
         res.push_back(a[i]);
         Try(i + 1, res);

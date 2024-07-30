@@ -1,5 +1,6 @@
 /*
 Cho một mê cung được mô tả dưới dạng một ma trận nhị phân có N hàng và N cột. Một con chuột bắt đầu tử ô (1, 1) và muốn di chuyển tới (N, N). Con chuột chỉ được di chuyển sang trái, sang phải, lên trên và xuống dưới và chỉ được di chuyển tới ô nào đó nếu ô đó có giá trị là 1. Bạn hãy in ra các cách đi hợp lệ của con chuột, trong đó nếu con chuột đi sang phải thì nước đi được mô tả là chữ R, và nếu con chuột đi xuống dưới thì nước đi được mô tả là chữ D, nếu đi sang trái thì nước đi được mô tả là chữ L, nếu đi lên trên thì nước đi được mô tả là chữ U. Nếu con chuột không thể đi xuống ô (N, N) thì in ra -1. Chú ý trên mỗi đường đi con chuột chỉ có thể đi qua 1 ô nào đó đúng 1 lần.
+
 Đầu vào
 Dòng thứ nhất đưa vào N
 
@@ -48,50 +49,43 @@ RRRDDLLDRR
 */
 
 #include <bits/stdc++.h>
-#define endl '\n'
+
 using namespace std;
-int n, a[9][9], mark[9][9];
-string s;
+int n, a[10][10];
+bool mark[10][10];
 bool final = false;
 int dx[] = {1, 0, 0, -1};
 int dy[] = {0, -1, 1, 0};
-char words[] = "DLRU";
-void Try(int i, int j)
+char WORD[] = "DLRU";
+void Try(int i, int j, string x)
 {
+    mark[i][j] = true;
     if(i == n && j == n)
     {
         final = true;
-        cout << s << endl;
-        return;
+        cout << x << endl;
     }
 
-    for(int k = 0; k < 4; k++)
-    {
-        int inext = i + dx[k];
-        int jnext = j + dy[k];
-        if(inext >= 1 && inext <= n && jnext >= 1 && jnext <= n && a[inext][jnext] == 1 && mark[inext][jnext] == 0)
+    for(int k = 0; k < 4; k++) {
+        int inext = i + dx[k], jnext = j + dy[k];
+        if(inext >= 1 && inext <= n && jnext >= 1 && jnext <= n && a[inext][jnext] == 1 && mark[inext][jnext] == false)
         {
-            mark[inext][jnext] = 1;
-            s += words[k];
-            Try(inext, jnext);
-            mark[inext][jnext] = 0;
-            s.pop_back();
-        }
+            Try(inext, jnext, x + WORD[k]);
+        } 
     }
+    mark[i][j] = false;
 }
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cin >> n;
-    for(int i = 1; i <= n; i++)
-    {
-        for(int j = 1; j <= n; j++)
-        {
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= n; j++) {
             cin >> a[i][j];
         }
     }
-    mark[1][1] = 1;
-    Try(1, 1);
+    mark[1][1] = true;
+    Try(1, 1, "");
     if(!final)
     {
         cout << -1;
