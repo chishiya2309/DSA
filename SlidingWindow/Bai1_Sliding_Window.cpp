@@ -45,18 +45,18 @@ int main() {
     {
         sum += a[i];
     }
-    ll max_sum = sum;
+    ll maxSum = sum;
     int start = 0;
     for(int i = k; i < n; i++)
     {
         sum = sum - a[i - k] + a[i];
-        if(sum > max_sum)
+        if(sum > maxSum)
         {
-            max_sum = sum;
+            maxSum = sum;
             start = i - k + 1;
         }
     }
-    cout << max_sum << endl;
+    cout << maxSum << endl;
     for(int i = start; i < start + k; i++)
     {
         cout << a[i] << " ";
