@@ -1,27 +1,29 @@
 /*
-Cho một mảng gồm n số nguyên, nhiệm vụ của bạn là đếm số mảng con ( dãy con các phần tử liên tiếp) mà tổng các giá trị chia hết cho n.
+Bạn được cung cấp một danh sách phát của một đài phát thanh kể từ khi đài đó được thành lập. Danh sách bài hát có tổng cộng n bài hát. Chuỗi các bài hát liên tiếp dài nhất mà mỗi bài hát là duy nhất?
 
 Đầu vào
-Dòng nhập đầu tiên có số nguyên n: kích thước của mảng.
+Dòng đầu tiên chứa một số nguyên n: số lượng bài hát.
 
-Dòng tiếp theo có n số nguyên a1, a2,…, an: nội dung của mảng.
+Dòng tiếp theo có n số nguyên k1, k2,…, kn: số id của mỗi bài hát.
 
 Giới hạn
-1≤n≤2⋅10^5; -10^9≤ai≤10^9
+1≤n≤2⋅10^5
+
+1≤ki≤10^9
 
 Đầu ra
-In một số nguyên: số lượng mảng con thỏa mãn
+In độ dài của chuỗi bài hát dài nhất mà các bài hát này mỗi bài hát chỉ xuất hiện 1 lần.
 
 Ví dụ :
 Input 01
 5
-2 1 7 5 6
+1 2 2 4 5
 Output 01
 3
 */
 
 #include <bits/stdc++.h>
-#define ll long long
+
 using namespace std;
 
 int main() {
@@ -29,23 +31,24 @@ int main() {
     cin.tie(NULL);
     int n;
     cin >> n;
-    vector<int> a(n);
-    for(int &x : a)
+    vector<int> k(n);
+    for(int &x : k)
     {
         cin >> x;
     }
-    vector<int> cnt(n, 0), prime(n + 1, 0);
+    map<int, int> mp;
+    int left = 0;
+    int maxLength = INT_MIN;
     for(int i = 0; i < n; i++)
     {
-        prime[i + 1]  = (prime[i] + a[i] % n + n) % n;
+        mp[k[i]]++;
+        while(mp[k[i]] == 2)
+        {
+            mp[k[left]]--;
+            left++;
+        }
+        maxLength = max(maxLength, i - left + 1);
     }
-    ll dem = 0;
-    cnt[0] = 1;
-    for(int i = 1; i <= n; i++)
-    {
-        dem += cnt[prime[i]];
-        cnt[prime[i]]++;
-    }
-    cout << dem;
+    cout << maxLength;
     return 0;
 }
