@@ -34,20 +34,20 @@ Output 01
 using namespace std;
 int n;
 vector<int> a;
-vector<vector<int>> ans;
 bool used[20];
-bool check(vector<int> v)
+vector<vector<int>> ans;
+bool tongLe(vector<int> tmp)
 {
-    int sum  = 0;
-    for(int num : v)
+    int sum = 0;
+    for(int num : tmp)
     {
         sum += num;
     }
     return sum % 2;
 }
-void Try(vector<int> v, int pos) 
+void Try(vector<int> v, int pos)
 {
-    if(v.size() && check(v))
+    if(v.size() && tongLe(v))
     {
         ans.push_back(v);
     }
@@ -80,9 +80,9 @@ int main() {
         cout << "NOT FOUND";
     }else {
         sort(ans.begin(), ans.end());
-        for(auto b : ans)
+        for(auto x : ans)
         {
-            for(int num : b)
+            for(int num : x)
             {
                 cout << num << " ";
             }

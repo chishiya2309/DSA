@@ -24,41 +24,42 @@ ad ae af bd be bf cd ce cf
 using namespace std;
 string s;
 int n;
-string d[10];
+string button[10];
 char x[10];
-void solve()
+void xuly()
 {
-    d[2] = "abc";
-    d[3] = "def";
-    d[4] = "ghi";
-    d[5] = "jkl";
-    d[6] = "mno";
-    d[7] = "pqrs";
-    d[8] = "tuv";
-    d[9] = "wxyz";
+    button[2] = "abc";
+    button[3] = "def";
+    button[4] = "ghi";
+    button[5] = "jkl";
+    button[6] = "mno";
+    button[7] = "pqrs";
+    button[8] = "tuv";
+    button[9] = "wxyz";
 }
-void Try(int pos)
+void Try(int i)
 {
-    int num = s[pos] - '0';
-    for(char c : d[num])
+    int num = s[i] - '0';
+    for(char c : button[num])
     {
-        x[pos] = c;
-        if(pos == n)
+        x[i] = c;
+        if(i == n)
         {
             for(int j = 1; j <= n; j++)
             {
                 cout << x[j];
             }
             cout << " ";
-        }else {
-            Try(pos + 1);
+        }else
+        {
+            Try(i + 1);
         }
     }
 }
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    solve();
+    xuly();
     cin >> s;
     n = s.size();
     sort(s.begin(), s.end());
