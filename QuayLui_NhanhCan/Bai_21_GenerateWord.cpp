@@ -1,6 +1,8 @@
 /*
 Cho một bảng HCN cỡ N hàng, M cột, mỗi ô trên HCN chứa 1 chữ cái in hoa hoặc chữ số. Một từ có thể được xây dựng từ các chữ cái của các ô liền kề theo thứ tự, trong đó các ô liền kề nằm cạnh nhau theo chiều ngang hoặc chiều dọc. Không được sử dụng cùng một ô chữ cái nhiều lần. Bạn hãy xác định xem có thể tạo thành từ S cho trước hay không ?
 
+
+
 Đầu vào
 • Dòng đầu tiên là N và M
 
@@ -46,11 +48,11 @@ void Try(int i, int j, int pos)
         found = true;
         return;
     }
-    
+
     for(int k = 0; k < 4; k++)
     {
         int inext = i + dx[k], jnext = j + dy[k];
-        if(inext >= 0 && inext < n && jnext >= 0 && jnext < m && c[inext][jnext] == s[pos] && mark[inext][jnext] == false)
+        if(inext >= 0 && inext < n && jnext >= 0 && jnext < m && c[inext][jnext] == s[pos] && !mark[inext][jnext])
         {
             Try(inext, jnext, pos + 1);
         }
@@ -61,10 +63,8 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cin >> n >> m;
-    for(int i = 0; i < n; i++)
-    {
-        for(int j = 0; j < m; j++)
-        {
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
             cin >> c[i][j];
         }
     }
@@ -82,7 +82,8 @@ int main() {
     if(found)
     {
         cout << "YES";
-    }else {
+    }else
+    {
         cout << "NO";
     }
     return 0;
