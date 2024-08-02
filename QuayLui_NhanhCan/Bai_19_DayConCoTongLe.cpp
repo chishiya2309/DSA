@@ -32,11 +32,10 @@ Output 01
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
-int n;
-vector<int> a;
+int n, a[20];
 bool used[20];
 vector<vector<int>> ans;
-bool tongLe(vector<int> tmp)
+bool checkTongLe(vector<int> tmp)
 {
     int sum = 0;
     for(int num : tmp)
@@ -45,9 +44,10 @@ bool tongLe(vector<int> tmp)
     }
     return sum % 2;
 }
+
 void Try(vector<int> v, int pos)
 {
-    if(v.size() && tongLe(v))
+    if(v.size() && checkTongLe(v))
     {
         ans.push_back(v);
     }
@@ -68,10 +68,9 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cin >> n;
-    a.resize(n);
-    for(int &x : a)
+    for(int i = 0; i < n; i++)
     {
-        cin >> x;
+        cin >> a[i];
     }
     vector<int> v;
     Try(v, -1);
@@ -91,3 +90,4 @@ int main() {
     }
     return 0;
 }
+
