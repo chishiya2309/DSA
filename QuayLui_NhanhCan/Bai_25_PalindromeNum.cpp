@@ -23,7 +23,7 @@ Output 01
 */
 
 #include <bits/stdc++.h>
-
+#define endl '\n'
 using namespace std;
 string N;
 bool isPalindrome(string t)
@@ -32,17 +32,15 @@ bool isPalindrome(string t)
     reverse(tmp.begin(), tmp.end());
     return tmp == t;
 }
-
 void Try(vector<string> v, int pos)
 {
-    if(pos == N.size() && v.size())
+    if(v.size() && pos == N.size())
     {
         for(string x : v)
         {
             cout << x << " ";
         }
         cout << endl;
-        return;
     }
 
     for(int length = 1; pos + length - 1 < N.size(); length++)
