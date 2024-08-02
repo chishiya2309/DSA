@@ -30,32 +30,22 @@ int main() {
     int n, k;
     cin >> n >> k;
     vector<int> a(n);
-    int sum = 0;
     for(int &x : a)
     {
         cin >> x;
-        sum += x;
-    }
-
-    if(sum < k)
-    {
-        cout << -1;
-        return 0;
     }
     int dem = 0;
     for(int i = 0; i < k; i++)
     {
         dem += a[i];
     }
-
-    int maxcnt = dem;
+    int maxDem = dem;
     for(int i = k; i < n; i++)
     {
         dem += a[i];
         dem -= a[i - k];
-        maxcnt = max(maxcnt, dem);
+        maxDem = max(maxDem, dem);
     }
-
-    cout << k - maxcnt;
+    cout << k - maxDem;
     return 0;
 }
