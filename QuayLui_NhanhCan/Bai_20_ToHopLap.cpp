@@ -30,7 +30,7 @@ DD
 */
 
 #include <bits/stdc++.h>
-
+#define endl '\n'
 using namespace std;
 int n, k;
 string s;
@@ -41,6 +41,7 @@ void Try(string x, int pos)
         cout << x << endl;
         return;
     }
+
     for(int i = pos; i < n; i++)
     {
         Try(x + s[i], i);
