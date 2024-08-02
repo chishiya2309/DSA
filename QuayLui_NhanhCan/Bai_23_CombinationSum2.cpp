@@ -48,8 +48,7 @@ Output 01
 using namespace std;
 int n, k;
 bool final = false;
-vector<int> prime;
-bool isPrime(int n)
+bool checkPrime(int n)
 {
     if(n < 2)
     {
@@ -64,23 +63,25 @@ bool isPrime(int n)
     }
     return n > 1;
 }
-void xuly()
+vector<int> prime;
+void solve()
 {
     for(int i = 1; i <= 500; i++)
     {
-        if(isPrime(i))
+        if(checkPrime(i))
         {
             prime.push_back(i);
         }
     }
 }
-void Try(vector<int> num, int sum) {
-    if(num.size() == k && sum == n)
+void Try(vector<int> v, int sum)
+{
+    if(v.size() == k && sum == n)
     {
         final = true;
         for(int i = 0; i < k; i++)
         {
-            cout << num[i];
+            cout << v[i];
             if(i == k - 1)
             {
                 cout << endl;
@@ -89,27 +90,29 @@ void Try(vector<int> num, int sum) {
             }
         }
     }
+
     if(sum >= n)
     {
         return;
     }
-    for(int x : prime)
+
+    for(int num : prime)
     {
-        if(num.empty() || x > num.back())
+        if(v.empty() || num > v.back())
         {
-            num.push_back(x);
-            Try(num, sum + x);
-            num.pop_back();
+            v.push_back(num);
+            Try(v, sum + num);
+            v.pop_back();
         }
     }
 }
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    xuly();
     cin >> n >> k;
-    vector<int> num;
-    Try(num, 0);
+    solve();
+    vector<int> v;
+    Try(v, 0);
     if(!final)
     {
         cout << "NOT FOUND";

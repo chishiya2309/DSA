@@ -33,15 +33,15 @@ Output 01
 using namespace std;
 int n;
 vector<int> a;
-vector<string> ans;
-void Try(int index, vector<int> res)
+vector<string> res;
+void Try(int index, vector<int> ans)
 {
-    if(res.size() >= 2)
+    if(ans.size() >= 2)
     {
         bool isIncreasing = true;
-        for(int i = 1; i < res.size(); i++)
+        for(int i = 1; i < ans.size(); i++)
         {
-            if(res[i] <= res[i - 1])
+            if(ans[i] <= ans[i - 1])
             {
                 isIncreasing = false;
                 break;
@@ -51,20 +51,20 @@ void Try(int index, vector<int> res)
         if(isIncreasing)
         {
             string tmp = "";
-            for(int num : res)
+            for(int num : ans)
             {
                 tmp += to_string(num) + " ";
             }
             tmp.pop_back();
-            ans.push_back(tmp);
+            res.push_back(tmp);
         }
     }
 
     for(int i = index; i < n; i++)
     {
-        res.push_back(a[i]);
-        Try(i + 1, res);
-        res.pop_back();
+        ans.push_back(a[i]);
+        Try(i + 1, ans);
+        ans.pop_back();
     }
 }
 int main() {
@@ -76,12 +76,12 @@ int main() {
     {
         cin >> x;
     }
-    vector<int> res;
-    Try(0, res);
-    sort(ans.begin(), ans.end());
-    for(string v : ans)
+    vector<int> ans;
+    Try(0, ans);
+    sort(res.begin(), res.end());
+    for(string x : res)
     {
-        cout << v << endl;
+        cout << x << endl;
     }
     return 0;
 }

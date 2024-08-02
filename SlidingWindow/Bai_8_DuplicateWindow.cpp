@@ -36,28 +36,26 @@ int main() {
     {
         cin >> x;
     }
-    bool final = false;
-    set<int> se;
-    for(int i = 0; i < n; i++)
+    map<int, int> mp;
+    for(int i = 0; i < k; i++)
     {
-        if(se.find(a[i]) != se.end())
+        mp[a[i]]++;
+        if(mp[a[i]] >= 2)
         {
-            final = true;
-            break;
-        }
-
-        se.insert(a[i]);
-
-        if(i >= k)
-        {
-            se.erase(a[i - k]);
+            cout << "YES";
+            return 0;
         }
     }
-    if(final)
+    for(int i = k; i < n; i++)
     {
-        cout << "YES";
-    }else {
-        cout << "NO";
+        mp[a[i]]++;
+        mp[a[i - k]]--;
+        if(mp[a[i]] >= 2)
+        {
+            cout << "YES";
+            return 0;
+        }
     }
+    cout << "NO";
     return 0;
 }

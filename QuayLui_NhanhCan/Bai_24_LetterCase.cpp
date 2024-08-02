@@ -36,19 +36,20 @@ Output 01
 #define endl '\n'
 using namespace std;
 string s;
-void Try(string x, int pos) {
+void Try(string x, int i)
+{
     if(x.size() == s.size())
     {
         cout << x << endl;
         return;
     }
 
-    if(isalpha(s[pos]))
+    if(isalpha(s[i]))
     {
-        Try(x + (char)toupper(s[pos]), pos + 1);
-        Try(x + (char)tolower(s[pos]), pos + 1);
+        Try(x + (char)toupper(s[i]), i + 1);
+        Try(x + (char)tolower(s[i]), i + 1);
     }else {
-        Try(x + s[pos], pos + 1);
+        Try(x + s[i], i + 1);
     }
 }
 int main() {
