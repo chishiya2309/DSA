@@ -41,9 +41,10 @@ void Try(vector<string> v, int pos)
             cout << x << " ";
         }
         cout << endl;
+        return;
     }
 
-    for(int length = 1; pos + length - 1 < N.size(); length++)
+    for(int length = 1; pos + length - 1 < N.size(); length++)\
     {
         string tmp = N.substr(pos, length);
         if(isPalindrome(tmp))
