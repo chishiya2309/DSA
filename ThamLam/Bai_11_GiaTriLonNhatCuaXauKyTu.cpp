@@ -35,8 +35,13 @@ int main() {
     cin >> k;
     string s;
     cin >> s;
+    if(k >= s.size())
+    {
+        cout << 0;
+        return 0;
+    }
     map<char, int> char_count;
-    for(char c : s)
+    for(char c: s)
     {
         char_count[c]++;
     }
@@ -45,11 +50,7 @@ int main() {
     {
         Q.push(it.second);
     }
-    if(k >= s.size())
-    {
-        cout << 0;
-    }else 
-    {
+    
         while(k--)
         {
             int tmp = Q.top();
@@ -57,7 +58,6 @@ int main() {
             tmp--;
             Q.push(tmp);
         }
-
         ll sum = 0;
         while(!Q.empty())
         {
@@ -66,6 +66,6 @@ int main() {
             sum += pow(tmp, 2);
         }
         cout << sum;
+        return 0;
     }
-    return 0;
-}
+    
