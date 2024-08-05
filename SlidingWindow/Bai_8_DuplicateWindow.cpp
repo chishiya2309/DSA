@@ -21,7 +21,7 @@ Input 01
 Output 01
 NO
 */
-
+int d[1000003];
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -36,11 +36,10 @@ int main() {
     {
         cin >> x;
     }
-    map<int, int> mp;
     for(int i = 0; i < k; i++)
     {
-        mp[a[i]]++;
-        if(mp[a[i]] >= 2)
+        d[a[i]]++;
+        if(d[a[i]] >= 2)
         {
             cout << "YES";
             return 0;
@@ -48,9 +47,9 @@ int main() {
     }
     for(int i = k; i < n; i++)
     {
-        mp[a[i]]++;
-        mp[a[i - k]]--;
-        if(mp[a[i]] >= 2)
+        d[a[i - k]]--;
+        d[a[i]]++;
+        if(d[a[i]] >= 2)
         {
             cout << "YES";
             return 0;

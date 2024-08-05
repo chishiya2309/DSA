@@ -42,9 +42,9 @@ int main() {
     int maxDem = dem;
     for(int i = k; i < n; i++)
     {
-        dem += a[i];
         dem -= a[i - k];
-        maxDem = max(maxDem, dem);
+        dem += a[i];
+        maxDem = max(maxDem,dem);
     }
     cout << k - maxDem;
     return 0;
