@@ -35,22 +35,23 @@ int main() {
     cin >> k;
     string s;
     cin >> s;
+
     if(k >= s.size())
     {
         cout << 0;
         return 0;
-    }
-    map<char, int> char_count;
-    for(char c: s)
-    {
-        char_count[c]++;
-    }
-    priority_queue<int> Q;
-    for(auto it : char_count)
-    {
-        Q.push(it.second);
-    }
-    
+    }else {
+        map<char, int> char_count;
+        for(char c : s)
+        {
+            char_count[c]++;
+        }
+        priority_queue<int> Q;
+        for(auto it : char_count)
+        {
+            Q.push(it.second);
+        }
+
         while(k--)
         {
             int tmp = Q.top();
@@ -58,14 +59,15 @@ int main() {
             tmp--;
             Q.push(tmp);
         }
+
         ll sum = 0;
         while(!Q.empty())
         {
-            int tmp = Q.top();
+            ll tmp = Q.top();
             Q.pop();
             sum += pow(tmp, 2);
         }
         cout << sum;
-        return 0;
     }
-    
+    return 0;
+}

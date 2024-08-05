@@ -33,23 +33,26 @@ int main() {
     cin.tie(NULL);
     int n;
     cin >> n;
-    priority_queue<ll> Q;
-    for(int i = 0; i < n; i++)
+    vector<int> a(n);
+    for(int &x : a)
     {
-        int x;
         cin >> x;
-        Q.push(x);
     }
-    ll cost = 0;
+    priority_queue<ll> Q;
+    for(int num : a)
+    {
+        Q.push(num);
+    }
+    ll chiPhi = 0;
     while(Q.size() > 1)
     {
         ll tmp1 = Q.top();
         Q.pop();
         ll tmp2 = Q.top();
         Q.pop();
-        cost = ((cost % MOD) + ((tmp1 % MOD + tmp2 % MOD)) % MOD) % MOD;
+        chiPhi = (chiPhi % MOD + (tmp1 % MOD + tmp2 % MOD) % MOD) % MOD;
         Q.push(tmp1 + tmp2);
     }
-    cout << cost;
+    cout << chiPhi;
     return 0;
 }
