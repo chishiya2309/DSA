@@ -44,7 +44,7 @@ int main() {
     {
         cin >> x;
     }
-    for(int i = 0; i < n / 2; i++)
+    for(int i = 0; i < n /2; i++)
     {
         if(a[i] > a[n - i - 1])
         {
