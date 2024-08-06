@@ -16,9 +16,11 @@ In ra tích lớn nhất của 2 hoặc 3 phần tử trong mảng
 
 Ví dụ :
 Input 01
+Copy
 5
 1 2 4 2 28
 Output 01
+Copy
 224
 */
 
@@ -37,14 +39,9 @@ int main() {
         cin >> x;
     }
     sort(a.begin(), a.end());
-    //Tích của hai phần tử lớn nhất và 2 phần tử nhỏ nhất
-    ll maxProd2 = max((ll)a[0]*a[1], (ll)a[n-1]*a[n-2]);
-
-    //Tích của 2 phần tử âm nhất với một phần tử dương lớn nhất và tích của 3 phần tử dương lớn nhất
-    ll maxProd3 = max((ll)a[0]*a[1]*a[n - 1], (ll)a[n-1]*a[n-2]*a[n - 3]);
-
-    ll res = max(maxProd2, maxProd3);
+    ll tich2 = max((ll)a[0]*a[1], (ll)a[n-1]*a[n-2]);
+    ll tich3 = max((ll)a[0]*a[1]*a[n-1], (ll)a[n-1]*a[n-2]*a[n-3]);
+    ll res = max(tich2, tich3);
     cout << res;
-
     return 0;
 }

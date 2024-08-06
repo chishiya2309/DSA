@@ -38,36 +38,43 @@ Output 01
 #include <bits/stdc++.h>
 
 using namespace std;
-bool used[100003];
-bool cmp(pair<int, pair<int, int>> a, pair<int, pair<int, int>> b)
+struct Job
 {
-    return a.second.second > b.second.second;
+    int id, deadline, profit;
+};
+
+bool cmp(Job a, Job b)
+{
+    return a.profit > b.profit;
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int n;
     cin >> n;
-    vector<pair<int, pair<int, int>>> job(n);
-    for(int i = 0; i < n; i++)
+    vector<Job> jobs(n);
+    for(int i=0; i<n; i++)
     {
-        cin >> job[i].first >> job[i].second.first >> job[i].second.second;
+        cin >> jobs[i].id >> jobs[i].deadline >> jobs[i].profit;
     }
-    sort(job.begin(), job.end(), cmp);
-    int profit = job[0].second.second;
-    used[job[0].second.first - 1] = true;
-    for(int i = 1; i < n; i++)
+    sort(jobs.begin(), jobs.end(), cmp);
+    set<int, greater<int>> slots;
+    for(int i = 1; i <= n; i++)
     {
-        for(int j = job[i].second.first - 1; j >= 0; j--)
+        slots.insert(i);
+    }
+
+    int Profit = 0;
+    for(auto job : jobs)
+    {
+        auto it = slots.lower_bound(job.deadline);
+        if(it != slots.end())
         {
-            if(!used[j])
-            {
-                used[j] = true;
-                profit += job[i].second.second;
-                break;
-            }
+            Profit += job.profit;
+            slots.erase(it);
         }
     }
-    cout << profit;
+    cout << Profit;
     return 0;
 }

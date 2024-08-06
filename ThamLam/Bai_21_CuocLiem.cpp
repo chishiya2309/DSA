@@ -18,32 +18,23 @@ Output 01
 */
 
 #include <bits/stdc++.h>
-#define ll long long
+
 using namespace std;
-bool canExchange(ll a, ll b, ll x)
-{
-    return (2 * x <= a + b) && (x <= a) && (x <= b);
-}
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    ll xu, kimCuong;
-    cin >> xu >> kimCuong;
-
-    ll left = 0, right = (xu + kimCuong) / 3;
-    ll result = 0;
-
-    while(left <= right)
+    int a, b;
+    cin >> a >> b;
+    if(a >= 2 * b)
     {
-        ll mid = (left + right) / 2;
-        if(canExchange(xu, kimCuong, mid))
-        {
-            result = mid;
-            left = mid + 1;
-        }else {
-            right = mid - 1;
-        }
+        cout << b;
+    }else if(b >= 2 * a)
+    {
+        cout << a;
+    }else 
+    {
+        cout << (a + b) / 3;
     }
-    cout << result;
     return 0;
 }

@@ -16,9 +16,11 @@ In ra số lượng xe taxi tối thiểu cần dùng
 
 Ví dụ :
 Input 01
+Copy
 6
 2 1 3 1 2 2
 Output 01
+Copy
 3
 */
 
@@ -31,25 +33,25 @@ int main() {
     cin.tie(NULL);
     int n;
     cin >> n;
-    
-    vector<int> cnt(5, 0);
-    for(int i=0; i<n; i++)
-    {
+    int cnt[5] = {0};
+    for(int i=0; i<n; i++) {
         int x;
         cin >> x;
         cnt[x]++;
     }
-    //Số taxi tối thiểu
-    int soTaxi = cnt[4]; // Cứ 4 học sinh là 1 xe
 
-    soTaxi += cnt[3];//Ghép nhóm 3 học sinh với 1 học sinh
+    int soTaxi = cnt[4];
+
+    //Ghép nhóm 3 người với 1 người
+    soTaxi += cnt[3];
     cnt[1] = max(0, cnt[1] - cnt[3]);
 
-    soTaxi += cnt[2] / 2;   //Ghép nhóm 2 học sinh với nhau
-    if(cnt[2] % 2)
+    //Ghép các nhóm 2 người với nhau
+    soTaxi += (cnt[2] / 2);
+    if(cnt[2] % 2 == 1)
     {
         soTaxi += 1;
-        cnt[1] = max(0, cnt[1] - 2);    //ghép 2 nhóm 1 học sinh nếu có
+        cnt[1] = max(0, cnt[1] - 2);
     }
 
     soTaxi += (cnt[1] + 3) / 4;
