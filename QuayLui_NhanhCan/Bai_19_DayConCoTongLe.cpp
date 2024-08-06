@@ -16,9 +16,11 @@ Giới hạn
 
 Ví dụ :
 Input 01
+Copy
 4
 9 7 9 9
 Output 01
+Copy
 7 
 7 9 9 
 9 
@@ -32,27 +34,25 @@ Output 01
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
-int n, a[20];
-bool used[20];
+int n;
+vector<int> a;
 vector<vector<int>> ans;
-bool checkTongLe(vector<int> tmp)
+bool used[20];
+bool check(vector<int> v)
 {
     int sum = 0;
-    for(int num : tmp)
-    {
-        sum += num;
-    }
+    for(int num : v) sum += num;
     return sum % 2;
 }
 
-void Try(vector<int> v, int pos)
+void Try(vector<int> v, int index)
 {
-    if(v.size() && checkTongLe(v))
+    if(v.size() && check(v))
     {
         ans.push_back(v);
     }
 
-    for(int i = pos + 1; i < n; i++)
+    for(int i = index + 1; i < n; i++)
     {
         if(!used[i])
         {
@@ -68,16 +68,18 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cin >> n;
-    for(int i = 0; i < n; i++)
+    a.resize(n);
+    for(int &x : a)
     {
-        cin >> a[i];
+        cin >> x;
     }
     vector<int> v;
     Try(v, -1);
     if(ans.empty())
     {
         cout << "NOT FOUND";
-    }else {
+    }else 
+    {
         sort(ans.begin(), ans.end());
         for(auto x : ans)
         {
@@ -90,4 +92,3 @@ int main() {
     }
     return 0;
 }
-
