@@ -34,14 +34,15 @@ int main() {
     cin.tie(NULL);
     int n, s, m;
     cin >> n >> s >> m;
-    int nhuCau = s*m;
-    int muaDuoc = (s - s / 7)*n;
+    int nhuCau = s * m;
+    int muaDuoc = (s - s/7)*n;
     if(muaDuoc < nhuCau)
     {
         cout << -1;
-    }else {
+    }else 
+    {
         int soNgay = nhuCau / n;
-        if(nhuCau % n)
+        if(nhuCau % n != 0)
         {
             soNgay++;
         }
