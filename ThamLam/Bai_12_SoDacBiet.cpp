@@ -12,8 +12,10 @@ In ra đáp án của bài toán, nếu không tồn tại đáp án thì in ra 
 
 Ví dụ :
 Input 01
+Copy
 16
 Output 01
+Copy
 4444
 */
 
@@ -26,18 +28,17 @@ int main() {
     cin.tie(NULL);
     int n;
     cin >> n;
-
-    for(int a = 0; a * 4 <= n; a++)
+    for(int x = 0; 4 * x <= n; x++)
     {
-       int tmp = n - a * 4;
+        int tmp = n - 4 * x;
         if(tmp % 7 == 0)
         {
-            int b = tmp / 7;
-            while(a--)
+            int y = tmp / 7;
+            while(x--)
             {
                 cout << 4;
             }
-            while(b--)
+            while(y--)
             {
                 cout << 7;
             }

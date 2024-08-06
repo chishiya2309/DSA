@@ -32,29 +32,28 @@ int main() {
     int n;
     cin >> n;
     vector<int> a(n);
-    int evenCnt = 0, oddCnt = 0;
+    int cntChan = 0, cntLe = 0;
     for(int &x : a)
     {
         cin >> x;
         if(x % 2 == 0)
         {
-            evenCnt++;
-        }else {
-            oddCnt++;
+            cntChan++;
+        }else 
+        {
+            cntLe++;
         }
     }
-
-    //Số phần tử chẵn và lẻ đều chẵn thì có thể ghép cặp
-    if(evenCnt % 2 == 0 && oddCnt % 2 == 0)
+    if(cntChan % 2 == 0 && cntLe % 2 == 0)
     {
         cout << "YES";
         return 0;
     }
-
+    
     sort(a.begin(), a.end());
-    for(int i = 1; i < a.size(); i++)
+    for(int i = 1; i < n; i++)
     {
-        if(a[i] - a[i-1] == 1)
+        if(a[i] - a[i - 1] == 1)
         {
             cout << "YES";
             return 0;

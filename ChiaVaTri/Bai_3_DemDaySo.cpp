@@ -31,7 +31,6 @@ ll powMod(ll a, ll b)
     {
         return 1;
     }
-
     ll tmp = powMod(a, b / 2);
     if(b % 2 == 0)
     {
