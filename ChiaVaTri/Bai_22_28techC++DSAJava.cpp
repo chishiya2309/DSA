@@ -26,7 +26,6 @@ In ra kết quả của mỗi test trên từng dòng
 
 Ví dụ :
 Input 01
-Copy
 10
 3 2
 6 2
@@ -39,7 +38,6 @@ Copy
 7 18
 8 14
 Output 01
-Copy
 JAVA
 JAVA
 JAVA
@@ -56,24 +54,29 @@ C++
 #define ll long long
 #define endl '\n'
 using namespace std;
+
 ll F[100];
+
 string find(ll n, ll k)
 {
     if(n == 1)
     {
         return "28tech";
     }
+
     if(n == 2)
     {
         return "C++";
     }
+
     if(n == 3)
     {
         if(k == 1)
         {
             return "DSA";
         }
-        if(k == 2) 
+
+        if(k == 2)
         {
             return "JAVA";
         }
@@ -83,32 +86,31 @@ string find(ll n, ll k)
     {
         return find(n - 3, k);
     }
-    if(k <= F[n-3] + F[n - 2])
+    
+    if(k <= F[n - 3] + F[n - 2])
     {
         return find(n - 2, k - F[n - 3]);
     }
-        
-    return find(n - 1, k - F[n-3] - F[n-2]);
-    
+    return find(n - 1, k - F[n - 3] - F[n - 2]);
 }
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    F[0] = 0;
+    
     F[1] = F[2] = 1;
     F[3] = 2;
     for(int i = 4; i <= 60; i++)
     {
         F[i] = F[i - 3] + F[i - 2] + F[i - 1];
     }
+
     int t;
     cin >> t;
     while(t--)
     {
         ll n, k;
         cin >> n >> k;
-        string res = find(n, k);
-        cout << res << endl;
+        cout << find(n, k) << endl;
     }
     return 0;
 }
