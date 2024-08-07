@@ -12,26 +12,26 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
+Copy
 58
 Output 01
+Copy
 286725742
 */
 
 #include <bits/stdc++.h>
 #define ll long long
 using namespace std;
+
 const int MOD = 1e9 + 7;
-
-ll F[100];
-
 struct matran
 {
     ll a[2][2];
-    //Nạp chồng toán tử nhân cho cấu trúc ma trận
+
     friend matran operator * (matran x, matran y)
     {
         matran tich;
-        for(int i = 0; i < 2; i++)
+        for(int i = 0;i < 2; i++)
         {
             for(int j = 0; j < 2; j++)
             {
@@ -58,20 +58,24 @@ matran binpow(matran a, ll n)
     if(n % 2 == 0)
     {
         return tmp * tmp;
-    }else {
+    }else 
+    {
         return tmp * tmp * a;
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    ll n;
+    cin >> n;
+
     matran x;
     x.a[0][0] = 1;
     x.a[0][1] = 1;
     x.a[1][0] = 1;
     x.a[1][1] = 0;
-    ll n;
-    cin >> n;
+
     matran res = binpow(x, n);
     cout << res.a[0][1];
     return 0;
