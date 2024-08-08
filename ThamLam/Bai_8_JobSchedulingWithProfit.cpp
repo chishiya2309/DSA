@@ -40,41 +40,45 @@ Output 01
 using namespace std;
 struct Job
 {
-    int id, deadline, profit;
+    int JobID, Deadline, Profit;
 };
 
 bool cmp(Job a, Job b)
 {
-    return a.profit > b.profit;
+    return a.Profit > b.Profit;
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int n;
     cin >> n;
-    vector<Job> jobs(n);
-    for(int i=0; i<n; i++)
+
+    vector<Job> Jobs(n);
+    for(int i = 0; i < n; i++)
     {
-        cin >> jobs[i].id >> jobs[i].deadline >> jobs[i].profit;
+        cin >> Jobs[i].JobID >> Jobs[i].Deadline >> Jobs[i].Profit;
     }
-    sort(jobs.begin(), jobs.end(), cmp);
-    set<int, greater<int>> slots;
+    sort(Jobs.begin(), Jobs.end(), cmp);
+
+    set<int, greater<int>> Slots;
     for(int i = 1; i <= n; i++)
     {
-        slots.insert(i);
+        Slots.insert(i);
     }
 
-    int Profit = 0;
-    for(auto job : jobs)
+    int chiPhi = 0;
+    for(auto job : Jobs)
     {
-        auto it = slots.lower_bound(job.deadline);
-        if(it != slots.end())
+        auto it = Slots.lower_bound(job.Deadline);
+        if(it != Slots.end())
         {
-            Profit += job.profit;
-            slots.erase(it);
+            chiPhi += job.Profit;
+            Slots.erase(it);
         }
     }
-    cout << Profit;
+
+    cout << chiPhi;
     return 0;
 }

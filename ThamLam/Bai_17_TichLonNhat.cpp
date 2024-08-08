@@ -16,11 +16,9 @@ In ra tích lớn nhất của 2 hoặc 3 phần tử trong mảng
 
 Ví dụ :
 Input 01
-Copy
 5
 1 2 4 2 28
 Output 01
-Copy
 224
 */
 
@@ -39,9 +37,9 @@ int main() {
         cin >> x;
     }
     sort(a.begin(), a.end());
-    ll tich2 = max((ll)a[0]*a[1], (ll)a[n-1]*a[n-2]);
-    ll tich3 = max((ll)a[0]*a[1]*a[n-1], (ll)a[n-1]*a[n-2]*a[n-3]);
-    ll res = max(tich2, tich3);
+    ll max2 = max(1LL*a[0]*a[1], 1LL*a[n-1]*a[n-2]);
+    ll max3 = max(1LL*a[0]*a[1]*a[n-1], 1LL*a[n - 1]*a[n - 2]*a[n - 3]);
+    ll res = max(max2, max3);
     cout << res;
     return 0;
 }

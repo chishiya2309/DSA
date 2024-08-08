@@ -14,9 +14,11 @@ In ra số cây phi lao ít nhất cần di chuyển hoặc in ra -1 nếu khôn
 
 Ví dụ :
 Input 01
+Copy
 11 3
 0 0 0 0 1 0 1 0 0 0 1
 Output 01
+Copy
 1
 */
 
@@ -27,25 +29,30 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int n, k;
     cin >> n >> k;
+
     vector<int> a(n);
     for(int &x : a)
     {
         cin >> x;
     }
+
     int dem = 0;
     for(int i = 0; i < k; i++)
     {
         dem += a[i];
-    }
-    int maxDem = dem;
+    } 
+
+    int res = dem;
     for(int i = k; i < n; i++)
     {
         dem -= a[i - k];
         dem += a[i];
-        maxDem = max(maxDem,dem);
+        res = max(res, dem);
     }
-    cout << k - maxDem;
+
+    cout << k - res;
     return 0;
 }

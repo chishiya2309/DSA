@@ -16,29 +16,34 @@ In ra số lượng mảng con thỏa mãn đề bài
 
 Ví dụ :
 Input 01
+Copy
 10 1
 2 3 1 3 1 4 1 3 1 2
 Output 01
+Copy
 12
 */
 
 #include <bits/stdc++.h>
-#define ll long long 
+#define ll long long
 using namespace std;
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int n, k;
     cin >> n >> k;
+
     vector<int> a(n);
     for(int &x : a)
     {
         cin >> x;
     }
-    multiset<int> se;
+
     int left = 0;
     ll soMangCon = 0;
+    multiset<int> se;
     for(int right = 0; right < n; right++)
     {
         se.insert(a[right]);
@@ -50,6 +55,7 @@ int main() {
         }
         soMangCon += right - left + 1;
     }
+    
     cout << soMangCon;
     return 0;
 }

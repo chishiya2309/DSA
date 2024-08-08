@@ -20,8 +20,10 @@ In ra số ngày ít nhất cần mua lương thực, nếu không thể mua đ�
 
 Ví dụ :
 Input 01
+Copy
 7 5 7
 Output 01
+Copy
 5
 */
 
@@ -35,12 +37,11 @@ int main() {
     int n, s, m;
     cin >> n >> s >> m;
     int nhuCau = s * m;
-    int muaDuoc = (s - s/7)*n;
+    int muaDuoc = (s - s / 7) * n;
     if(muaDuoc < nhuCau)
     {
         cout << -1;
-    }else 
-    {
+    }else {
         int soNgay = nhuCau / n;
         if(nhuCau % n != 0)
         {

@@ -12,8 +12,10 @@ In ra số thao tác tối thiểu cần thực hiện
 
 Ví dụ :
 Input 01
+Copy
 )))((((())
 Output 01
+Copy
 3
 */
 
@@ -26,8 +28,7 @@ int main() {
     cin.tie(NULL);
     string s;
     cin >> s;
-    int soThaoTac = 0;
-    int dem = 0;
+    int thaoTac = 0, dem = 0;
     for(char c : s)
     {
         if(c == '(')
@@ -36,12 +37,13 @@ int main() {
         }else {
             dem--;
         }
+
         if(dem < 0)
         {
-            soThaoTac++;
+            thaoTac++;
             dem = 0;
         }
     }
-    cout << soThaoTac;
+    cout << thaoTac;
     return 0;
 }
