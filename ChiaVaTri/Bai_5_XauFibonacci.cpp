@@ -24,8 +24,10 @@ In ra đáp án tìm được
 
 Ví dụ :
 Input 01
+Copy
 5 3
 Output 01
+Copy
 B
 */
 
@@ -33,36 +35,41 @@ B
 #define ll long long
 using namespace std;
 ll F[100];
+
 char find(ll n, ll k)
 {
     if(n == 1)
     {
         return 'A';
     }
+
     if(n == 2)
     {
         return 'B';
     }
-    if(k <= F[n-2])
+
+    if(k <= F[n - 2])
     {
-        find(n - 2, k);
+        return find(n - 2, k);
     }else 
     {
-        find(n - 1, k - F[n - 2]);
+        return find(n - 1, k - F[n - 2]);
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    F[0] = 0;
-    F[1] = 1;
-    for(int i = 2; i <= 92; i++)
-    {
-        F[i] = F[i-1] + F[i - 2];
-    }
     ll n, k;
     cin >> n >> k;
-    char res = find(n, k);
-    cout << res;
+
+    F[0] = 0;
+    F[1] = F[2] = 1;
+    for(int i = 3; i <= 92; i++)
+    {
+        F[i] = F[i - 1] + F[i - 2];
+    }
+
+    cout << find(n, k);
     return 0;
 }

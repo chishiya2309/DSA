@@ -16,9 +16,11 @@ In ra YES nếu có thể chia thành các cặp tương tự, ngược lại in
 
 Ví dụ :
 Input 01
+Copy
 6
 78 17 17 42 11 43
 Output 01
+Copy
 YES
 */
 
@@ -31,6 +33,7 @@ int main() {
     cin.tie(NULL);
     int n;
     cin >> n;
+
     vector<int> a(n);
     int cntChan = 0, cntLe = 0;
     for(int &x : a)
@@ -44,12 +47,13 @@ int main() {
             cntLe++;
         }
     }
+
     if(cntChan % 2 == 0 && cntLe % 2 == 0)
     {
         cout << "YES";
         return 0;
     }
-    
+
     sort(a.begin(), a.end());
     for(int i = 1; i < n; i++)
     {
@@ -59,6 +63,7 @@ int main() {
             return 0;
         }
     }
+
     cout << "NO";
     return 0;
 }
