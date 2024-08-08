@@ -16,9 +16,11 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
+Copy
 5
 -3 6 1 -3 6
 Output 01
+Copy
 10
 */
 
@@ -29,6 +31,7 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int n;
     cin >> n;
 
@@ -38,22 +41,22 @@ int main() {
         cin >> x;
     }
 
-    ll maxSumHere = 0, maxSoFar = INT_MIN;
+    ll max_sum_here = 0, max_so_far = INT_MIN;
     for(int num : a)
     {
-        maxSumHere += num;
+        max_sum_here += num;
 
-        if(maxSumHere > maxSoFar)
+        if(max_sum_here > max_so_far)
         {
-            maxSoFar = maxSumHere;
+            max_so_far = max_sum_here;
         }
 
-        if(maxSumHere < 0)
+        if(max_sum_here < 0)
         {
-            maxSumHere = 0;
+            max_sum_here = 0;
         }
     }
 
-    cout << maxSoFar;
+    cout << max_so_far;
     return 0;
 }
