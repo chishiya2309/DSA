@@ -18,9 +18,11 @@ In ra đáp án nhỏ nhất tìm được
 
 Ví dụ :
 Input 01
+Copy
 2
 aabbb
 Output 01
+Copy
 5
 */
 
@@ -31,6 +33,7 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int k;
     cin >> k;
     string s;
@@ -39,13 +42,14 @@ int main() {
     if(k >= s.size())
     {
         cout << 0;
-        return 0;
-    }else {
+    }else
+    {
         map<char, int> char_count;
         for(char c : s)
         {
             char_count[c]++;
         }
+
         priority_queue<int> Q;
         for(auto it : char_count)
         {
@@ -60,14 +64,14 @@ int main() {
             Q.push(tmp);
         }
 
-        ll sum = 0;
+        ll ans = 0;
         while(!Q.empty())
         {
-            ll tmp = Q.top();
+            int tmp = Q.top();
             Q.pop();
-            sum += pow(tmp, 2);
+            ans += 1LL*pow(tmp, 2);
         }
-        cout << sum;
+        cout << ans;
     }
     return 0;
 }
