@@ -18,31 +18,35 @@ Các sợi dây có độ dài không quá 10^9
 
 Ví dụ :
 Input 01
+Copy
 3
 5 6 1
 Output 01
+Copy
 23
 */
 
 #include <bits/stdc++.h>
 #define ll long long
 using namespace std;
+
 const int MOD = 1e9 + 7;
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int n;
     cin >> n;
-    vector<int> a(n);
-    for(int &x : a)
-    {
-        cin >> x;
-    }
+
     priority_queue<ll> Q;
-    for(int num : a)
+    for(int i = 0; i < n; i++)
     {
-        Q.push(num);
+        int x;
+        cin >> x;
+        Q.push(x);
     }
+
     ll chiPhi = 0;
     while(Q.size() > 1)
     {
@@ -50,9 +54,10 @@ int main() {
         Q.pop();
         ll tmp2 = Q.top();
         Q.pop();
-        chiPhi = (chiPhi % MOD + (tmp1 % MOD + tmp2 % MOD) % MOD) % MOD;
+        chiPhi = ((chiPhi % MOD) + (tmp1 % MOD + tmp2 % MOD) % MOD) % MOD;
         Q.push(tmp1 + tmp2);
     }
+
     cout << chiPhi;
     return 0;
 }
