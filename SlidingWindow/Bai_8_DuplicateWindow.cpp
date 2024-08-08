@@ -16,45 +16,54 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
+Copy
 5 5
 9 10 7 8 4
 Output 01
+Copy
 NO
 */
-int d[1000003];
+
 #include <bits/stdc++.h>
 
 using namespace std;
 
+int d[1000003];
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int n, k;
     cin >> n >> k;
+
     vector<int> a(n);
     for(int &x : a)
     {
         cin >> x;
     }
+
     for(int i = 0; i < k; i++)
     {
         d[a[i]]++;
-        if(d[a[i]] >= 2)
+        if(d[a[i]] == 2)
         {
             cout << "YES";
             return 0;
         }
     }
+
     for(int i = k; i < n; i++)
     {
         d[a[i - k]]--;
         d[a[i]]++;
-        if(d[a[i]] >= 2)
+        if(d[a[i]] == 2)
         {
             cout << "YES";
             return 0;
         }
     }
+
     cout << "NO";
     return 0;
 }
