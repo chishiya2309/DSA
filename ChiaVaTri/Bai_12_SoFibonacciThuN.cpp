@@ -12,10 +12,8 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
-Copy
 58
 Output 01
-Copy
 286725742
 */
 
@@ -24,6 +22,7 @@ Copy
 using namespace std;
 
 const int MOD = 1e9 + 7;
+
 struct matran
 {
     ll a[2][2];
@@ -31,7 +30,7 @@ struct matran
     friend matran operator * (matran x, matran y)
     {
         matran tich;
-        for(int i = 0;i < 2; i++)
+        for(int i = 0; i < 2; i++)
         {
             for(int j = 0; j < 2; j++)
             {
@@ -47,36 +46,37 @@ struct matran
     }
 };
 
-matran binpow(matran a, ll n)
+matran binpow(matran x, ll n)
 {
     if(n == 1)
     {
-        return a;
+        return x;
     }
 
-    matran tmp = binpow(a, n / 2);
+    matran tmp = binpow(x, n / 2);
     if(n % 2 == 0)
     {
         return tmp * tmp;
-    }else 
-    {
-        return tmp * tmp * a;
+    }else {
+        return tmp * tmp * x;
     }
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    ll n;
-    cin >> n;
-
+    
     matran x;
     x.a[0][0] = 1;
     x.a[0][1] = 1;
     x.a[1][0] = 1;
     x.a[1][1] = 0;
 
+    ll n;
+    cin >> n;
+
     matran res = binpow(x, n);
     cout << res.a[0][1];
+
     return 0;
 }
