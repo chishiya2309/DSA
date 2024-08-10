@@ -26,19 +26,17 @@ In ra lợi nhuận lớn nhất
 
 Ví dụ :
 Input 01
-Copy
 4
 1 4 20
 2 1 10
 3 1 40
 4 1 30
 Output 01
-Copy
 60
 */
 
 #include <bits/stdc++.h>
-#define ll long long
+
 using namespace std;
 
 struct Job
@@ -65,7 +63,7 @@ int main() {
     }
     sort(Jobs.begin(), Jobs.end(), cmp);
 
-    set<int, greater<int>>Slots;
+    set<int, greater<int>> Slots;
     for(int i = 1; i <= n; i++)
     {
         Slots.insert(i);
@@ -83,5 +81,6 @@ int main() {
     }
 
     cout << chiPhi;
+
     return 0;
 }
