@@ -18,16 +18,15 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
-Copy
 3 2
 Output 01
-Copy
 2
 */
 
 #include <bits/stdc++.h>
 #define ll long long
 using namespace std;
+
 ll find(ll n, ll k)
 {
     if(k == 1LL*pow(2, n - 1))
@@ -38,17 +37,20 @@ ll find(ll n, ll k)
     if(k < 1LL*pow(2, n - 1))
     {
         return find(n - 1, k);
-    }else 
-    {
+    }else {
         return find(n - 1, k - 1LL*pow(2, n - 1));
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     ll n, k;
     cin >> n >> k;
 
-    cout << find(n, k);
+    ll res = find(n, k);
+    cout << res;
+    
     return 0;
 }

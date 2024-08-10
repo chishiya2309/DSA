@@ -12,10 +12,8 @@ In ra số thao tác tối thiểu cần thực hiện
 
 Ví dụ :
 Input 01
-Copy
 )))((((())
 Output 01
-Copy
 3
 */
 
@@ -26,9 +24,11 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     string s;
     cin >> s;
-    int thaoTac = 0, dem = 0;
+
+    int dem = 0, soThaoTac = 0;
     for(char c : s)
     {
         if(c == '(')
@@ -40,10 +40,11 @@ int main() {
 
         if(dem < 0)
         {
-            thaoTac++;
+            soThaoTac++;
             dem = 0;
         }
     }
-    cout << thaoTac;
+
+    cout << soThaoTac;
     return 0;
 }
