@@ -20,11 +20,9 @@ In ra số lượng ngũ cốc mà sóc đã mất làm chi phí di chuyển
 
 Ví dụ :
 Input 01
-Copy
 5 3
 5 1 1 4 7
 Output 01
-Copy
 4
 */
 
@@ -32,7 +30,7 @@ Copy
 #define ll long long
 using namespace std;
 
-ll F[1000003];
+ll dp[1000003];
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -42,24 +40,22 @@ int main() {
     cin >> n >> k;
 
     vector<int> a(n + 1);
-    for(int i = 1; i <= n; i++)
-    {
+    for(int i = 1; i <= n; i++) {
         cin >> a[i];
     }
 
-    F[1] = 0;
-    for(int i = 2; i <= n; i++)
-    {
-        F[i] = INT_MAX;
+    dp[1] = 0;
+    for(int i = 2; i <= n; i++) {
+        dp[i] = LLONG_MAX;
         for(int j = 1; j <= k; j++)
         {
             if(i - j >= 1)
             {
-                F[i] = min(F[i], F[i - j] + abs(a[i] - a[i - j]));
+                dp[i] = min(dp[i], dp[i - j] + abs(a[i] - a[i - j]));
             }
         }
     }
 
-    cout << F[n];
+    cout << dp[n];
     return 0;
 }
