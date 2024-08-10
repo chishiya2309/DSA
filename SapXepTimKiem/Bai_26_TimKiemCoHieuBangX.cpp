@@ -16,9 +16,11 @@ In ra 1 nếu tìm thấy một cặp số có hiệu bằng X, ngược lại i
 
 Ví dụ :
 Input 01
+Copy
 5 3
 1 1 2 3 5
 Output 01
+Copy
 1
 */
 
@@ -29,22 +31,28 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int n, x;
     cin >> n >> x;
-    int a[n];
-    for(int i = 0; i < n; i++)
+
+    vector<int> a(n);
+    set<int> se;
+    for(int &x : a)
     {
-        cin >> a[i];
+        cin >> x;
+        se.insert(x);
     }
-    set<int> se(a, a + n);
+
     for(int i = 0; i < n; i++)
     {
-        if(se.find(a[i] + x) != se.end())
+        if(se.find(a[i] + x) != se.end() || se.find(a[i] - x) != se.end())
         {
             cout << 1;
             return 0;
-        }
+        } 
     }
+
     cout << -1;
+    
     return 0;
 }
