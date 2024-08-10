@@ -14,6 +14,7 @@ In ra kết quả của bài toán sau khi chia dư cho 1e9 + 7.
 
 Ví dụ :
 Input 01
+Copy
 5 5
 * * * * * 
 x * * * x 
@@ -21,6 +22,7 @@ x * x * *
 x * * * * 
 * x * x *
 Output 01
+Copy
 7
 */
 
@@ -30,6 +32,7 @@ using namespace std;
 
 ll dp[1003][1003];
 const int MOD = 1e9 + 7;
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -50,6 +53,7 @@ int main() {
     {
         dp[0][0] = 1;
     }
+
     for(int i = 0; i < n; i++)
     {
         for(int j = 0; j < m; j++)
@@ -72,5 +76,6 @@ int main() {
     }
 
     cout << dp[n - 1][m - 1];
+
     return 0;
 }

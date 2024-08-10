@@ -18,10 +18,12 @@ In ra ma trận đáp án
 
 Ví dụ :
 Input 01
+Copy
 2 3
 712 141 
 55 619
 Output 01
+Copy
 376787593 188740908 
 73622340 252298909
 */
@@ -31,8 +33,9 @@ Output 01
 #define endl '\n'
 using namespace std;
 
-int n, k;
+int n;
 const int MOD = 1e9 + 7;
+
 struct matran
 {
     ll a[11][11];
@@ -67,7 +70,7 @@ matran binpow(matran x, int k)
     if(k % 2 == 0)
     {
         return tmp * tmp;
-    }else
+    }else 
     {
         return tmp * tmp * x;
     }
@@ -76,7 +79,10 @@ matran binpow(matran x, int k)
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    cin >> n >> k;
+    
+    cin >> n;
+    int k;
+    cin >> k;
 
     matran x;
     for(int i = 0; i < n; i++)
@@ -96,5 +102,6 @@ int main() {
         }
         cout << endl;
     }
+
     return 0;
 }

@@ -16,35 +16,44 @@ In ra đáp án của bài toán sau khi chia dư với 10^9 + 7
 
 Ví dụ :
 Input 01
+Copy
 4
 Output 01
+Copy
 8
 */
 
 #include <bits/stdc++.h>
 #define ll long long
 using namespace std;
+
 const int MOD = 1e9 + 7;
-ll powMod(ll a, ll b)
+
+ll binpow(ll a, ll n)
 {
-    if(b == 0)
+    if(n == 1)
     {
-        return 1;
+        return a;
     }
-    ll tmp = powMod(a, b / 2);
-    if(b % 2 == 0)
+
+    ll tmp = binpow(a, n / 2);
+    if(n % 2 == 0)
     {
         return ((tmp % MOD) * (tmp % MOD)) % MOD;
-    }else {
+    }else 
+    {
         return ((tmp % MOD) * (tmp % MOD)) % MOD * a % MOD;
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     ll n;
     cin >> n;
-    ll res = powMod(2, n - 1);
+
+    ll res = binpow(2, n - 1);
     cout << res;
     return 0;
 }
