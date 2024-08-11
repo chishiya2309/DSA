@@ -12,8 +12,10 @@ In ra số thao tác tối thiểu cần thực hiện
 
 Ví dụ :
 Input 01
+Copy
 )))((((())
 Output 01
+Copy
 3
 */
 
@@ -46,5 +48,6 @@ int main() {
     }
 
     cout << soThaoTac;
+
     return 0;
 }
