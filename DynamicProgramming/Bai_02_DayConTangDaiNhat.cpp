@@ -16,9 +16,11 @@ In ra độ dài của dãy con tăng dài nhất
 
 Ví dụ :
 Input 01
+Copy
 10
 1 1 3 4 2 4 5 5 1 2
 Output 01
+Copy
 4
 */
 
@@ -32,6 +34,7 @@ int main() {
     
     int n;
     cin >> n;
+
     vector<int> a(n);
     for(int &x : a)
     {
@@ -49,7 +52,8 @@ int main() {
             }
         }
     }
-
+    
     cout << *max_element(dp.begin(), dp.end());
+    
     return 0;
 }
