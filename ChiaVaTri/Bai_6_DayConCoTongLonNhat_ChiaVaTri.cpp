@@ -16,11 +16,9 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
-Copy
 5
 -3 6 1 -3 6
 Output 01
-Copy
 10
 */
 
@@ -28,37 +26,37 @@ Copy
 #define ll long long
 using namespace std;
 
-ll crossing_sum(int a[], int l, int mid, int r)
+ll crossing_sum(int a[], int left, int mid, int right)
 {
-    ll sum_right = 0, max_sum_right = 0;
-    for(int i = mid + 1; i <= r; i++)
-    {  
-        sum_right += a[i];
-        max_sum_right = max(max_sum_right, sum_right);
-    }
-
     ll sum_left = 0, max_sum_left = 0;
-    for(int i = mid; i >= l; i--)
+    for(int i = mid; i >= left; i--)
     {
         sum_left += a[i];
         max_sum_left = max(max_sum_left, sum_left);
     }
 
+    ll sum_right = 0, max_sum_right = 0;
+    for(int i = mid + 1; i <= right; i++)
+    {
+        sum_right += a[i];
+        max_sum_right = max(max_sum_right, sum_right);
+    }
+
     return max_sum_left + max_sum_right;
 }
 
-ll find(int a[], int l, int r)
+ll find(int a[], int left, int right)
 {
-    if(l == r)
+    if(left == right)
     {
-        return a[l];
+        return a[left];
     }
 
-    int mid = (l + r) / 2;
+    int mid = (left + right) / 2;    
     return max({
-        find(a, l, mid),
-        find(a, mid + 1, r),
-        crossing_sum(a, l, mid, r)
+        find(a, left, mid),
+        find(a, mid + 1, right),
+        crossing_sum(a, left, mid, right)
     });
 }
 
@@ -77,5 +75,6 @@ int main() {
 
     ll res = find(a, 0, n - 1);
     cout << res;
+
     return 0;
 }
