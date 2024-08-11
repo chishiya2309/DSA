@@ -16,6 +16,7 @@ Giới hạn
 
 Ví dụ :
 Input 01
+Copy
 5
 11
 6
@@ -23,6 +24,7 @@ Input 01
 10
 13
 Output 01
+Copy
 39916800
 720
 40320
@@ -35,12 +37,12 @@ Output 01
 #define endl '\n'
 using namespace std;
 
-const int MOD = 1e9 + 7;
 ll dp[1000003];
+const int MOD = 1e9 + 7;
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
     
     dp[0] = 1;
     for(int i = 1; i <= 1000000; i++)
