@@ -22,11 +22,9 @@ In ra YES nếu có thể tạo mảng tăng dần hoặc NO trong trường h�
 
 Ví dụ :
 Input 01
-Copy
 7
 1 6 5 4 3 2 7
 Output 01
-Copy
 YES
 Giải thích :
 Lật ngược đoạn [6, 5, 4, 3, 2] ta được mảng A[] = [1, 2, 3, 4, 5, 6, 7]
@@ -39,20 +37,24 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int n;
     cin >> n;
+
     vector<int> a(n);
     for(int &x : a)
     {
         cin >> x;
     }
+
     for(int i = 0; i < n / 2; i++)
     {
-        if(a[i] > a[n - 1 - i])
+        if(a[i] > a[n - i - 1])
         {
-            swap(a[i], a[n - 1 - i]);
+            swap(a[i], a[n - i - 1]);
         }
     }
+
     for(int i = 1; i < n; i++)
     {
         if(a[i] <= a[i - 1])

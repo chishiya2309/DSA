@@ -16,11 +16,9 @@ In ra YES nếu có thể chia thành các cặp tương tự, ngược lại in
 
 Ví dụ :
 Input 01
-Copy
 6
 78 17 17 42 11 43
 Output 01
-Copy
 YES
 */
 
@@ -31,18 +29,23 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int n;
     cin >> n;
 
     vector<int> a(n);
-    int cntChan = 0, cntLe = 0;
     for(int &x : a)
     {
         cin >> x;
-        if(x % 2 == 0)
+    }
+
+    int cntChan = 0, cntLe = 0;
+    for(int num : a)
+    {
+        if(num % 2 == 0)
         {
             cntChan++;
-        }else 
+        }else
         {
             cntLe++;
         }
@@ -65,5 +68,6 @@ int main() {
     }
 
     cout << "NO";
+    
     return 0;
 }

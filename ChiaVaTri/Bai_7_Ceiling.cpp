@@ -28,19 +28,27 @@ Copy
 
 using namespace std;
 
-int last_pos(int a[], int l, int r, int x)
+int find(int a[], int l, int r, int X)
 {
-    if(l > r) return -1;
-    int mid = (l + r) / 2;
-    if(a[mid] <= x)
+    if(l > r)
     {
-        int tmp = last_pos(a, mid + 1, r, x);
-        if(tmp != -1) return tmp;
+        return -1;
+    }
+
+    int mid = (l + r) / 2;
+    if(a[mid] <= X)
+    {
+        int tmp = find(a, mid + 1, r, X);
+        if(tmp != -1)
+        {
+            return tmp;
+        }
         return mid;
     }
 
-    return last_pos(a, l, mid - 1, x);
+    return find(a, l, mid - 1, X);
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -54,12 +62,14 @@ int main() {
         cin >> x;
     }
 
-    int res = last_pos(a, 0, n - 1, x);
-    if(res != -1)
+    int res = find(a, 0, n - 1, x);
+    if(res == -1)
+    {
+        cout << -1;
+    }else 
     {
         cout << a[res];
-    }else {
-        cout << -1;
     }
+
     return 0;
 }
