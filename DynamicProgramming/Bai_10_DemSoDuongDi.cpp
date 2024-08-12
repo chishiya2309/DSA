@@ -14,7 +14,6 @@ In ra kết quả của bài toán sau khi chia dư cho 1e9 + 7.
 
 Ví dụ :
 Input 01
-Copy
 5 5
 * * * * * 
 x * * * x 
@@ -22,7 +21,6 @@ x * x * *
 x * * * * 
 * x * x *
 Output 01
-Copy
 7
 */
 
@@ -62,15 +60,17 @@ int main() {
             {
                 continue;
             }
-
+            
             if(i > 0)
             {
-                dp[i][j] = (dp[i][j] + dp[i - 1][j]) % MOD;
+                dp[i][j] += dp[i - 1][j];
+                dp[i][j] %= MOD;
             }
 
             if(j > 0)
             {
-                dp[i][j] = (dp[i][j] + dp[i][j - 1]) % MOD;
+                dp[i][j] += dp[i][j - 1];
+                dp[i][j] %= MOD;
             }
         }
     }

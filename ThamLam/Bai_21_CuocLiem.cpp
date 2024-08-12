@@ -12,10 +12,8 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
-Copy
 6 8
 Output 01
-Copy
 4
 */
 
@@ -26,17 +24,20 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int a, b;
     cin >> a >> b;
 
-    if(a >= 2*b)
+    if(a >= 2 * b)
     {
         cout << b;
     }else if(b >= 2 * a)
     {
         cout << a;
-    }else {
+    }else
+    {
         cout << (a + b) / 3;
     }
+
     return 0;
 }

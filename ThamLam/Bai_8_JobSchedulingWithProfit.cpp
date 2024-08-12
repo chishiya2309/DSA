@@ -26,12 +26,14 @@ In ra lợi nhuận lớn nhất
 
 Ví dụ :
 Input 01
+Copy
 4
 1 4 20
 2 1 10
 3 1 40
 4 1 30
 Output 01
+Copy
 60
 */
 

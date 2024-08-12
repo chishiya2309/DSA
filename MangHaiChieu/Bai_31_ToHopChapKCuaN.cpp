@@ -16,6 +16,7 @@ In ra kết quả của mỗi test trên 1 dòng
 
 Ví dụ :
 Input 01
+Copy
 5
 9 0
 13 8
@@ -23,6 +24,7 @@ Input 01
 9 9
 7 6
 Output 01
+Copy
 1
 1287
 11440
@@ -36,6 +38,7 @@ Output 01
 using namespace std;
 
 ll nCk[1003][1003];
+
 const int MOD = 1e9 + 7;
 
 int main() {
@@ -53,7 +56,7 @@ int main() {
             {
                 nCk[n][k] = nCk[n - 1][k - 1] + nCk[n - 1][k];
                 nCk[n][k] %= MOD;
-            } 
+            }
         }
     }
 

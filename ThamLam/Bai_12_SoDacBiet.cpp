@@ -12,8 +12,10 @@ In ra đáp án của bài toán, nếu không tồn tại đáp án thì in ra 
 
 Ví dụ :
 Input 01
+Copy
 16
 Output 01
+Copy
 4444
 */
 
@@ -24,8 +26,10 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int n;
     cin >> n;
+
     for(int a = 0; 4 * a <= n; a++)
     {
         int tmp = n - 4 * a;
@@ -43,6 +47,8 @@ int main() {
             return 0;
         }
     }
+
     cout << -1;
+
     return 0;
 }

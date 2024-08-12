@@ -1,5 +1,5 @@
 /*
-Đề bài rất đơn giản, bạn hãy tính N! chia dư cho (10^9 + 7).
+Cho số nguyên dương N, hãy đếm xem trong đoạn từ 0 tới N có bao nhiêu số nguyên tố.
 
 Đầu vào
 Dòng 1 là số bộ test T
@@ -18,41 +18,57 @@ Ví dụ :
 Input 01
 Copy
 5
-11
+39
+68
+26
+87
 6
-8
-10
-13
 Output 01
 Copy
-39916800
-720
-40320
-3628800
-227020758
+12
+19
+9
+23
+3
 */
 
 #include <bits/stdc++.h>
-#define ll long long
 #define endl '\n'
 using namespace std;
 
-ll dp[1000003];
-const int MOD = 1e9 + 7;
+int dp[1000003];
+bool check(int n)
+{
+    for(int i = 2; i <= sqrt(n); i++)
+    {
+        if(n % i == 0)
+        {
+            return false;
+        }
+    }
+    return n > 1;
+}
+
+
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    dp[0] = 1;
-    for(int i = 1; i <= 1000000; i++)
+    dp[0] = dp[1] = 0;
+    for(int i = 2; i <= 1000000; i++)
     {
-        dp[i] = dp[i - 1] * i;
-        dp[i] %= MOD;
+        if(check(i))
+        {
+            dp[i] = dp[i - 1] + 1;
+        }else {
+            dp[i] = dp[i - 1];
+        }
     }
 
     int t;
     cin >> t;
+
     while(t--)
     {
         int n;
