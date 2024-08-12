@@ -14,11 +14,9 @@ In ra chiều dài của mảnh dây dài nhất mà bạn có thể cắt với
 
 Ví dụ :
 Input 01
-Copy
 4 11
 802 743 457 539
 Output 01
-Copy
 200.500000
 */
 
@@ -28,17 +26,16 @@ using namespace std;
 
 bool check(int n, int k, vector<int>a, double Length)
 {
-    int demDoan = 0;
+    int soDoanDay = 0;
     for(int i = 0; i < n; i++)
     {
-        demDoan += (int)(a[i] / Length);
-        if(demDoan >= k)
+        soDoanDay += (int)(a[i] / Length);
+        if(soDoanDay >= k)
         {
             return true;
         }
     }
-
-    return demDoan >= k;
+    return soDoanDay >= k;
 }
 
 int main() {
@@ -56,7 +53,6 @@ int main() {
 
     double left = 0, right = 1e18;
     double res = -1;
-
     for(int i = 0; i <= 90; i++)
     {
         double mid = (left + right) / 2;
@@ -64,12 +60,13 @@ int main() {
         {
             res = mid;
             left = mid;
-        }else 
+        }else
         {
             right = mid;
         }
     }
 
     cout << fixed << setprecision(6) << res;
+
     return 0;
 }

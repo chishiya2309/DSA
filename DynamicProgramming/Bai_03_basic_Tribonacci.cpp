@@ -1,5 +1,7 @@
 /*
-Đề bài rất đơn giản, bạn hãy tính N! chia dư cho (10^9 + 7).
+Cho dãy số Tribonacci với F[0] = 0, F[1] = 0, F[2] = 1, F[n] = F[n - 1] + F[n - 2] + F[n - 3] với n >= 3.
+
+Hãy tính F[n] chia dư cho 10^9 + 7.
 
 Đầu vào
 Dòng 1 là số bộ test T
@@ -17,19 +19,23 @@ Giới hạn
 Ví dụ :
 Input 01
 Copy
-5
-11
-6
+7
 8
-10
-13
+14
+12
+7
+9
+7
+12
 Output 01
 Copy
-39916800
-720
-40320
-3628800
-227020758
+24
+927
+274
+13
+44
+13
+274
 */
 
 #include <bits/stdc++.h>
@@ -37,18 +43,19 @@ Copy
 #define endl '\n'
 using namespace std;
 
-ll dp[1000003];
+ll F[1000003];
 const int MOD = 1e9 + 7;
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    dp[0] = 1;
-    for(int i = 1; i <= 1000000; i++)
+    F[0] = F[1] = 0;
+    F[2] = 1;
+    for(int i = 3; i <= 1000000; i++)
     {
-        dp[i] = dp[i - 1] * i;
-        dp[i] %= MOD;
+        F[i] = F[i - 1] + F[i - 2] + F[i - 3];
+        F[i] %= MOD;
     }
 
     int t;
@@ -57,7 +64,7 @@ int main() {
     {
         int n;
         cin >> n;
-        cout << dp[n] << endl;
+        cout << F[n] << endl;
     }
 
     return 0;

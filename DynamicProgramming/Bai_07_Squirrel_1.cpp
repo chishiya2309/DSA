@@ -47,7 +47,7 @@ int main() {
     dp[2] = abs(a[2] - a[1]);
     for(int i = 3; i <= n; i++)
     {
-        dp[i] = min(dp[i - 1] + abs(a[i] - a[i - 1]), dp[i - 2] + abs(a[i] - a[i - 2]));
+        dp[i] = min(dp[i - 2] + abs(a[i] - a[i - 2]), dp[i - 1] + abs(a[i] - a[i - 1]));
     }
 
     cout << dp[n];

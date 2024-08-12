@@ -22,7 +22,6 @@ In ra số lượng HCN lớn nhất có thể lồng vào nhau
 
 Ví dụ :
 Input 01
-Copy
 5
 2 3
 5 4
@@ -30,7 +29,6 @@ Copy
 6 7
 8 9
 Output 01
-Copy
 4
 */
 
@@ -40,7 +38,7 @@ using namespace std;
 
 struct HCN
 {
-    int chieuDai, chieuRong;
+    int chieuRong, chieuDai;
 };
 
 bool cmp(HCN a, HCN b)
@@ -64,21 +62,21 @@ int main() {
     {
         cin >> X[i].chieuRong >> X[i].chieuDai;
     }
-
     sort(X.begin(), X.end(), cmp);
-   
+
     vector<int> v;
-    for(int i = 0; i < n; i++)
+    for(auto R : X)
     {
-        auto it = lower_bound(v.begin(), v.end(), X[i].chieuDai);
+        auto it = lower_bound(v.begin(), v.end(), R.chieuDai);
         if(it == v.end())
         {
-            v.push_back(X[i].chieuDai);
+            v.push_back(R.chieuDai);
         }else {
-            *it = X[i].chieuDai;
+            *it = R.chieuDai;
         }
     }
 
     cout << v.size();
+
     return 0;
 }
