@@ -22,6 +22,7 @@ In ra số lượng HCN lớn nhất có thể lồng vào nhau
 
 Ví dụ :
 Input 01
+Copy
 5
 2 3
 5 4
@@ -29,6 +30,7 @@ Input 01
 6 7
 8 9
 Output 01
+Copy
 4
 */
 
@@ -46,8 +48,10 @@ bool cmp(HCN a, HCN b)
     if(a.chieuRong != b.chieuRong)
     {
         return a.chieuRong < b.chieuRong;
+    }else
+    {
+        return a.chieuDai > b.chieuDai;
     }
-    return a.chieuDai > b.chieuDai;
 }
 
 int main() {
@@ -71,7 +75,8 @@ int main() {
         if(it == v.end())
         {
             v.push_back(R.chieuDai);
-        }else {
+        }else 
+        {
             *it = R.chieuDai;
         }
     }

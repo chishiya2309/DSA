@@ -20,11 +20,9 @@ In ra số lượng ngũ cốc mà sóc đã mất làm chi phí di chuyển
 
 Ví dụ :
 Input 01
-Copy
 5 3
 5 1 1 4 7
 Output 01
-Copy
 4
 */
 
@@ -47,7 +45,6 @@ int main() {
         cin >> a[i];
     }
 
-    dp[0] = 0;
     dp[1] = 0;
     for(int i = 2; i <= n; i++)
     {
@@ -62,5 +59,6 @@ int main() {
     }
 
     cout << dp[n];
+
     return 0;
 }
