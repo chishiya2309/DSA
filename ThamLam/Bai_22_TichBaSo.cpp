@@ -12,10 +12,8 @@ In ra YES nếu có thể biểu diễn N dưới dạng tích của 3 số, ng�
 
 Ví dụ :
 Input 01
-Copy
 24
 Output 01
-Copy
 YES
 */
 
@@ -25,12 +23,12 @@ using namespace std;
 
 bool check(int n)
 {
-    int soUoc = 0, soMu = 0;
+    int soThuaSo = 0, soMu = 0;
     for(int i = 2; i <= sqrt(n); i++)
     {
         if(n % i == 0)
         {
-            soUoc++;
+            soThuaSo++;
             while(n % i == 0)
             {
                 soMu++;
@@ -41,12 +39,14 @@ bool check(int n)
 
     if(n > 1)
     {
-        soUoc++;
+        soThuaSo++;
         soMu++;
     }
 
-    return ((soUoc >= 3) || (soUoc == 2 && soMu >= 4) || (soUoc == 1 && soMu >= 6));
-
+    return soThuaSo >= 3
+    || (soThuaSo == 2 && soMu >= 4)
+    || (soThuaSo == 1 && soMu >= 6);
+    
 }
 
 int main() {

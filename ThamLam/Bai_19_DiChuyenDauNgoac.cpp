@@ -12,10 +12,8 @@ In ra số thao tác tối thiểu cần thực hiện
 
 Ví dụ :
 Input 01
-Copy
 )))((((())
 Output 01
-Copy
 3
 */
 
@@ -31,6 +29,7 @@ int main() {
     cin >> s;
 
     int dem = 0, soThaoTac = 0;
+
     for(char c : s)
     {
         if(c == '(')
