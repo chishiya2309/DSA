@@ -31,14 +31,16 @@ int main() {
     cin >> s;
     s += "0";
 
-    vector<int> ans;
     int dem = 0;
+    vector<int> ans;
+
     for(char c : s)
     {
         if(c == '1')
         {
             dem++;
-        }else {
+        }else 
+        {
             if(dem != 0)
             {
                 ans.push_back(dem);
@@ -49,7 +51,7 @@ int main() {
 
     sort(ans.begin(), ans.end(), greater<int>());
     int res = 0;
-    for(int i = 0; i < ans.size(); i += 2)
+    for(int i = 0; i < ans.size(); i+=2)
     {
         res += ans[i];
     }
