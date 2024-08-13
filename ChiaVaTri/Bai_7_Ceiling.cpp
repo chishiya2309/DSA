@@ -16,11 +16,9 @@ In ra đáp án của bài toán nếu tìm thấy số lớn hơn X, trường 
 
 Ví dụ :
 Input 01
-Copy
 9 8
 1 2 3 4 5 6 7 8 9
 Output 01
-Copy
 8
 */
 
@@ -28,7 +26,7 @@ Copy
 
 using namespace std;
 
-int find(int a[], int l, int r, int X)
+int find(int a[], int l, int r, int x)
 {
     if(l > r)
     {
@@ -36,17 +34,18 @@ int find(int a[], int l, int r, int X)
     }
 
     int mid = (l + r) / 2;
-    if(a[mid] <= X)
+    if(a[mid] <= x)
     {
-        int tmp = find(a, mid + 1, r, X);
-        if(tmp != -1)
+        int tmp = find(a, mid + 1, r, x);
+        if(tmp != - 1)
         {
             return tmp;
-        }
-        return mid;
+        }else {
+            return mid;
+        } 
     }
 
-    return find(a, l, mid - 1, X);
+    return find(a, l, mid - 1, x);
 }
 
 int main() {
@@ -66,8 +65,7 @@ int main() {
     if(res == -1)
     {
         cout << -1;
-    }else 
-    {
+    }else {
         cout << a[res];
     }
 

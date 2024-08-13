@@ -1,8 +1,6 @@
 /*
 Trong lớp học của Tèo có các thanh domino hình chữ nhật có chiều rộng a và có chiều cao b. Tèo hiện là học sinh lớp 1, thầy giáo có giao cho Tèo một bài toán đó là hãy tìm 1 bảng hình vuông có cạnh nhỏ nhất sao cho có thể xếp n thanh domino vào hình vuông này. Tèo không nhất thiết phải xếp kín cái bảng hình vuông này nhưng không được phép xoay ngang thanh domino. Dưới đây là một ví dụ về cách xếp thanh domino có a = 2, b = 3 vào bảng hình vuông có cạnh 9
 
-
-
 Đầu vào
 3 số a, b, n trên 1 dòng
 
@@ -14,8 +12,10 @@ In ra chiều dài cạnh của hình vuông nhỏ nhất tìm được.
 
 Ví dụ :
 Input 01
+Copy
 2 3 10
 Output 01
+Copy
 9
 */
 
@@ -45,12 +45,11 @@ int main() {
         {
             res = mid;
             right = mid - 1;
-        }else
-        {
+        }else {
             left = mid + 1;
         }
     }
-    
+
     cout << res;
 
     return 0;
