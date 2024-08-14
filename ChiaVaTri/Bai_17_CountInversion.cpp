@@ -16,11 +16,9 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
-Copy
 9
 16 14 10 13 19 14 17 18 16
 Output 01
-Copy
 12
 */
 
@@ -41,7 +39,8 @@ int merge(int a[], int l, int m, int r)
             a[index] = left[i];
             index++;
             i++;
-        }else {
+        }else 
+        {
             dem += left.size() - i;
             a[index] = right[j];
             index++;
@@ -70,7 +69,7 @@ ll mergesort(int a[], int l, int r)
     if(l < r)
     {
         ll ans = 0;
-        int m = (l + r ) / 2;
+        int m = (l + r) / 2;
         ans += mergesort(a, l, m);
         ans += mergesort(a, m + 1, r);
         ans += merge(a, l, m, r);
@@ -79,6 +78,7 @@ ll mergesort(int a[], int l, int r)
         return 0;
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -91,7 +91,6 @@ int main() {
     {
         cin >> x;
     }
-
 
     ll res = mergesort(a, 0, n - 1);
     cout << res;
