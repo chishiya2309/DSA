@@ -16,9 +16,11 @@ In ra đáp án của bài toán nếu tìm thấy số lớn hơn X, trường 
 
 Ví dụ :
 Input 01
+Copy
 9 8
 1 2 3 4 5 6 7 8 9
 Output 01
+Copy
 8
 */
 
@@ -33,19 +35,18 @@ int find(int a[], int l, int r, int x)
         return -1;
     }
 
-    int mid = (l + r) / 2;
-    if(a[mid] <= x)
+    int m = (l + r) / 2;
+    if(a[m] <= x)
     {
-        int tmp = find(a, mid + 1, r, x);
-        if(tmp != - 1)
+        int tmp = find(a, m + 1, r, x);
+        if(tmp != -1)
         {
             return tmp;
-        }else {
-            return mid;
-        } 
+        }
+        return m;
     }
 
-    return find(a, l, mid - 1, x);
+    return find(a, l, m - 1, x);
 }
 
 int main() {
@@ -65,7 +66,8 @@ int main() {
     if(res == -1)
     {
         cout << -1;
-    }else {
+    }else 
+    {
         cout << a[res];
     }
 
