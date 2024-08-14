@@ -26,7 +26,6 @@ In ra kết quả của mỗi test trên từng dòng
 
 Ví dụ :
 Input 01
-Copy
 10
 3 2
 6 2
@@ -39,7 +38,6 @@ Copy
 7 18
 8 14
 Output 01
-Copy
 JAVA
 JAVA
 JAVA
@@ -57,7 +55,7 @@ C++
 #define endl '\n'
 using namespace std;
 
-ll F[100];
+ll F[63];
 
 string find(ll n, ll k)
 {
@@ -75,7 +73,7 @@ string find(ll n, ll k)
     {
         if(k == 1)
         {
-            return "DSA";   
+            return "DSA";
         }
 
         if(k == 2)
@@ -104,6 +102,7 @@ int main() {
     F[0] = 0;
     F[1] = F[2] = 1;
     F[3] = 2;
+
     for(int i = 4; i <= 60; i++)
     {
         F[i] = F[i - 3] + F[i - 2] + F[i - 1];
@@ -115,7 +114,8 @@ int main() {
     {
         ll n, k;
         cin >> n >> k;
-        cout << find(n, k) << endl;
+        string res = find(n, k);
+        cout << res << endl;
     }
 
     return 0;
