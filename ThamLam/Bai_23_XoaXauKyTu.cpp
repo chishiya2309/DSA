@@ -12,10 +12,8 @@ In ra số lượng số 1 tối đa mà Tí có thể xóa được
 
 Ví dụ :
 Input 01
-Copy
 1000101110011111
 Output 01
-Copy
 6
 */
 
@@ -31,15 +29,14 @@ int main() {
     cin >> s;
     s += "0";
 
-    int dem = 0;
     vector<int> ans;
-
+    int dem = 0;
     for(char c : s)
     {
         if(c == '1')
         {
             dem++;
-        }else 
+        }else
         {
             if(dem != 0)
             {
@@ -49,14 +46,13 @@ int main() {
         }
     }
 
+    int soKiTu = 0;
     sort(ans.begin(), ans.end(), greater<int>());
-    int res = 0;
     for(int i = 0; i < ans.size(); i+=2)
     {
-        res += ans[i];
+        soKiTu += ans[i];
     }
-
-    cout << res;
+    cout << soKiTu;
 
     return 0;
 }
