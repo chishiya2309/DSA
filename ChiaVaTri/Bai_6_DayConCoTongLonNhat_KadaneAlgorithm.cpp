@@ -16,9 +16,11 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
+Copy
 5
 -3 6 1 -3 6
 Output 01
+Copy
 10
 */
 
@@ -26,20 +28,19 @@ Output 01
 #define ll long long
 using namespace std;
 
+int n, a[100003];
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int n;
     cin >> n;
-
-    vector<int> a(n);
-    for(int &x : a)
+    for(int i = 0; i < n; i++)
     {
-        cin >> x;
+        cin >> a[i];
     }
 
-    ll max_sum_here = 0, max_so_far = LLONG_MIN;\
+    ll max_sum_here = 0, max_so_far = INT_MIN;
     for(int i = 0; i < n; i++)
     {
         max_sum_here += a[i];
@@ -56,5 +57,6 @@ int main() {
     }
 
     cout << max_so_far;
+
     return 0;
 }
