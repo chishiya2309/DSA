@@ -26,18 +26,22 @@ In ra lợi nhuận lớn nhất
 
 Ví dụ :
 Input 01
+Copy
 4
 1 4 20
 2 1 10
 3 1 40
 4 1 30
 Output 01
+Copy
 60
 */
 
 #include <bits/stdc++.h>
 
 using namespace std;
+
+int n;
 
 struct Job
 {
@@ -53,16 +57,14 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int n;
     cin >> n;
 
     vector<Job> Jobs(n);
     for(int i = 0; i < n; i++)
     {
         cin >> Jobs[i].JobId >> Jobs[i].Deadline >> Jobs[i].Profit;
-    } 
+    }
     sort(Jobs.begin(), Jobs.end(), cmp);
-
 
     set<int, greater<int>> Slots;
     for(int i = 1; i <= n; i++)
