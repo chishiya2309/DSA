@@ -20,9 +20,11 @@ In ra số hoán đổi tối thiểu để sắp tăng dần chiều cao của 
 
 Ví dụ :
 Input 01
+Copy
 5
 1 5 4 3 2
 Output 01
+Copy
 2
 */
 
@@ -30,14 +32,20 @@ Output 01
 
 using namespace std;
 
+int n;
+vector<int> a, b;
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int n;
+    
     cin >> n;
-    vector<int> a(n), b(n);
+    a.resize(n);
+    b.resize(n);
     vector<int> pos(n);
-    for(int i = 0; i < n; i++) {
+
+    for(int i = 0; i < n; i++)
+    {
         cin >> a[i];
         b[i] = a[i];
         pos[a[i]] = i;
@@ -57,6 +65,8 @@ int main() {
             pos[a[i]] = i;
         }
     }
+
     cout << cnt;
+
     return 0;
 }
