@@ -16,9 +16,11 @@ In ra độ dài của dãy con tăng dài nhất
 
 Ví dụ :
 Input 01
+Copy
 10
 1 1 3 4 2 4 5 5 1 2
 Output 01
+Copy
 4
 */
 
@@ -39,19 +41,20 @@ int main() {
         cin >> x;
     }
 
-    vector<int> dp(n, 1);
-    for(int i = 1; i < n; i++)
+    vector<int> v;
+    for(int num : a)
     {
-        for(int j = 0; j < i; j++)
+        auto it = lower_bound(v.begin(), v.end(), num);
+        if(it == v.end())
         {
-            if(a[i] > a[j])
-            {
-                dp[i] = max(dp[i], dp[j] + 1);
-            }
+            v.push_back(num);
+        }else 
+        {
+            *it = num;
         }
     }
 
-    cout << *max_element(dp.begin(), dp.end());
+    cout << v.size();
 
     return 0;
 }
