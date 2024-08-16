@@ -1,8 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define endl '\n'
-int n, x[20];
+
+int n, x[100];
 bool final = false;
+
 void khoitao()
 {
     for(int i = 1; i <= n; i++)
@@ -10,21 +11,25 @@ void khoitao()
         x[i] = 0;
     }
 }
+
 void sinh()
 {
     int i = n;
-    while(i >= 1 && x[i] == 1)
+    while(i > 0 && x[i] == 1)
     {
         x[i] = 0;
         i--;
     }
+
     if(i == 0)
     {
         final = true;
-    }else {
+    }else 
+    {
         x[i] = 1;
     }
 }
+
 signed main()
 {
     cin >> n;
@@ -38,4 +43,7 @@ signed main()
         cout << endl;
         sinh();
     }
+
+    return 0;
+    
 }
