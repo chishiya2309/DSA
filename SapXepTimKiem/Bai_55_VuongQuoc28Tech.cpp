@@ -6,26 +6,59 @@ Bây giờ Quốc Vương sẽ đi tìm 1 người bất kỳ mà ông ta thích
 Biết rằng khi chiều cao của 1 dân cư là X cao(thấp) hơn người hạt giống có chiều cao là Y thì sự đau đớn khi cắt (kéo dài) chân sẽ là |X - Y| (Đây là ý nghĩa của giá trị tuyệt đối).
 
 Bạn hãy xác định xem với hạt giống tối ưu thì tổng sự đau đớn của mọi dân cư trong Vương Quốc 28Tech sẽ là bao nhiêu để tất cả mọi người có cùng chiều cao với người hạt giống đó.
+
+
+
+Đầu vào
+Dòng 1 là N : số lượng dân cư
+
+Dòng 2 gồm N số là chiều cao của các cư dân
+
+Giới hạn
+Vương Quốc có không quá 1 triệu cư dân
+
+Chiều cao của cư dân thuộc đoạn [1, 999999999]
+
+Đầu ra
+In ra tổng số đau đớn của mọi cư dân được coi là phương án tối ưu
+Ví dụ :
+Input 01
+Copy
+5
+3 9 10 1 8
+Output 01
+Copy
+15
 */
+
 #include <bits/stdc++.h>
 #define ll long long
 using namespace std;
 
+int n;
+vector<int> a;
+
 int main() {
-    int n;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
     cin >> n;
-    vector<int> a(n);
-    for(int i=0; i < n; i++)
+    a.resize(n);
+
+    for(int &x : a)
     {
-        cin >> a[i];
+        cin >> x;
     }
+
     sort(a.begin(), a.end());
-    int medium = a[n/2];
-    long long res = 0;
+    ll median = a[n / 2];
+    ll res = 0;
     for(int i = 0; i < n; i++)
     {
-        res += abs(medium - a[i]);
+        res += abs(a[i] - median);
     }
+
     cout << res;
+
     return 0;
 }
