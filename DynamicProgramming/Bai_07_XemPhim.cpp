@@ -18,9 +18,11 @@ Một số nguyên là tổng khối lượng bò lớn nhất mà John có th�
 
 Ví dụ :
 Input 01
+Copy
 259 5
 81 58 42 33 61
 Output 01
+Copy
 242
 */
 
