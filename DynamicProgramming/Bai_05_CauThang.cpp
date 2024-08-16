@@ -16,10 +16,8 @@ In ra đáp án sau khi chia dư với 10^9+7.
 
 Ví dụ :
 Input 01
-Copy
 4 2
 Output 01
-Copy
 5
 */
 
@@ -27,15 +25,16 @@ Copy
 #define ll long long
 using namespace std;
 
-const int MOD = 1e9 + 7;
 int n, k;
 ll dp[100003];
+const int MOD = 1e9 + 7;
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
     cin >> n >> k;
+    
     dp[0] = 1;
     for(int i = 1; i <= n; i++)
     {
@@ -45,7 +44,8 @@ int main() {
             {
                 dp[i] += dp[i - j];
                 dp[i] %= MOD;
-            }else {
+            }else 
+            {
                 break;
             }
         }
