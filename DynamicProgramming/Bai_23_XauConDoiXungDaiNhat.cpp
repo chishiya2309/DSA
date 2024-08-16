@@ -14,8 +14,10 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
+Copy
 bcccbebge
 Output 01
+Copy
 5
 */
 
@@ -40,22 +42,19 @@ int main() {
     }
 
     int ans = 1;
-    //Duyet do dai xau
+
     for(int length = 2; length <= n; length++)
     {
-        //Duyet vi tri bat dau
         for(int i = 1; i + length - 1 <= n; i++)
         {
-            //Vi tri ket thuc
             int j = i + length - 1;
             if(length == 2)
             {
                 dp[i][j] = (s[i - 1] == s[j - 1]);
-            }else 
+            }else
             {
                 dp[i][j] = (s[i - 1] == s[j - 1]) && dp[i + 1][j - 1];
             }
-
             if(dp[i][j])
             {
                 ans = length;
