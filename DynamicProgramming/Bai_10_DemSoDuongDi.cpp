@@ -1,28 +1,30 @@
-/*
-Cho ma trận đường đi gồm N hàng và M cột, mỗi ô trên ma trận là ký tự * tương ứng với đường đi và x tương ứng với vật cản. Bạn hãy đếm số lượng đường đi từ ô (1, 1) tới ô (N, M) biết rằng bạn chỉ có thể đi từ ô hiện tại sang phải hoặc xuống dưới nếu chúng không có vật cản.
+    /*
+    Cho ma trận đường đi gồm N hàng và M cột, mỗi ô trên ma trận là ký tự * tương ứng với đường đi và x tương ứng với vật cản. Bạn hãy đếm số lượng đường đi từ ô (1, 1) tới ô (N, M) biết rằng bạn chỉ có thể đi từ ô hiện tại sang phải hoặc xuống dưới nếu chúng không có vật cản.
 
-Đầu vào
-Dòng 1 là là N và M
+    Đầu vào
+    Dòng 1 là là N và M
 
-N dòng tiếp theo là các dòng của ma trận
+    N dòng tiếp theo là các dòng của ma trận
 
-Giới hạn
-1<=N,M<=1000
+    Giới hạn
+    1<=N,M<=1000
 
-Đầu ra
-In ra kết quả của bài toán sau khi chia dư cho 1e9 + 7.
+    Đầu ra
+    In ra kết quả của bài toán sau khi chia dư cho 1e9 + 7.
 
-Ví dụ :
-Input 01
-5 5
-* * * * * 
-x * * * x 
-x * x * * 
-x * * * * 
-* x * x *
-Output 01
-7
-*/
+    Ví dụ :
+    Input 01
+    Copy
+    5 5
+    * * * * * 
+    x * * * x 
+    x * x * * 
+    x * * * * 
+    * x * x *
+    Output 01
+    Copy
+    7
+    */
 
 #include <bits/stdc++.h>
 #define ll long long

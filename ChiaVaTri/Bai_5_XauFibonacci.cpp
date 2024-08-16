@@ -24,8 +24,10 @@ In ra đáp án tìm được
 
 Ví dụ :
 Input 01
+Copy
 5 3
 Output 01
+Copy
 B
 */
 
@@ -66,9 +68,11 @@ int main() {
         F[i] = F[i - 2] + F[i - 1];
     }
 
+
     ll n, k;
     cin >> n >> k;
-
+    
     cout << find(n, k);
+ 
     return 0;
 }

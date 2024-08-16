@@ -16,7 +16,6 @@ In ra kết quả của mỗi test trên 1 dòng
 
 Ví dụ :
 Input 01
-Copy
 5
 9 0
 13 8
@@ -24,7 +23,6 @@ Copy
 9 9
 7 6
 Output 01
-Copy
 1
 1287
 11440
@@ -38,7 +36,6 @@ Copy
 using namespace std;
 
 ll nCk[1003][1003];
-
 const int MOD = 1e9 + 7;
 
 int main() {

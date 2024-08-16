@@ -18,12 +18,10 @@ In ra ma trận đáp án
 
 Ví dụ :
 Input 01
-Copy
 2 3
 712 141 
 55 619
 Output 01
-Copy
 376787593 188740908 
 73622340 252298909
 */
@@ -39,7 +37,7 @@ const int MOD = 1e9 + 7;
 struct matran
 {
     ll a[11][11];
-
+    
     friend matran operator * (matran x, matran y)
     {
         matran tich;
@@ -70,7 +68,7 @@ matran binpow(matran x, int k)
     if(k % 2 == 0)
     {
         return tmp * tmp;
-    }else 
+    }else
     {
         return tmp * tmp * x;
     }

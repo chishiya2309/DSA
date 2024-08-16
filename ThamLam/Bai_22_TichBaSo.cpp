@@ -12,8 +12,10 @@ In ra YES nếu có thể biểu diễn N dưới dạng tích của 3 số, ng�
 
 Ví dụ :
 Input 01
+Copy
 24
 Output 01
+Copy
 YES
 */
 
@@ -36,17 +38,17 @@ bool check(int n)
             }
         }
     }
-
     if(n > 1)
     {
         soThuaSo++;
         soMu++;
     }
 
-    return soThuaSo >= 3
-    || (soThuaSo == 2 && soMu >= 4)
-    || (soThuaSo == 1 && soMu >= 6);
-    
+    return (
+        soThuaSo >= 3
+    ||  (soThuaSo == 2 && soMu >= 4)
+    ||  (soThuaSo == 1 && soMu >= 6)
+    );
 }
 
 int main() {
@@ -59,7 +61,8 @@ int main() {
     if(check(n))
     {
         cout << "YES";
-    }else {
+    }else 
+    {
         cout << "NO";
     }
 

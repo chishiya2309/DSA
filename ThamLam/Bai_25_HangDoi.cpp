@@ -22,13 +22,16 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
+Copy
 7
 4 3 17 4 5 14 20
 Output 01
+Copy
 3
 */
 
 #include <bits/stdc++.h>
+#define ll long long
 using namespace std;
 
 int main() {
@@ -45,19 +48,19 @@ int main() {
     }
     sort(a.begin(), a.end());
 
-    int soNguoi = 1;
-    int Time = a[0];
+    ll time = a[0];
+    int cnt = 1; 
 
     for(int i = 1; i < n; i++)
     {
-        if(a[i] >= Time)
+        if(a[i] >= time)
         {
-            soNguoi++;
-            Time += a[i];
+            cnt++;
+            time += a[i];
         }
     }
 
-    cout << soNguoi;
+    cout << cnt;
 
     return 0;
 }

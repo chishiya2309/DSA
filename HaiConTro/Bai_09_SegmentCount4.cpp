@@ -16,9 +16,11 @@ In ra số lượng mảng con thỏa mãn đề bài
 
 Ví dụ :
 Input 01
+Copy
 10 1
 2 3 1 3 1 4 1 3 1 2
 Output 01
+Copy
 12
 */
 
@@ -42,8 +44,7 @@ int main() {
     multiset<int> se;
     int left = 0;
     ll soMangCon = 0;
-
-    for(int right = 0; right < n; ++right)
+    for(int right = 0; right < n; right++)
     {
         se.insert(a[right]);
         while(*se.rbegin() - *se.begin() > k)
