@@ -24,12 +24,10 @@ In ra giá trị lớn nhất có thể đạt được.
 
 Ví dụ :
 Input 01
-Copy
 6 22
 39 44 4 59 91 70 
 47 26 92 33 6 69
 Output 01
-Copy
 92
 */
 
@@ -37,7 +35,7 @@ Copy
 
 using namespace std;
 
-int n, V, w[1003], v[1003];
+int n, V, w[1003], v[1003]; 
 int dp[1003][1003];
 
 int main() {
@@ -45,7 +43,6 @@ int main() {
     cin.tie(NULL);
     
     cin >> n >> V;
-
     for(int i = 1; i <= n; i++)
     {
         cin >> w[i];
