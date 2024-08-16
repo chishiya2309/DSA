@@ -14,10 +14,8 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
-Copy
 bcccbebge
 Output 01
-Copy
 5
 */
 
@@ -25,9 +23,9 @@ Copy
 
 using namespace std;
 
-bool dp[1003][1003];
 string s;
 int n;
+bool dp[1003][1003];
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -42,11 +40,14 @@ int main() {
     }
 
     int ans = 1;
+    //Duyet do dai xau
     for(int length = 2; length <= n; length++)
-    {   //Duyet do dai xau
+    {
+        //Duyet vi tri bat dau
         for(int i = 1; i + length - 1 <= n; i++)
-        {    //duyet vi tri bat dau
-            int j = i + length - 1; //vi tri ket thuc
+        {
+            //Vi tri ket thuc
+            int j = i + length - 1;
             if(length == 2)
             {
                 dp[i][j] = (s[i - 1] == s[j - 1]);
@@ -60,7 +61,6 @@ int main() {
                 ans = length;
             }
         }
-        
     }
 
     cout << ans;
