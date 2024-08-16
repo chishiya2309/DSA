@@ -20,11 +20,9 @@ In ra 1 nếu có tập con của A[] có tổng bằng S, ngược lại in ra 
 
 Ví dụ :
 Input 01
-Copy
 5 10
 2 2 1 6 3
 Output 01
-Copy
 1
 */
 
@@ -32,7 +30,6 @@ Copy
 
 using namespace std;
 
-int a[203];
 bool dp[203][100003];
 
 int main() {
@@ -41,7 +38,8 @@ int main() {
     
     int n, s;
     cin >> n >> s;
-
+    
+    int a[n + 1];
     for(int i = 1; i <= n; i++)
     {
         cin >> a[i];
