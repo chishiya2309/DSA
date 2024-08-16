@@ -12,15 +12,16 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
+Copy
 58
 Output 01
+Copy
 286725742
 */
 
 #include <bits/stdc++.h>
 #define ll long long
 using namespace std;
-
 const int MOD = 1e9 + 7;
 
 struct matran
@@ -57,7 +58,8 @@ matran binpow(matran x, ll n)
     if(n % 2 == 0)
     {
         return tmp * tmp;
-    }else {
+    }else 
+    {
         return tmp * tmp * x;
     }
 }

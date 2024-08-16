@@ -33,7 +33,8 @@ int merge(int a[], int l, int m, int r)
     int dem = 0;
     vector<int> left(a + l, a + m + 1);
     vector<int> right(a + m + 1, a + r + 1);
-    int index = l, i = 0, j = 0;
+
+    int i = 0, j = 0, index = l;
     while(i < left.size() && j < right.size())
     {
         if(left[i] <= right[j])
@@ -41,7 +42,8 @@ int merge(int a[], int l, int m, int r)
             a[index] = left[i];
             index++;
             i++;
-        }else {
+        }else 
+        {
             dem += left.size() - i;
             a[index] = right[j];
             index++;
@@ -62,6 +64,7 @@ int merge(int a[], int l, int m, int r)
         index++;
         j++;
     }
+
     return dem;
 }
 
@@ -70,15 +73,17 @@ ll mergesort(int a[], int l, int r)
     if(l < r)
     {
         ll ans = 0;
-        int m = (l + r ) / 2;
+        int m = (l + r) / 2;
         ans += mergesort(a, l, m);
         ans += mergesort(a, m + 1, r);
         ans += merge(a, l, m, r);
         return ans;
-    }else {
+    }else 
+    {
         return 0;
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -91,7 +96,6 @@ int main() {
     {
         cin >> x;
     }
-
 
     ll res = mergesort(a, 0, n - 1);
     cout << res;
