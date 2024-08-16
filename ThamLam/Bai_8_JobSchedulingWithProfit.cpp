@@ -60,9 +60,8 @@ int main() {
     for(int i = 0; i < n; i++)
     {
         cin >> Jobs[i].JobId >> Jobs[i].Deadline >> Jobs[i].Profit;
-    } 
+    }
     sort(Jobs.begin(), Jobs.end(), cmp);
-
 
     set<int, greater<int>> Slots;
     for(int i = 1; i <= n; i++)
@@ -70,18 +69,18 @@ int main() {
         Slots.insert(i);
     }
 
-    int chiPhi = 0;
+    int loiNhuan = 0;
     for(auto job : Jobs)
     {
         auto it = Slots.lower_bound(job.Deadline);
         if(it != Slots.end())
         {
-            chiPhi += job.Profit;
+            loiNhuan += job.Profit;
             Slots.erase(it);
         }
     }
 
-    cout << chiPhi;
+    cout << loiNhuan;
 
     return 0;
 }
