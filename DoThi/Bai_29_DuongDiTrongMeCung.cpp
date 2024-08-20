@@ -45,13 +45,58 @@ Copy
 using namespace std;
 
 int n, s, t, u, v;
-bool visited
+int d[1003][1003];
+int a[1003][1003];
+int dem = 0;
+int dx[] = {-1, -1, -1, 0, 1, 1, 1, 0};
+int dy[] = {-1, 0, 1, 1 , 1, 0, -1, -1};
+
+int bfs(int i, int j)
+{
+    queue<pair<int, int>> q;
+    d[i][j] = 0;
+    a[i][j] = 0;
+    q.push({i, j});
+    while(!q.empty())
+    {
+        pair<int, int> t = q.front();
+        q.pop();
+        int x = t.first;
+        int y = t.second;
+        if(x == u && y == v)
+        {
+            return d[u][v];
+        }
+        for(int k = 0; k < 8; k++)
+        {
+            int inext = x + dx[k];
+            int jnext = y + dy[k];
+            if(inext >= 1 && inext <= n && jnext >= 1 && jnext <= n && a[inext][jnext] == 1)
+            {
+                q.push({inext, jnext});
+                a[inext][jnext] = 0;
+                d[inext][jnext] = d[x][y] + 1;
+            }
+        }
+    }
+    return -1;
+}
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    
+    cin >> n;
+    cin >> s >> t >> u >> v;
+    for(int i = 1; i <= n; i++)
+    {
+        for(int j = 1; j <= n; j++)
+        {
+            cin >> a[i][j];
+        }
+    }
+
+    cout << bfs(s, t);
 
     return 0;
 }
