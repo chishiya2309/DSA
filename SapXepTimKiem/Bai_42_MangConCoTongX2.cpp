@@ -16,9 +16,11 @@ In một số nguyên: số lượng mảng con cần thiết.
 
 Ví dụ :
 Input 01
+Copy
 5 7
 2 4 1 2 7
 Output 01
+Copy
 3
 */
 
@@ -29,13 +31,16 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int n, x;
     cin >> n >> x;
-    vector<int> a(n);
-    for(int i = 0; i < n; i++)
+
+    vector<int> a(n + 1);
+    for(int i = 0; i < n; i++) 
     {
         cin >> a[i];
     }
+    
     map<ll, int> sum_count;
     sum_count[0] = 1;
     ll sum = 0, cnt = 0;
@@ -45,6 +50,8 @@ int main() {
         cnt += sum_count[sum - x];
         sum_count[sum]++;
     }
+
     cout << cnt;
+
     return 0;
 }
