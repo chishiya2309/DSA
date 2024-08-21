@@ -26,6 +26,9 @@ Output 01
 #define ll long long
 using namespace std;
 
+int n;
+int a[1000003];
+
 int merge(int a[], int l, int m, int r)
 {
     int dem = 0;
@@ -86,13 +89,10 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int n;
     cin >> n;
-
-    int a[n];
-    for(int &x : a)
+    for(int i = 0; i < n; i++)
     {
-        cin >> x;
+        cin >> a[i];
     }
 
     ll res = mergesort(a, 0, n - 1);

@@ -18,8 +18,10 @@ Ghi ra lần lượt các xâu ký tự kết quả theo thứ tự từ điển
 
 Ví dụ :
 Input 01
+Copy
 C 2
 Output 01
+Copy
 AA
 AB
 AC
@@ -32,39 +34,43 @@ CC
 */
 
 #include <bits/stdc++.h>
-#define endl '\n'
+
 using namespace std;
+
 char c;
 int k;
-string s;
-bool final = false;
-void sinh()
+char x[10];
+
+void in()
 {
-    int i = s.size() - 1;
-    while(i >= 0 && s[i] == c)
+    for(int i = 1; i <= k; i++)
     {
-        i--;
+        cout << x[i];
     }
-    if(i == -1)
+    cout << endl;
+}
+
+void Try(int i)
+{
+    for(char j = 'A'; j <= c; j++)
     {
-        final = true;
-    }else {
-        s[i]++;
-        for(int j = i + 1; j < k; j++)
+        x[i] = j;
+        if(i == k)
         {
-            s[j] = 'A';
+            in();
+        }else 
+        {
+            Try(i + 1);
         }
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     cin >> c >> k;
-    s = string(k, 'A');
-    while(!final)
-    {
-        cout << s << endl;
-        sinh();
-    }
+    Try(1);
+
     return 0;
 }

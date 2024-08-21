@@ -42,13 +42,13 @@ using namespace std;
 
 int n, m;
 vector<int> ke[1003];
-bool visited[1003];
 int parent[1003];
+bool visited[1003];
 int chutrinh = 0;
 
 void dfs(int u)
 {
-    visited[u] = 1;
+    visited[u] = true;
     for(int j : ke[u])
     {
         if(!visited[j])
@@ -57,13 +57,14 @@ void dfs(int u)
             dfs(j);
         }else 
         {
-            if(j != parent[u])
+            if(parent[u] != j)
             {
                 chutrinh = 1;
             }
         }
     }
 }
+
 
 int main() {
     ios_base::sync_with_stdio(false);
