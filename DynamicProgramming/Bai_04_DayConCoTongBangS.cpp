@@ -20,9 +20,11 @@ In ra 1 nếu có tập con của A[] có tổng bằng S, ngược lại in ra 
 
 Ví dụ :
 Input 01
+Copy
 5 10
 2 2 1 6 3
 Output 01
+Copy
 1
 */
 
@@ -30,16 +32,15 @@ Output 01
 
 using namespace std;
 
+int n, s;
+int a[203];
 bool dp[203][100003];
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int n, s;
     cin >> n >> s;
-    
-    int a[n + 1];
     for(int i = 1; i <= n; i++)
     {
         cin >> a[i];
@@ -53,7 +54,7 @@ int main() {
             dp[i][j] = dp[i - 1][j];
             if(j >= a[i])
             {
-                dp[i][j] = max(dp[i][j], dp[i - 1][j - a[i]]);
+                dp[i][j] = max(dp[i][j], dp[i- 1][j - a[i]]);
             }
         }
     }
