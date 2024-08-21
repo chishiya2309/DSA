@@ -71,7 +71,7 @@ int main() {
         if(color[i] == 0)
         {
             dfs(i);
-            if(chutrinh)
+            if(chutrinh == 1)
             {
                 cout << 1;
                 return 0;
