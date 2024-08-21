@@ -16,11 +16,9 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
-Copy
 9
 16 14 10 13 19 14 17 18 16
 Output 01
-Copy
 12
 */
 
@@ -28,13 +26,15 @@ Copy
 #define ll long long
 using namespace std;
 
+int n;
+int a[1000003];
+
 int merge(int a[], int l, int m, int r)
 {
     int dem = 0;
     vector<int> left(a + l, a + m + 1);
     vector<int> right(a + m + 1, a + r + 1);
-
-    int i = 0, j = 0, index = l;
+    int index = l, i = 0, j = 0;
     while(i < left.size() && j < right.size())
     {
         if(left[i] <= right[j])
@@ -42,7 +42,7 @@ int merge(int a[], int l, int m, int r)
             a[index] = left[i];
             index++;
             i++;
-        }else 
+        }else
         {
             dem += left.size() - i;
             a[index] = right[j];
@@ -66,6 +66,7 @@ int merge(int a[], int l, int m, int r)
     }
 
     return dem;
+
 }
 
 ll mergesort(int a[], int l, int r)
@@ -88,13 +89,10 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int n;
     cin >> n;
-
-    int a[n];
-    for(int &x : a)
+    for(int i = 0; i < n; i++)
     {
-        cin >> x;
+        cin >> a[i];
     }
 
     ll res = mergesort(a, 0, n - 1);
