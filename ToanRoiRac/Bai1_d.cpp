@@ -15,7 +15,7 @@ signed main()
 {
     bool p, q;
 
-    cout << "p\tq\tp -> (!q -> p)" << endl;
+    cout << "p\tq\tp -> (p -> q)" << endl;
     cout << "--------------------------------" << endl;
 
     for(int i = 1; i >= 0; i--)
