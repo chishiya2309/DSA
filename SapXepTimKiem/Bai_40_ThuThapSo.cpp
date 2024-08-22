@@ -14,9 +14,11 @@ In một số nguyên: số vòng.
 
 Ví dụ :
 Input 01
+Copy
 5
 4 2 1 5 3
 Output 01
+Copy
 3
 Giải thích :
 Vòng 1 chọn số 1, vòng 2 chọn số 2 và 3, vòng 3 chọn số 4 và 5 Ở mỗi vòng bạn được chọn số x nếu như tất cả các số từ 1 tới x-1 đã được chọn trước đó rồi, mỗi vòng bạn có thể chọn nhiều số cùng 1 lúc.
@@ -29,23 +31,27 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int n;
     cin >> n;
-    int a[n], pos[n + 1];
+    vector<int> a(n), pos(n + 1);
     for(int i = 0; i < n; i++)
     {
         cin >> a[i];
         pos[a[i]] = i;
     }
-    int dem = 1, last = 0;
+
+    int last = 0, soVong = 1;
     for(int i = 1; i <= n; i++)
     {
         if(pos[i] < last)
         {
-            dem++;
+            soVong++;
         }
         last = pos[i];
     }
-    cout << dem;
+
+    cout << soVong;
+
     return 0;
 }
