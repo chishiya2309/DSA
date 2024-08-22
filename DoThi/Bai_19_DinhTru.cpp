@@ -80,16 +80,16 @@ int main() {
     {
         memset(visited, 0, sizeof(visited));
         visited[i] = 1;
-        int soThanhPhanLienThongTmp = 0;
+        int tmp = 0;
         for(int j = 1; j <= n; j++)
         {
             if(!visited[j])
             {
-                soThanhPhanLienThongTmp++;
+                tmp++;
                 dfs(j);
             }
         }
-        if(soThanhPhanLienThongTmp > soThanhPhanLienThongBanDau)
+        if(tmp > soThanhPhanLienThongBanDau)
         {
             soDinhTru++;
         }

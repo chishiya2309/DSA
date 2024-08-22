@@ -32,7 +32,8 @@ Copy
 
 using namespace std;
 
-int n, s, a[203];
+int n, s;
+int a[203];
 bool dp[203][100003];
 
 int main() {
@@ -54,7 +55,7 @@ int main() {
             dp[i][j] = dp[i - 1][j];
             if(j >= a[i])
             {
-                dp[i][j] = max(dp[i][j], dp[i - 1][j - a[i]]);
+                dp[i][j] = max(dp[i][j], dp[i- 1][j - a[i]]);
             }
         }
     }

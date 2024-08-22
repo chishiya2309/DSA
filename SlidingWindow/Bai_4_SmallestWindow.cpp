@@ -14,8 +14,10 @@ In ra độ dài xâu con nhỏ nhất tìm được
 
 Ví dụ :
 Input 01
+Copy
 28teeeeeechhhh
 Output 01
+Copy
 11
 */
 
@@ -26,8 +28,10 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     string s;
     cin >> s;
+
     map<char, int> char_count;
     for(char c : s)
     {
@@ -51,6 +55,8 @@ int main() {
             start++;
         }
     }
+
     cout << minLength;
+
     return 0;
 }
