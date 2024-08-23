@@ -18,6 +18,7 @@ In ra số lượng đỉnh trụ của đồ thị
 
 Ví dụ :
 Input 01
+Copy
 10 6
 10 1
 5 2
@@ -26,6 +27,7 @@ Input 01
 5 3
 10 4
 Output 01
+Copy
 6
 */
 
@@ -34,9 +36,9 @@ Output 01
 using namespace std;
 
 int n, m;
-vector<pair<int, int>> canh;
 set<int> ke[1003];
 bool visited[1003];
+vector<pair<int, int>> edges;
 
 void dfs(int u)
 {
@@ -61,26 +63,24 @@ int main() {
         cin >> x >> y;
         ke[x].insert(y);
         ke[y].insert(x);
-        canh.push_back({x, y});
+        edges.push_back({x, y});
     }
 
-    int soThanhPhanLienThongBanDau = 0;
+    int soThanhPhanLienThong = 0, soCanhCau = 0;
     for(int i = 1; i <= n; i++)
     {
         if(!visited[i])
         {
-            soThanhPhanLienThongBanDau++;
+            soThanhPhanLienThong++;
             dfs(i);
         }
-    }
+    } 
 
-    int soCanhCau = 0;
-
-    for(auto c : canh)
+    for(auto canh : edges)
     {
+        int x = canh.first;
+        int y = canh.second;
         memset(visited, 0, sizeof(visited));
-        int x = c.first;
-        int y = c.second;
         ke[x].erase(y);
         ke[y].erase(x);
         int tmp = 0;
@@ -92,10 +92,11 @@ int main() {
                 dfs(i);
             }
         }
-        if(tmp > soThanhPhanLienThongBanDau)
+        if(tmp > soThanhPhanLienThong)
         {
             soCanhCau++;
         }
+
         ke[x].insert(y);
         ke[y].insert(x);
     }
