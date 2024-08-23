@@ -18,7 +18,6 @@ In ra 1 nếu đồ thị tồn tại chu trình, ngược lại in ra 0.
 
 Ví dụ :
 Input 01
-Copy
 10 11
 10 5
 10 4
@@ -32,7 +31,6 @@ Copy
 10 6
 10 9
 Output 01
-Copy
 1
 */
 
@@ -42,8 +40,8 @@ using namespace std;
 
 int n, m;
 vector<int> ke[1003];
-int parent[1003];
 bool visited[1003];
+int parent[1003];
 int chutrinh = 0;
 
 void dfs(int u)
@@ -57,7 +55,7 @@ void dfs(int u)
             dfs(j);
         }else 
         {
-            if(parent[u] != j)
+            if(j != parent[u])
             {
                 chutrinh = 1;
             }
@@ -65,13 +63,12 @@ void dfs(int u)
     }
 }
 
-
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
     cin >> n >> m;
-    for(int i = 0; i < m; i++)
+    for(int i = 0; i < m; i++) 
     {
         int x, y;
         cin >> x >> y;
