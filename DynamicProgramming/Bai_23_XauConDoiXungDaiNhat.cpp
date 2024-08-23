@@ -32,17 +32,15 @@ bool dp[1003][1003];
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
+
     cin >> s;
     n = s.size();
-
-    for(int i = 1; i <= n; i++)
+    for(int i = 1; i <= n; i++) 
     {
         dp[i][i] = 1;
     }
 
     int ans = 1;
-
     for(int length = 2; length <= n; length++)
     {
         for(int i = 1; i + length - 1 <= n; i++)
@@ -59,7 +57,7 @@ int main() {
             {
                 ans = length;
             }
-        }
+        }  
     }
 
     cout << ans;
