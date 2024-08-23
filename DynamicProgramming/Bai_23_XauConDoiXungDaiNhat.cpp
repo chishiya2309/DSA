@@ -14,10 +14,8 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
-Copy
 bcccbebge
 Output 01
-Copy
 5
 */
 
@@ -27,7 +25,7 @@ using namespace std;
 
 string s;
 int n;
-bool dp[1003][1003];
+bool dp[1003][1003]; //Xau tu chi so i den chi so j co la xau doi xung hay khong
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -35,21 +33,23 @@ int main() {
 
     cin >> s;
     n = s.size();
-    for(int i = 1; i <= n; i++) 
+    for(int i = 1; i <= n; i++)
     {
         dp[i][i] = 1;
     }
 
     int ans = 1;
+
     for(int length = 2; length <= n; length++)
     {
-        for(int i = 1; i + length - 1 <= n; i++)
+        //chi so dau
+        for(int i = 1; length + i - 1 <= n; i++)
         {
-            int j = i + length - 1;
+            int j = length + i - 1;
             if(length == 2)
             {
                 dp[i][j] = (s[i - 1] == s[j - 1]);
-            }else
+            }else 
             {
                 dp[i][j] = (s[i - 1] == s[j - 1]) && dp[i + 1][j - 1];
             }
@@ -57,7 +57,7 @@ int main() {
             {
                 ans = length;
             }
-        }  
+        }
     }
 
     cout << ans;
