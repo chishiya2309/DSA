@@ -6,7 +6,7 @@ int n, k;
 int x[100];
 bool final = false;
 
-void khoitao()
+void init()
 {
     for(int i = 1; i <= k; i++)
     {
@@ -24,7 +24,7 @@ void sinh()
     if(i == 0)
     {
         final = true;
-    }else
+    }else 
     {
         x[i]++;
         for(int j = i + 1; j <= k; j++)
@@ -36,9 +36,8 @@ void sinh()
 
 signed main()
 {
-
     cin >> n >> k;
-    khoitao();
+    init();
 
     while(!final)
     {
