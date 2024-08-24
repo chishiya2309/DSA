@@ -14,8 +14,10 @@ In ra độ dài xâu con nhỏ nhất tìm được
 
 Ví dụ :
 Input 01
+Copy
 28teeeeeechhhh
 Output 01
+Copy
 11
 */
 
@@ -37,21 +39,24 @@ int main() {
     }
 
     int distinct_char = char_count.size();
-    int dem = 0, left = 0, minLength = INT_MAX;
-    for(int i = 0; i < s.size(); i++)
+    int cnt = 0, minLength = INT_MAX, left = 0;
+
+    for(int right = 0; right < s.size(); right++)
     {
-        if(++char_count[s[i]] == 1)
+        if(++char_count[s[right]] == 1)
         {
-            dem++;
+            cnt++;
         }
 
-        while(dem == distinct_char)
+        while(cnt == distinct_char)
         {
-            minLength = min(minLength, i - left + 1);
+            minLength = min(minLength, right - left + 1);
+
             if(--char_count[s[left]] == 0)
             {
-                dem--;
+                cnt--;
             }
+
             left++;
         }
     }
