@@ -1,3 +1,6 @@
+/*
+Cơ chế hoạt động: Đỉnh nào không đi được nửa thì đẩy vào vector rồi lật ngược, cơ chế giống ngăn xếp, xếp chồng lên nhau rồi lấy ra từ trên đến hết
+*/
 #include<bits/stdc++.h>
 using namespace std;
 
