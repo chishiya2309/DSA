@@ -14,11 +14,9 @@ In một số nguyên: số lượng mảng con thỏa mãn
 
 Ví dụ :
 Input 01
-Copy
 5
 2 1 7 5 6
 Output 01
-Copy
 3
 Giải thích :
 Dãy con thỏa mãn là (2, 1, 7), (5) và (2, 1, 7, 5)
@@ -49,7 +47,6 @@ int main() {
     }
 
     ll soMangCon = 0;
-
     for(int i = 1; i <= n; i++)
     {
         soMangCon += cnt[dp[i]];
