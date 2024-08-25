@@ -1,5 +1,5 @@
 /*
-1 kiểu sắp xếp topo dùng bfs, nếu duyệt hết được tất cả các đỉnh thì đồ thị không có chu trình
+1 kiểu sắp xếp topo dùng bfs, nếu duyệt hết được tất cả các đỉnh thì đồ thị không có chu trình, đỉnh nào có bán bậc vào bằng 0 thì đẩy vào hàng đợi
 */
 
 #include<bits/stdc++.h>
@@ -8,9 +8,8 @@ using namespace std;
 int n, m;
 vector<int> ke[1003];
 int bac[1003];
-int visited[1003];
 
-void kahn()
+void Kahn()
 {
     queue<int> q;
     for(int i = 1; i <= n; i++)
@@ -20,6 +19,7 @@ void kahn()
             q.push(i);
         }
     }
+
     int dem = 0;
     while(!q.empty())
     {
@@ -36,11 +36,10 @@ void kahn()
         }
     }
 
-    //Nếu duyệt đủ đỉnh thì không có chu trình, ngược lại thì có chu trình
     if(dem == n)
     {
         cout << 0;
-    }else
+    }else 
     {
         cout << 1;
     }
@@ -57,5 +56,5 @@ signed main()
         bac[y]++;
     }
 
-    kahn();
+    Kahn();
 }
