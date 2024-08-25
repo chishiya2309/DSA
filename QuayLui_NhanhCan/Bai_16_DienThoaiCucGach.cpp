@@ -1,8 +1,6 @@
 /*
 Cho xâu kí tự S chỉ bao gồm các số từ 2 tới 9, mỗi chữ số này trên bàn phím của điện thoại cục gạch tương ứng với 3 chữ cái như trong hình bên dưới. Bạn hãy in ra các xâu kí tự có thể tạo thành bằng cách ấn mỗi chữ số trong xâu S đúng 1 lần. Bạn hãy in ra các xâu kết quả theo thứ tự từ điển tăng dần.
 
-
-
 Đầu vào
 • Dòng duy nhất chứa xâu S
 
@@ -16,19 +14,23 @@ Giới hạn
 
 Ví dụ :
 Input 01
+Copy
 23
 Output 01
+Copy
 ad ae af bd be bf cd ce cf
 */
 
 #include <bits/stdc++.h>
 
 using namespace std;
+
 string s;
 int n;
-char x[10];
 string d[10];
-void solve()
+char x[10];
+
+void init()
 {
     d[2] = "abc";
     d[3] = "def";
@@ -39,6 +41,16 @@ void solve()
     d[8] = "tuv";
     d[9] = "wxyz";
 }
+
+void in()
+{
+    for(int i = 1; i <= n; i++)
+    {
+        cout << x[i];
+    }
+    cout << " ";
+}
+
 void Try(int i)
 {
     int num = s[i] - '0';
@@ -47,24 +59,26 @@ void Try(int i)
         x[i] = c;
         if(i == n)
         {
-            for(int j = 1; j <= n; j++)
-            {
-                cout << x[j];
-            }
-            cout << " ";
-        }else {
+            in();
+        }else 
+        {
             Try(i + 1);
         }
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    solve();
+    
     cin >> s;
-    n = s.size();
     sort(s.begin(), s.end());
+    n = s.size();
     s = "0" + s;
+
+    init();
+
     Try(1);
+
     return 0;
 }
