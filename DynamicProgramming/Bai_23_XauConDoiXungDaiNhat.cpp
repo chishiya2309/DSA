@@ -14,8 +14,10 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
+Copy
 bcccbebge
 Output 01
+Copy
 5
 */
 
@@ -25,14 +27,15 @@ using namespace std;
 
 string s;
 int n;
-bool dp[1003][1003]; //Xau tu chi so i den chi so j co la xau doi xung hay khong
+bool dp[1003][1003];    //Xâu từ chỉ số i đến chỉ số j có phải là xâu đối xứng hay không
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-
+    
     cin >> s;
     n = s.size();
+
     for(int i = 1; i <= n; i++)
     {
         dp[i][i] = 1;
@@ -42,7 +45,6 @@ int main() {
 
     for(int length = 2; length <= n; length++)
     {
-        //chi so dau
         for(int i = 1; length + i - 1 <= n; i++)
         {
             int j = length + i - 1;
