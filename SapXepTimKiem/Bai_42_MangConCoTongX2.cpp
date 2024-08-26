@@ -20,7 +20,7 @@ Input 01
 2 4 1 2 7
 Output 01
 3
-*/
+
 
 #include <bits/stdc++.h>
 #define ll long long
