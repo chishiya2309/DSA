@@ -16,9 +16,11 @@ Giới hạn
 
 Ví dụ :
 Input 01
+Copy
 7
 4 8 6 7 3 5 2
 Output 01
+Copy
 3 5 
 4 5 
 4 6 
@@ -31,17 +33,19 @@ Output 01
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
+
 int n;
-vector<int> a;
-vector<string> res;
-void Try(int index, vector<int> ans)
+
+vector<string> v;
+
+void Try(vector<int> a, int index, vector<int> res)
 {
-    if(ans.size() >= 2)
+    if(res.size() >= 2)
     {
         bool isIncreasing = true;
-        for(int i = 1; i < ans.size(); i++)
+        for(int i = 1; i < res.size(); i++)
         {
-            if(ans[i] <= ans[i - 1])
+            if(res[i] <= res[i - 1])
             {
                 isIncreasing = false;
                 break;
@@ -51,37 +55,44 @@ void Try(int index, vector<int> ans)
         if(isIncreasing)
         {
             string tmp = "";
-            for(int num : ans)
+            for(int num : res)
             {
                 tmp += to_string(num) + " ";
             }
             tmp.pop_back();
-            res.push_back(tmp);
+            v.push_back(tmp);
         }
     }
 
     for(int i = index; i < n; i++)
     {
-        ans.push_back(a[i]);
-        Try(i + 1, ans);
-        ans.pop_back();
+        res.push_back(a[i]);
+        Try(a, i + 1, res);
+        res.pop_back();
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     cin >> n;
-    a.resize(n);
+    vector<int> a(n);
     for(int &x : a)
     {
         cin >> x;
     }
-    vector<int> ans;
-    Try(0, ans);
-    sort(res.begin(), res.end());
-    for(string x : res)
+
+    vector<int> res;
+
+    Try(a, 0, res);
+
+    sort(v.begin(), v.end());
+    
+    for(auto it : v)
     {
-        cout << x << endl;
+        cout << it << endl;
     }
+
     return 0;
 }
