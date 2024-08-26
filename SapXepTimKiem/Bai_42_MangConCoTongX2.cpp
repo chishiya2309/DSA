@@ -16,10 +16,41 @@ In một số nguyên: số lượng mảng con cần thiết.
 
 Ví dụ :
 Input 01
-Copy
 5 7
 2 4 1 2 7
 Output 01
-Copy
 3
-*/
+
+
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int n, x;
+    cin >> n >> x;
+
+    vector<int> a(n);
+    for(int &x : a)
+    {
+        cin >> x;
+    }
+
+    map<ll, int> sum_count;
+    sum_count[0] = 1;
+    ll sum = 0, soMangCon = 0;
+    
+    for(int i = 0; i < n; i++)
+    {
+        sum += a[i];
+        soMangCon += sum_count[sum - x];
+        sum_count[sum]++;
+    }
+
+    cout << soMangCon;
+
+    return 0;
+}

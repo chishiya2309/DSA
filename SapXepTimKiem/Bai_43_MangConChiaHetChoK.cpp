@@ -29,25 +29,31 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int n;
     cin >> n;
+
     vector<int> a(n);
     for(int &x : a)
     {
         cin >> x;
     }
-    vector<int> cnt(n, 0), pre_fix(n + 1, 0);
+
+    vector<int> cnt(n, 0), dp(n + 1, 0);
     cnt[0] = 1;
     for(int i = 0; i < n; i++)
     {
-        pre_fix[i + 1] = (pre_fix[i] + a[i] % n + n) % n;
-    } 
-    ll demMangCon = 0;
+        dp[i + 1] = (dp[i] + a[i] % n + n) % n;
+    }
+
+    ll soMangCon = 0;
     for(int i = 1; i <= n; i++)
     {
-        demMangCon += cnt[pre_fix[i]];
-        cnt[pre_fix[i]]++;
+        soMangCon += cnt[dp[i]];
+        cnt[dp[i]]++;
     }
-    cout << demMangCon;
+
+    cout << soMangCon;
+
     return 0;
 }
