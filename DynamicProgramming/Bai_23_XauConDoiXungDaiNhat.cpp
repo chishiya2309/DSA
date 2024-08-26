@@ -27,29 +27,31 @@ using namespace std;
 
 string s;
 int n;
-bool dp[1003][1003];
+bool dp[1003][1003];    //Xâu từ chỉ số i đến chỉ số j có phải là xâu đối xứng hay không
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-
+    
     cin >> s;
     n = s.size();
-    for(int i = 1; i <= n; i++) 
+
+    for(int i = 1; i <= n; i++)
     {
         dp[i][i] = 1;
     }
 
     int ans = 1;
+
     for(int length = 2; length <= n; length++)
     {
-        for(int i = 1; i + length - 1 <= n; i++)
+        for(int i = 1; length + i - 1 <= n; i++)
         {
-            int j = i + length - 1;
+            int j = length + i - 1;
             if(length == 2)
             {
                 dp[i][j] = (s[i - 1] == s[j - 1]);
-            }else
+            }else 
             {
                 dp[i][j] = (s[i - 1] == s[j - 1]) && dp[i + 1][j - 1];
             }
@@ -57,7 +59,7 @@ int main() {
             {
                 ans = length;
             }
-        }  
+        }
     }
 
     cout << ans;

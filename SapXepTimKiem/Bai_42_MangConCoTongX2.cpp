@@ -16,13 +16,11 @@ In một số nguyên: số lượng mảng con cần thiết.
 
 Ví dụ :
 Input 01
-Copy
 5 7
 2 4 1 2 7
 Output 01
-Copy
 3
-*/
+
 
 #include <bits/stdc++.h>
 #define ll long long
@@ -35,23 +33,24 @@ int main() {
     int n, x;
     cin >> n >> x;
 
-    vector<int> a(n + 1);
-    for(int i = 0; i < n; i++) 
+    vector<int> a(n);
+    for(int &x : a)
     {
-        cin >> a[i];
+        cin >> x;
     }
-    
+
     map<ll, int> sum_count;
     sum_count[0] = 1;
-    ll sum = 0, cnt = 0;
+    ll sum = 0, soMangCon = 0;
+    
     for(int i = 0; i < n; i++)
     {
         sum += a[i];
-        cnt += sum_count[sum - x];
+        soMangCon += sum_count[sum - x];
         sum_count[sum]++;
     }
 
-    cout << cnt;
+    cout << soMangCon;
 
     return 0;
 }

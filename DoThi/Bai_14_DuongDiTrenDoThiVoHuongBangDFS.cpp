@@ -20,11 +20,13 @@ In ra đường đi từ s tới t nếu có đường đi, trường hợp khô
 
 Ví dụ :
 Input 01
+Copy
 5 3 4 3
 4 2
 2 1
 3 1
 Output 01
+Copy
 4 2 1 3
 */
 
@@ -33,9 +35,9 @@ Output 01
 using namespace std;
 
 int n, m, s, t;
-vector<int> ke[1003];
-int parent[1003];
 bool visited[1003];
+int parent[1003];
+vector<int> ke[1003];
 
 void dfs(int u)
 {

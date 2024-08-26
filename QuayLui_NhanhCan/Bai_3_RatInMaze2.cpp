@@ -16,12 +16,14 @@ Dữ liệu đảm bảo ô (1, 1) là số 1.
 
 Ví dụ :
 Input 01
+Copy
 4
 1 1 1 1 
 1 1 0 1 
 1 1 1 1 
 0 1 1 1
 Output 01
+Copy
 DDRDRR
 DDRDRURD
 DDRRDR
@@ -51,44 +53,58 @@ RRRDDLLDRR
 #include <bits/stdc++.h>
 
 using namespace std;
-int n, a[10][10];
-bool mark[10][10];
-bool final = false;
+
+int n;
+int a[10][10];
+bool visited[10][10];
+bool ok = 0;
+
 int dx[] = {1, 0, 0, -1};
 int dy[] = {0, -1, 1, 0};
-char WORD[] = "DLRU";
+
+char d[] = "DLRU";
+
 void Try(int i, int j, string x)
 {
-    mark[i][j] = true;
+    visited[i][j] = true;
     if(i == n && j == n)
     {
-        final = true;
+        ok = 1;
         cout << x << endl;
     }
-
-    for(int k = 0; k < 4; k++) {
-        int inext = i + dx[k], jnext = j + dy[k];
-        if(inext >= 1 && inext <= n && jnext >= 1 && jnext <= n && a[inext][jnext] == 1 && mark[inext][jnext] == false)
+    for(int k = 0; k < 4; k++)
+    {
+        int inext = i + dx[k];
+        int jnext = j + dy[k];
+        if(inext >= 1 && inext <= n && jnext >= 1 && jnext <= n && a[inext][jnext] == 1 && visited[inext][jnext] == 0)
         {
-            Try(inext, jnext, x + WORD[k]);
-        } 
+            Try(inext, jnext, x + d[k]);
+        }
     }
-    mark[i][j] = false;
+    visited[i][j] = false;
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     cin >> n;
-    for(int i = 1; i <= n; i++) {
-        for(int j = 1; j <= n; j++) {
+    for(int i = 1; i <= n; i++)
+    {
+        for(int j = 1; j <= n; j++)
+        {
             cin >> a[i][j];
         }
     }
-    mark[1][1] = true;
+
+    visited[1][1] = 1;
     Try(1, 1, "");
-    if(!final)
+
+    if(!ok)
     {
         cout << -1;
     }
+
     return 0;
 }
+

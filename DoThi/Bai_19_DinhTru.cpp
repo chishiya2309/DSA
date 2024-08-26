@@ -18,7 +18,6 @@ In ra số lượng đỉnh trụ của đồ thị
 
 Ví dụ :
 Input 01
-Copy
 10 6
 5 4
 5 2
@@ -27,7 +26,6 @@ Copy
 5 3
 10 1
 Output 01
-Copy
 3
 */
 
@@ -64,19 +62,19 @@ int main() {
         ke[y].push_back(x);
     }
 
-    int soThanhPhanLienThongBanDau = 0;
+    int soThanhPhanLienThong = 0;
     for(int i = 1; i <= n; i++)
     {
         if(!visited[i])
         {
-            soThanhPhanLienThongBanDau++;
+            soThanhPhanLienThong++;
             dfs(i);
         }
     }
 
     int soDinhTru = 0;
 
-    for(int i = 1; i <= n; i++)
+    for(int i  = 1; i <= n; i++)
     {
         memset(visited, 0, sizeof(visited));
         visited[i] = 1;
@@ -89,8 +87,8 @@ int main() {
                 dfs(j);
             }
         }
-        if(tmp > soThanhPhanLienThongBanDau)
-        {
+        if(tmp > soThanhPhanLienThong)
+        {   
             soDinhTru++;
         }
     }

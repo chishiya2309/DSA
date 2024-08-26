@@ -16,9 +16,11 @@ In độ dài của chuỗi bài hát dài nhất mà các bài hát này mỗi 
 
 Ví dụ :
 Input 01
+Copy
 5
 1 2 2 4 5
 Output 01
+Copy
 3
 */
 
@@ -29,25 +31,33 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     int n;
     cin >> n;
+
     vector<int> k(n);
     for(int &x : k)
     {
         cin >> x;
     }
+
     map<int, int> mp;
-    int start = 0, maxLength = INT_MIN;
-    for(int i = 0; i < n; i++)
+    int left = 0;
+    int maxLength = INT_MIN;
+
+    for(int right = 0; right < n; right++)
     {
-        mp[k[i]]++;
-        while(mp[k[i]] == 2)
+        mp[k[right]]++;
+        while(mp[k[right]] == 2)
         {
-            mp[k[start]]--;
-            start++;
+            mp[k[left]]--;
+            left++;
         }
-        maxLength = max(maxLength, i - start + 1);
+
+        maxLength = max(maxLength, right - left + 1);
     }
+
     cout << maxLength;
+
     return 0;
 }
