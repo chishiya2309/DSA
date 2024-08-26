@@ -18,6 +18,7 @@ In ra các cạnh trong đồ thị trên từng dòng, các cạnh được li�
 
 Ví dụ :
 Input 01
+Copy
 5
 4 
 3 4 5 
@@ -25,6 +26,7 @@ Input 01
 1 2 
 2 3
 Output 01
+Copy
 1 4
 2 3
 2 4
@@ -46,36 +48,32 @@ int main() {
     cin >> n;
     cin.ignore();
 
-    vector<pair<int, int>> res;
-
     for(int i = 1; i <= n; i++)
     {
         string s;
         getline(cin, s);
-        stringstream ss(s);
         int num;
+        stringstream ss(s);
         while(ss >> num)
         {
-            ke[i].push_back(num);
+            if(num > i)
+            {
+                ke[i].push_back(num);
+            }
         }
     }
 
     for(int i = 1; i <= n; i++)
     {
-        for(int j : ke[i])
+        if(!ke[i].empty())
         {
-            if(j > i)
+            for(int num : ke[i])
             {
-                res.push_back({i, j});
+                cout << i << " " << num << endl;
             }
         }
     }
 
-    sort(res.begin(), res.end());
-    for(auto r : res)
-    {
-        cout << r.first << " " << r.second << endl;
-    }
-
     return 0;
+    
 }
