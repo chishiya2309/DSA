@@ -14,11 +14,9 @@ In một số nguyên: số lượng mảng con thỏa mãn
 
 Ví dụ :
 Input 01
-Copy
 5
 2 1 7 5 6
 Output 01
-Copy
 3
 Giải thích :
 Dãy con thỏa mãn là (2, 1, 7), (5) và (2, 1, 7, 5)
@@ -41,18 +39,19 @@ int main() {
         cin >> x;
     }
 
-    map<int, int> sum_count;
+    ll soMangCon = 0;
+    map<int, int> mp;
     vector<int> dp(n + 1, 0);
     for(int i = 0; i < n; i++)
     {
         dp[i + 1] = (dp[i] + a[i] % n + n) % n;
     }
-    sum_count[0] = 1;
-    ll soMangCon = 0;
+    mp[0] = 1;
+
     for(int i = 1; i <= n; i++)
     {
-        soMangCon += sum_count[dp[i]];
-        sum_count[dp[i]]++;
+        soMangCon += mp[dp[i]];
+        mp[dp[i]]++;
     }
 
     cout << soMangCon;
