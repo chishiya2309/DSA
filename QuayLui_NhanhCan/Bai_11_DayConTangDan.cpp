@@ -16,11 +16,9 @@ Giới hạn
 
 Ví dụ :
 Input 01
-Copy
 7
 4 8 6 7 3 5 2
 Output 01
-Copy
 3 5 
 4 5 
 4 6 
@@ -35,10 +33,10 @@ Copy
 using namespace std;
 
 int n;
-
+vector<int> a;
 vector<string> v;
 
-void Try(vector<int> a, int index, vector<int> res)
+void Try(int index, vector<int> res)
 {
     if(res.size() >= 2)
     {
@@ -67,7 +65,7 @@ void Try(vector<int> a, int index, vector<int> res)
     for(int i = index; i < n; i++)
     {
         res.push_back(a[i]);
-        Try(a, i + 1, res);
+        Try(i + 1, res);
         res.pop_back();
     }
 }
@@ -77,18 +75,17 @@ int main() {
     cin.tie(NULL);
     
     cin >> n;
-    vector<int> a(n);
+    a.resize(n);
+
     for(int &x : a)
     {
         cin >> x;
     }
 
     vector<int> res;
-
-    Try(a, 0, res);
+    Try(0, res);
 
     sort(v.begin(), v.end());
-    
     for(auto it : v)
     {
         cout << it << endl;
