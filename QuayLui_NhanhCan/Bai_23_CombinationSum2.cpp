@@ -14,8 +14,10 @@ In ra các cấu hình thỏa mãn trên từng dòng
 
 Ví dụ :
 Input 01
+Copy
 91 3
 Output 01
+Copy
 3 + 5 + 83
 3 + 17 + 71
 3 + 29 + 59
@@ -46,14 +48,13 @@ Output 01
 #include <bits/stdc++.h>
 
 using namespace std;
+
 int n, k;
-bool final = false;
+vector<int> prime;
+bool found = false;
+
 bool checkPrime(int n)
 {
-    if(n < 2)
-    {
-        return false;
-    }
     for(int i = 2; i <= sqrt(n); i++)
     {
         if(n % i == 0)
@@ -63,10 +64,10 @@ bool checkPrime(int n)
     }
     return n > 1;
 }
-vector<int> prime;
-void solve()
+
+void init()
 {
-    for(int i = 1; i <= 500; i++)
+    for(int i = 2; i <= 500; i++)
     {
         if(checkPrime(i))
         {
@@ -74,18 +75,20 @@ void solve()
         }
     }
 }
+
 void Try(vector<int> v, int sum)
 {
     if(v.size() == k && sum == n)
     {
-        final = true;
+        found = 1;
         for(int i = 0; i < k; i++)
         {
             cout << v[i];
             if(i == k - 1)
             {
                 cout << endl;
-            }else {
+            }else 
+            {
                 cout << " + ";
             }
         }
@@ -106,16 +109,21 @@ void Try(vector<int> v, int sum)
         }
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     cin >> n >> k;
-    solve();
+    init();
+
     vector<int> v;
     Try(v, 0);
-    if(!final)
+
+    if(!found)
     {
         cout << "NOT FOUND";
     }
+
     return 0;
 }
