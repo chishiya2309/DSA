@@ -101,6 +101,7 @@ void Dijkstra(int s)
     {
         ii p = q.top();
         q.pop();
+        if(d[p.second] < p.first) continue;
         int u = p.second;
         for(ii it : ke[u])
         {
