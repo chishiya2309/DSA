@@ -7,20 +7,20 @@ using namespace std;
 
 int n, m;
 set<int> ke[1003];
-vector<int> topo;
 bool visited[1003];
+vector<int> v;
 
-void sapXepTopo(int u)
+void dfs(int u)
 {
     visited[u] = 1;
     for(int j : ke[u])
     {
         if(!visited[j])
         {
-            sapXepTopo(j);
+            dfs(j);
         }
     }
-    topo.push_back(u);
+    v.push_back(u);
 }
 
 signed main()
@@ -37,12 +37,13 @@ signed main()
     {
         if(!visited[i])
         {
-            sapXepTopo(i);
+            dfs(i);
         }
     }
 
-    reverse(topo.begin(), topo.end());
-    for(int num : topo)
+    reverse(v.begin(), v.end());
+
+    for(int num : v)
     {
         cout << num << " ";
     }
