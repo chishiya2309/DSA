@@ -14,8 +14,10 @@ In ra các cấu hình thỏa mãn trên từng dòng
 
 Ví dụ :
 Input 01
+Copy
 38 7
 Output 01
+Copy
 1 + 2 + 5 + 6 + 7 + 8 + 9
 1 + 3 + 4 + 6 + 7 + 8 + 9
 2 + 3 + 4 + 5 + 7 + 8 + 9
@@ -24,6 +26,7 @@ Output 01
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
+
 int n, k;
 bool final = false;
 void Try(vector<int> v, int sum)
@@ -37,7 +40,8 @@ void Try(vector<int> v, int sum)
             if(i == k - 1)
             {
                 cout << endl;
-            }else {
+            }else
+            {
                 cout << " + ";
             }
         }
@@ -58,15 +62,20 @@ void Try(vector<int> v, int sum)
         }
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     cin >> n >> k;
+
     vector<int> v;
     Try(v, 0);
+
     if(!final)
     {
         cout << "NOT FOUND";
     }
+
     return 0;
 }
