@@ -12,8 +12,10 @@ In ra các cách tách N thành các số nhỏ thuận nghịch nhỏ hơn
 
 Ví dụ :
 Input 01
+Copy
 282882
 Output 01
+Copy
 2 8 2 8 8 2 
 2 8 2 88 2 
 2 8 2882 
@@ -25,41 +27,47 @@ Output 01
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
-string N;
-bool isPalindrome(string t)
+
+string n;
+
+bool isPalindrome(string tmp)
 {
-    string tmp = t;
-    reverse(tmp.begin(), tmp.end());
-    return tmp == t;
+    string res = tmp;
+    reverse(res.begin(), res.end());
+    return res == tmp;
 }
-void Try(vector<string> v, int pos)
+
+void Try(vector<string> v, int index)
 {
-    if(v.size() && pos == N.size())
+    if(v.size() && index == n.size())
     {
-        for(string x : v)
+        for(string num : v)
         {
-            cout << x << " ";
+            cout << num << " ";
         }
         cout << endl;
-        return;
     }
 
-    for(int length = 1; pos + length - 1 < N.size(); length++)\
+    for(int length = 1; length + index - 1 < n.size(); length++)
     {
-        string tmp = N.substr(pos, length);
+        string tmp = n.substr(index, length);
         if(isPalindrome(tmp))
         {
             v.push_back(tmp);
-            Try(v, pos + length);
+            Try(v, index + length);
             v.pop_back();
         }
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    cin >> N;
+    
+    cin >> n;
+
     vector<string> v;
     Try(v, 0);
+
     return 0;
 }
