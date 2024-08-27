@@ -12,8 +12,10 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
+Copy
 28TeCH
 Output 01
+Copy
 28TECH
 28TECh
 28TEcH
@@ -33,29 +35,36 @@ Output 01
 */
 
 #include <bits/stdc++.h>
-#define endl '\n'
+
 using namespace std;
+
 string s;
-void Try(string x, int i)
+
+void Try(int index, string tmp)
 {
-    if(x.size() == s.size())
+    if(tmp.size() == s.size())
     {
-        cout << x << endl;
+        cout << tmp << endl;
         return;
     }
 
-    if(isalpha(s[i]))
+    if(isalpha(s[index]))
     {
-        Try(x + (char)toupper(s[i]), i + 1);
-        Try(x + (char)tolower(s[i]), i + 1);
-    }else {
-        Try(x + s[i], i + 1);
+        Try(index + 1, tmp + (char)toupper(s[index]));
+        Try(index + 1, tmp + (char)tolower(s[index]));
+    }else 
+    {
+        Try(index + 1, tmp + s[index]);
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     cin >> s;
-    Try("", 0);
+    
+    Try(0, "");
+
     return 0;
 }
