@@ -18,7 +18,6 @@ In ra các cạnh trong đồ thị trên từng dòng, các cạnh được li�
 
 Ví dụ :
 Input 01
-Copy
 5
 4 
 3 4 5 
@@ -26,7 +25,6 @@ Copy
 1 2 
 2 3
 Output 01
-Copy
 1 4
 2 3
 2 4
@@ -39,7 +37,7 @@ Copy
 using namespace std;
 
 int n;
-vector<int> ke[1003];
+set<int> ke[1003];
 
 int main() {
     ios_base::sync_with_stdio(false);
@@ -52,28 +50,25 @@ int main() {
     {
         string s;
         getline(cin, s);
-        int num;
         stringstream ss(s);
+        int num;
         while(ss >> num)
         {
-            if(num > i)
+            if(i < num)
             {
-                ke[i].push_back(num);
+                ke[i].insert(num);
             }
         }
     }
 
     for(int i = 1; i <= n; i++)
     {
-        if(!ke[i].empty())
+        for(int j : ke[i])
         {
-            for(int num : ke[i])
-            {
-                cout << i << " " << num << endl;
-            }
+            cout << i << " " << j;
+            cout << endl;
         }
     }
 
     return 0;
-    
 }
