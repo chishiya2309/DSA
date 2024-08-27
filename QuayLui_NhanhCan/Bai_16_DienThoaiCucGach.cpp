@@ -16,8 +16,10 @@ Giới hạn
 
 Ví dụ :
 Input 01
+Copy
 23
 Output 01
+Copy
 ad ae af bd be bf cd ce cf
 */
 
@@ -63,13 +65,14 @@ void Try(int i)
         }else 
         {
             Try(i + 1);
-        }
+        }   
     }
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     init();
     cin >> s;
     sort(s.begin(), s.end());
