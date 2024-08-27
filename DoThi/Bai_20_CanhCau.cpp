@@ -18,7 +18,6 @@ In ra số lượng đỉnh trụ của đồ thị
 
 Ví dụ :
 Input 01
-Copy
 10 6
 10 1
 5 2
@@ -27,7 +26,6 @@ Copy
 5 3
 10 4
 Output 01
-Copy
 6
 */
 
@@ -37,8 +35,8 @@ using namespace std;
 
 int n, m;
 set<int> ke[1003];
-bool visited[1003];
 vector<pair<int, int>> edges;
+bool visited[1003];
 
 void dfs(int u)
 {
@@ -66,7 +64,7 @@ int main() {
         edges.push_back({x, y});
     }
 
-    int soThanhPhanLienThong = 0, soCanhCau = 0;
+    int soThanhPhanLienThong = 0;
     for(int i = 1; i <= n; i++)
     {
         if(!visited[i])
@@ -74,12 +72,14 @@ int main() {
             soThanhPhanLienThong++;
             dfs(i);
         }
-    } 
+    }
 
-    for(auto canh : edges)
+    int soCanhCau = 0;
+
+    for(auto edge : edges)
     {
-        int x = canh.first;
-        int y = canh.second;
+        int x = edge.first;
+        int y = edge.second;
         memset(visited, 0, sizeof(visited));
         ke[x].erase(y);
         ke[y].erase(x);
