@@ -14,9 +14,11 @@ Giới hạn
 
 Ví dụ :
 Input 01
+Copy
 4 2
 ABCD
 Output 01
+Copy
 AA
 AB
 AC
@@ -30,29 +32,35 @@ DD
 */
 
 #include <bits/stdc++.h>
-#define endl '\n'
+
 using namespace std;
+
 int n, k;
 string s;
-void Try(string x, int pos)
+
+void Try(int index, string tmp)
 {
-    if(x.size() == k)
+    if(tmp.size() == k)
     {
-        cout << x << endl;
+        cout << tmp << endl;
         return;
     }
-
-    for(int i = pos; i < n; i++)
+    for(int i = index; i < n; i++)
     {
-        Try(x + s[i], i);
+        Try(i, tmp + s[i]);
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     cin >> n >> k;
+    cin.ignore();
     cin >> s;
     sort(s.begin(), s.end());
-    Try("", 0);
+
+    Try(0, "");
+
     return 0;
 }
