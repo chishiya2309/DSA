@@ -16,9 +16,11 @@ In một số nguyên: số lượng mảng con cần thiết.
 
 Ví dụ :
 Input 01
+Copy
 5 7
 2 4 1 2 7
 Output 01
+Copy
 3
 */
 
@@ -39,15 +41,15 @@ int main() {
         cin >> x;
     }
 
-    map<ll, int> sum_count;
-    sum_count[0] = 1;
     ll sum = 0, soMangCon = 0;
-    
-    for(int i = 0; i < n; i++)
+    map<ll, int> mp;
+    mp[0] = 1;
+
+    for(int num : a)
     {
-        sum += a[i];
-        soMangCon += sum_count[sum - x];
-        sum_count[sum]++;
+        sum += num;
+        soMangCon += mp[sum - x];
+        mp[sum]++;
     }
 
     cout << soMangCon;
