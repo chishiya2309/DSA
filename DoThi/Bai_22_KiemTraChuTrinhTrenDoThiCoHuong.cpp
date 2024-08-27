@@ -18,14 +18,12 @@ In ra 1 nếu đồ thị tồn tại chu trình, ngược lại in ra 0.
 
 Ví dụ :
 Input 01
-Copy
 4 4
 1 2
 2 3
 3 1
 1 4
 Output 01
-Copy
 1
 */
 
@@ -49,6 +47,7 @@ void dfs(int u)
         }else if(color[j] == 1)
         {
             chutrinh = 1;
+            return;
         }
     }
     color[u] = 2;
