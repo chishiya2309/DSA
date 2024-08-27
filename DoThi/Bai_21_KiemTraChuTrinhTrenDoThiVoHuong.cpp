@@ -18,6 +18,7 @@ In ra 1 nếu đồ thị tồn tại chu trình, ngược lại in ra 0.
 
 Ví dụ :
 Input 01
+Copy
 10 11
 10 5
 10 4
@@ -31,6 +32,7 @@ Input 01
 10 6
 10 9
 Output 01
+Copy
 1
 */
 
@@ -46,19 +48,16 @@ int chutrinh = 0;
 
 void dfs(int u)
 {
-    visited[u] = true;
+    visited[u] = 1;
     for(int j : ke[u])
     {
         if(!visited[j])
         {
             parent[j] = u;
             dfs(j);
-        }else 
+        }else if(j != parent[u])
         {
-            if(j != parent[u])
-            {
-                chutrinh = 1;
-            }
+            chutrinh = 1;
         }
     }
 }
@@ -68,7 +67,7 @@ int main() {
     cin.tie(NULL);
     
     cin >> n >> m;
-    for(int i = 0; i < m; i++) 
+    for(int i = 0; i < m; i++)
     {
         int x, y;
         cin >> x >> y;
@@ -81,7 +80,7 @@ int main() {
         if(!visited[i])
         {
             dfs(i);
-            if(chutrinh == 1)
+            if(chutrinh)
             {
                 cout << 1;
                 return 0;
