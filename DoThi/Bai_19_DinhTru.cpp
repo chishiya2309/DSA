@@ -18,6 +18,7 @@ In ra số lượng đỉnh trụ của đồ thị
 
 Ví dụ :
 Input 01
+Copy
 10 6
 5 4
 5 2
@@ -26,6 +27,7 @@ Input 01
 5 3
 10 1
 Output 01
+Copy
 3
 */
 
@@ -74,7 +76,7 @@ int main() {
 
     int soDinhTru = 0;
 
-    for(int i  = 1; i <= n; i++)
+    for(int i = 1; i <= n; i++)
     {
         memset(visited, 0, sizeof(visited));
         visited[i] = 1;
@@ -88,7 +90,7 @@ int main() {
             }
         }
         if(tmp > soThanhPhanLienThong)
-        {   
+        {
             soDinhTru++;
         }
     }
