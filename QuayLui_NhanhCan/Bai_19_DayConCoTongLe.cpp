@@ -16,11 +16,9 @@ Giới hạn
 
 Ví dụ :
 Input 01
-Copy
 4
 9 7 9 9
 Output 01
-Copy
 7 
 7 9 9 
 9 
@@ -34,22 +32,28 @@ Copy
 #include <bits/stdc++.h>
 #define endl '\n'
 using namespace std;
+
 int n;
 vector<int> a;
-vector<vector<int>> ans;
 bool used[20];
-bool check(vector<int> v)
+
+vector<vector<int>> v;
+
+bool check(vector<int> tmp)
 {
     int sum = 0;
-    for(int num : v) sum += num;
+    for(int num : tmp)
+    {
+        sum += num;
+    }
     return sum % 2;
 }
 
-void Try(vector<int> v, int index)
+void Try(int index, vector<int> ans)
 {
-    if(v.size() && check(v))
+    if(ans.size() && check(ans))
     {
-        ans.push_back(v);
+        v.push_back(ans);
     }
 
     for(int i = index + 1; i < n; i++)
@@ -57,38 +61,44 @@ void Try(vector<int> v, int index)
         if(!used[i])
         {
             used[i] = true;
-            v.push_back(a[i]);
-            Try(v, i);
-            v.pop_back();
+            ans.push_back(a[i]);
+            Try(i, ans);
+            ans.pop_back();
             used[i] = false;
         }
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    
     cin >> n;
     a.resize(n);
     for(int &x : a)
     {
         cin >> x;
     }
-    vector<int> v;
-    Try(v, -1);
-    if(ans.empty())
+
+    vector<int> ans;
+    Try(-1, );
+
+    if(v.empty())
     {
         cout << "NOT FOUND";
-    }else 
+    }else
     {
-        sort(ans.begin(), ans.end());
-        for(auto x : ans)
+        sort(v.begin(), v.end());
+
+        for(auto it : v)
         {
-            for(int num : x)
+            for(int num : it)
             {
                 cout << num << " ";
             }
             cout << endl;
         }
     }
+
     return 0;
 }
