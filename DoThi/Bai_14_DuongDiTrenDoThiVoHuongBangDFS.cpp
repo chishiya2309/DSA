@@ -20,13 +20,11 @@ In ra đường đi từ s tới t nếu có đường đi, trường hợp khô
 
 Ví dụ :
 Input 01
-Copy
 5 3 4 3
 4 2
 2 1
 3 1
 Output 01
-Copy
 4 2 1 3
 */
 
@@ -35,9 +33,9 @@ Copy
 using namespace std;
 
 int n, m, s, t;
-bool visited[1003];
+set<int> ke[1003];
 int parent[1003];
-vector<int> ke[1003];
+bool visited[1003];
 
 void dfs(int u)
 {
@@ -61,13 +59,8 @@ int main() {
     {
         int x, y;
         cin >> x >> y;
-        ke[x].push_back(y);
-        ke[y].push_back(x);
-    }
-
-    for(int i = 1; i <= n; i++)
-    {
-        sort(ke[i].begin(), ke[i].end());
+        ke[x].insert(y);
+        ke[y].insert(x);
     }
 
     dfs(s);
@@ -75,7 +68,7 @@ int main() {
     if(!visited[t])
     {
         cout << -1;
-    }else 
+    }else
     {
         vector<int> v;
         while(t != s)
