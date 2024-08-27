@@ -12,7 +12,7 @@ int bac[1003];
 void Kahn()
 {
     queue<int> q;
-    for(int i = 1; i <= n; i++)
+    for(int i = 1;i <= n; i++)
     {
         if(bac[i] == 0)
         {
@@ -21,6 +21,7 @@ void Kahn()
     }
 
     int dem = 0;
+
     while(!q.empty())
     {
         int u = q.front();
@@ -35,7 +36,6 @@ void Kahn()
             }
         }
     }
-
     if(dem == n)
     {
         cout << 0;
@@ -57,4 +57,7 @@ signed main()
     }
 
     Kahn();
+
+    return 0;
+    
 }
