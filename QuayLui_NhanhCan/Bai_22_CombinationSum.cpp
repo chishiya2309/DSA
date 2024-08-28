@@ -14,10 +14,8 @@ In ra các cấu hình thỏa mãn trên từng dòng
 
 Ví dụ :
 Input 01
-Copy
 38 7
 Output 01
-Copy
 1 + 2 + 5 + 6 + 7 + 8 + 9
 1 + 3 + 4 + 6 + 7 + 8 + 9
 2 + 3 + 4 + 5 + 7 + 8 + 9
@@ -28,19 +26,20 @@ Copy
 using namespace std;
 
 int n, k;
-bool final = false;
+bool found = false;
+
 void Try(vector<int> v, int sum)
 {
     if(v.size() == k && sum == n)
     {
-        final = true;
-        for(int i = 0; i < k; i++)
+        found = true;
+        for(int i = 0; i < v.size(); i++)
         {
             cout << v[i];
             if(i == k - 1)
             {
                 cout << endl;
-            }else
+            }else 
             {
                 cout << " + ";
             }
@@ -52,7 +51,7 @@ void Try(vector<int> v, int sum)
         return;
     }
 
-    for(int i = 1; i < 10; i++)
+    for(int i = 1; i <= 9; i++)
     {
         if(v.empty() || i > v.back())
         {
@@ -71,8 +70,7 @@ int main() {
 
     vector<int> v;
     Try(v, 0);
-
-    if(!final)
+    if(!found)
     {
         cout << "NOT FOUND";
     }
