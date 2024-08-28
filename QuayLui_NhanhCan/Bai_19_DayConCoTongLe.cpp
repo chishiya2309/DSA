@@ -16,9 +16,11 @@ Giới hạn
 
 Ví dụ :
 Input 01
+Copy
 4
 9 7 9 9
 Output 01
+Copy
 7 
 7 9 9 
 9 
@@ -35,36 +37,37 @@ using namespace std;
 
 int n;
 vector<int> a;
+vector<vector<int>> ans;
 bool used[20];
+bool found = false;
 
-vector<vector<int>> v;
-
-bool check(vector<int> tmp)
+bool check(vector<int> v)
 {
     int sum = 0;
-    for(int num : tmp)
+    for(int num : v)
     {
         sum += num;
     }
     return sum % 2;
 }
 
-void Try(int index, vector<int> ans)
+void Try(vector<int> v, int index)
 {
-    if(ans.size() && check(ans))
+    if(v.size() && check(v))
     {
-        v.push_back(ans);
+        found = true;
+        ans.push_back(v);
     }
 
     for(int i = index + 1; i < n; i++)
     {
         if(!used[i])
         {
-            used[i] = true;
-            ans.push_back(a[i]);
-            Try(i, ans);
-            ans.pop_back();
-            used[i] = false;
+            used[i] = 1;
+            v.push_back(a[i]);
+            Try(v, i);
+            v.pop_back();
+            used[i] = 0;
         }
     }
 }
@@ -75,22 +78,22 @@ int main() {
     
     cin >> n;
     a.resize(n);
+
     for(int &x : a)
     {
         cin >> x;
     }
 
-    vector<int> ans;
-    Try(-1, );
+    vector<int> v;
+    Try(v, -1);
 
-    if(v.empty())
+    if(!found)
     {
         cout << "NOT FOUND";
     }else
     {
-        sort(v.begin(), v.end());
-
-        for(auto it : v)
+        sort(ans.begin(), ans.end());
+        for(auto it : ans)
         {
             for(int num : it)
             {
