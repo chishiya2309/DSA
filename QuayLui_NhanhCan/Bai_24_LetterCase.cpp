@@ -12,10 +12,8 @@ In ra đáp án của bài toán
 
 Ví dụ :
 Input 01
-Copy
 28TeCH
 Output 01
-Copy
 28TECH
 28TECh
 28TEcH
@@ -35,26 +33,27 @@ Copy
 */
 
 #include <bits/stdc++.h>
-
+#define endl '\n'
 using namespace std;
 
 string s;
+int n;
 
-void Try(int index, string tmp)
+void Try(int i, string x)
 {
-    if(tmp.size() == s.size())
+    if(i == n)
     {
-        cout << tmp << endl;
+        cout << x << endl;
         return;
     }
 
-    if(isalpha(s[index]))
+    if(isalpha(s[i]))
     {
-        Try(index + 1, tmp + (char)toupper(s[index]));
-        Try(index + 1, tmp + (char)tolower(s[index]));
-    }else 
+        Try(i + 1, x + (char)toupper(s[i]));
+        Try(i + 1, x + (char)tolower(s[i]));
+    }else
     {
-        Try(index + 1, tmp + s[index]);
+        Try(i + 1, x + s[i]);
     }
 }
 
@@ -63,7 +62,8 @@ int main() {
     cin.tie(NULL);
     
     cin >> s;
-    
+    n = s.size();
+
     Try(0, "");
 
     return 0;
