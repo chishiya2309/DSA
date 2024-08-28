@@ -12,10 +12,8 @@ In ra các cách tách N thành các số nhỏ thuận nghịch nhỏ hơn
 
 Ví dụ :
 Input 01
-Copy
 282882
 Output 01
-Copy
 2 8 2 8 8 2 
 2 8 2 88 2 
 2 8 2882 
@@ -30,20 +28,20 @@ using namespace std;
 
 string n;
 
-bool isPalindrome(string tmp)
+bool isPalindrome(string s)
 {
-    string res = tmp;
-    reverse(res.begin(), res.end());
-    return res == tmp;
+    string tmp = s;
+    reverse(tmp.begin(), tmp.end());
+    return tmp == s;
 }
 
 void Try(vector<string> v, int index)
 {
     if(v.size() && index == n.size())
     {
-        for(string num : v)
+        for(string it : v)
         {
-            cout << num << " ";
+            cout << it << " ";
         }
         cout << endl;
     }
@@ -65,7 +63,6 @@ int main() {
     cin.tie(NULL);
     
     cin >> n;
-
     vector<string> v;
     Try(v, 0);
 
