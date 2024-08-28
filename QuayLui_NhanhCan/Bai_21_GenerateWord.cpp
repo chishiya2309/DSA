@@ -20,7 +20,6 @@ Giới hạn
 
 Ví dụ :
 Input 01
-Copy
 4 4
 ACAC
 28B5
@@ -28,7 +27,6 @@ ACAC
 ABCH
 28TECH
 Output 01
-Copy
 YES
 */
 
@@ -37,17 +35,30 @@ YES
 using namespace std;
 
 int n, m;
-string s;
 char a[10][10];
+string s;
 bool found = false;
-bool used[10][10];
 int dx[] = {-1, 0, 1, 0};
 int dy[] = {0, 1, 0, -1};
+bool visited[10][10];
 
-void Try(int i, int j, int num)
+void nhap()
 {
-    used[i][j] = true;
-    if(found || num == s.size())
+    cin >> n >> m;
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 0; j < m; j++)
+        {
+            cin >> a[i][j];
+        }
+    }
+    cin >> s;
+}
+
+void Try(int i, int j, int index)
+{
+    visited[i][j] = true;
+    if(found || index == s.size())
     {
         found = 1;
         return;
@@ -57,30 +68,19 @@ void Try(int i, int j, int num)
     {
         int inext = i + dx[k];
         int jnext = j + dy[k];
-        if(inext >= 0 && inext < n && jnext >= 0 && jnext < m && a[inext][jnext] == s[num] && !used[inext][jnext])
+        if(inext >= 0 && inext < n && jnext >= 0 && jnext < m && a[inext][jnext] == s[index] && !visited[inext][jnext])
         {
-            Try(inext, jnext, num + 1);
+            Try(inext, jnext, index + 1);
         }
     }
-    used[i][j] = false;
+    visited[i][j] = false;
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
-    cin >> n >> m;
 
-    for(int i = 0; i < n; i++)
-    {
-        for(int j = 0; j < m; j++)
-        {
-            cin >> a[i][j];
-        }
-    }
-
-    cin >> s;
-
+    nhap();
     for(int i = 0; i < n; i++)
     {
         for(int j = 0; j < m; j++)
@@ -88,16 +88,17 @@ int main() {
             if(a[i][j] == s[0])
             {
                 Try(i, j, 1);
-                if(found)
-                {
-                    cout << "YES";
-                    return 0;
-                }
             }
         }
     }
 
-    cout << "NO";
+    if(found)
+    {
+        cout << "YES";
+    }else 
+    {
+        cout << "NO";
+    }
 
     return 0;
 }
