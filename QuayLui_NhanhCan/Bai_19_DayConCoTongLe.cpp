@@ -16,11 +16,9 @@ Giới hạn
 
 Ví dụ :
 Input 01
-Copy
 4
 9 7 9 9
 Output 01
-Copy
 7 
 7 9 9 
 9 
@@ -37,9 +35,8 @@ using namespace std;
 
 int n;
 vector<int> a;
+bool used[1003];
 vector<vector<int>> ans;
-bool used[20];
-bool found = false;
 
 bool check(vector<int> v)
 {
@@ -51,11 +48,10 @@ bool check(vector<int> v)
     return sum % 2;
 }
 
-void Try(vector<int> v, int index)
+void Try(int index, vector<int> v)
 {
     if(v.size() && check(v))
     {
-        found = true;
         ans.push_back(v);
     }
 
@@ -65,7 +61,7 @@ void Try(vector<int> v, int index)
         {
             used[i] = 1;
             v.push_back(a[i]);
-            Try(v, i);
+            Try(i, v);
             v.pop_back();
             used[i] = 0;
         }
@@ -79,18 +75,18 @@ int main() {
     cin >> n;
     a.resize(n);
 
-    for(int &x : a)
+    for(int i = 0; i < n; i++)
     {
-        cin >> x;
+        cin >> a[i];
     }
-
+    
     vector<int> v;
-    Try(v, -1);
+    Try(-1, v);
 
-    if(!found)
+    if(ans.empty())
     {
         cout << "NOT FOUND";
-    }else
+    }else 
     {
         sort(ans.begin(), ans.end());
         for(auto it : ans)
@@ -104,4 +100,5 @@ int main() {
     }
 
     return 0;
+
 }
